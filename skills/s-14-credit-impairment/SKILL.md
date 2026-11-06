@@ -2,6 +2,10 @@
 name: s-14-credit-impairment
 description: 信用减值损失审计技能组（损益类 S-14，对应所内科目 6702 / 程序库 S6702）。执行预期信用损失检查（强制）、信用减值损失披露检查等实质性程序，输出四段式制式工作底稿。当执行信用减值损失（6702科目）审计程序、编制信用减值损失底稿或复核信用减值损失工作时使用。
 version: 1.0.0
+slug: aiauditox-s-14-credit-impairment
+displayName: 信用减值损失
+summary: 信用减值损失审计技能组（损益类 S-14，对应所内科目 6702 / 程序库 S6702）
+license: CC-BY-NC-SA-4.0
 ---
 
 # S-14 信用减值损失技能组（助理级主技能）

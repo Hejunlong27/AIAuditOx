@@ -2,6 +2,10 @@
 name: auditox-wp-standard
 description: 审小牛AuditOx底稿制式规范（全局强制）。规定所有审计工作底稿的四段式制式结构（项目基本信息/审计目标和程序说明/程序执行结果/审计说明），以及程序信息不足时的三段式兜底底稿（审定表/明细表/凭证抽查表）。任何AuditOx技能编制工作底稿前必须先加载本规范。
 version: 1.0.0
+slug: aiauditox-auditox-wp-standard
+displayName: 审计工作底稿标准
+summary: 审小牛AuditOx底稿制式规范（全局强制）
+license: CC-BY-NC-SA-4.0
 ---
 
 # AuditOx 底稿制式规范（全局标准 · 写入所有角色）

@@ -3,6 +3,11 @@ name: financial-statement-analysis
 description: 对已定稿的财务报表执行审计分析程序（分析性复核）并生成底稿。读取资产负债表、利润表、现金流量表、所有者权益变动表的本期与上期数据，完成数据校验与勾稽检查、结构分析、两年对比、财务比率与杜邦分解、期望值模型与业务配比测算、跨科目一致性检查，按 L1/L2/L3 分级输出异常清单、Excel 分析工作簿和 Word 分析底稿草稿（含待询问问题清单、结论占位与复核签字栏）。触发词：分析程序、分析性复核、报表分析、比率分析、同比分析、结构分析、期望值分析、审计分析底稿、勾稽检查、异常科目、财务报表分析、analytical procedures、ratio analysis。
 metadata:
   short-description: 财务报表分析程序底稿生成器
+slug: aiauditox-financial-statement-analysis
+displayName: 财务报表分析
+summary: 对已定稿的财务报表执行审计分析程序（分析性复核）并生成底稿
+license: CC-BY-NC-SA-4.0
+version: 1.0.0
 ---
 
 # 财务报表分析程序

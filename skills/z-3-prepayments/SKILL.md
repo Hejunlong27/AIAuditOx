@@ -2,6 +2,10 @@
 name: z-3-prepayments
 description: 审小牛AuditOx预付账款审计技能组（资产类Z组）。执行预付账款明细表编制与核对（含应付账款重复挂账排查）、实质性分析（余额波动与预期比较）、账龄与余额构成分析（长期未核销检查）、函证、期后转销检查、抽样检查与披露检查，输出四段式制式工作底稿。当执行预付账款（1123科目）审计程序、编制预付账款底稿或复核相关工作时使用。
 version: 1.0.0
+slug: aiauditox-z-3-prepayments
+displayName: 预付类·预付账款
+summary: 审小牛AuditOx预付账款审计技能组（资产类Z组）
+license: CC-BY-NC-SA-4.0
 ---
 
 # Z-3 预付账款技能组（助理级主技能）

@@ -2,6 +2,10 @@
 name: z-2-accounts-receivable
 description: 审小牛AuditOx应收账款审计技能组（资产类Z组）。执行应收账款明细表编制与核对、实质性分析（余额预期/借方发生额与收入关系/周转天数/账龄/坏账准备）、抽样检查、函证（强制）、账龄测试、坏账准备与核销检查、保理质押安排复核、回款截止测试、期后收款比较与披露检查，输出四段式制式工作底稿。当执行应收账款（1122科目）审计程序、编制应收账款底稿或复核相关工作时使用。
 version: 1.0.0
+slug: aiauditox-z-2-accounts-receivable
+displayName: 销售类·应收账款
+summary: 审小牛AuditOx应收账款审计技能组（资产类Z组）
+license: CC-BY-NC-SA-4.0
 ---
 
 # Z-2 应收账款技能组（助理级主技能）

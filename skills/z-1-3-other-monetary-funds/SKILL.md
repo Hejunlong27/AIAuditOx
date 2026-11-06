@@ -2,6 +2,10 @@
 name: z-1-3-other-monetary-funds
 description: 审小牛AuditOx其他货币资金审计技能组（资产类Z-1货币资金组）。执行其他货币资金明细表编制、保证金存款检查、函证、第三方支付平台查验、存出投资款检查、大额支出抽查、截止测试与披露检查等实质性程序，输出四段式制式工作底稿。当执行其他货币资金（1012科目）审计程序、编制其他货币资金底稿或复核相关工作时使用。
 version: 1.0.0
+slug: aiauditox-z-1-3-other-monetary-funds
+displayName: 货币资金·其他货币资金
+summary: 审小牛AuditOx其他货币资金审计技能组（资产类Z-1货币资金组）
+license: CC-BY-NC-SA-4.0
 ---
 
 # Z-1-3 其他货币资金技能组（助理级主技能）

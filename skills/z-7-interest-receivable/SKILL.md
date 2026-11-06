@@ -2,6 +2,10 @@
 name: z-7-interest-receivable
 description: 应收利息审计技能组（资产类 Z-7，对应所内科目 1132 / 程序库 Z1132）。执行实质性分析程序、应收利息明细表编制、应收利息增减变动检查、期后收款情况检查等实质性程序，输出四段式制式工作底稿。当执行应收利息（1132科目）审计程序、编制应收利息底稿或复核应收利息工作时使用。
 version: 1.0.0
+slug: aiauditox-z-7-interest-receivable
+displayName: 应收利息
+summary: 应收利息审计技能组（资产类 Z-7，对应所内科目 1132 / 程序库 Z1132）
+license: CC-BY-NC-SA-4.0
 ---
 
 # Z-7 应收利息技能组（助理级主技能）

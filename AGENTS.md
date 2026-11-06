@@ -24,7 +24,7 @@ AIAuditOx 把审计程序库逐条拆解成**可复用、可组合、可扩展�
 ## 2. 目录结构
 
 ```
-skills/                        30 个技能包，一包一目录
+skills/                        31 个技能包，一包一目录
 ├── auditox-wp-standard/       ★ 全局底稿制式，编制任何底稿前必须加载
 ├── z-*-*/ f-*-*/ s-*-*/       26 个科目技能组（资产 / 负债 / 损益）
 ├── heavy-asset-financial-analysis/   总控型（roles/ 子技能）

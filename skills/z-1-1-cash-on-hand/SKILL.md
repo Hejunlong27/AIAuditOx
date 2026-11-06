@@ -2,6 +2,10 @@
 name: z-1-1-cash-on-hand
 description: 审小牛AuditOx库存现金审计技能组（资产类Z-1货币资金组）。执行库存现金余额核对、现金监盘、大额现金收支检查、余额合理性分析与披露检查等实质性程序，输出四段式制式工作底稿。当执行库存现金（1001科目）审计程序、编制库存现金底稿或复核库存现金工作时使用。
 version: 1.0.0
+slug: aiauditox-z-1-1-cash-on-hand
+displayName: 货币资金·库存现金
+summary: 审小牛AuditOx库存现金审计技能组（资产类Z-1货币资金组）
+license: CC-BY-NC-SA-4.0
 ---
 
 # Z-1-1 库存现金技能组（助理级主技能）

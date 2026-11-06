@@ -2,6 +2,10 @@
 name: z-1-2-bank-deposits
 description: 审小牛AuditOx银行存款审计技能组（资产类Z-1货币资金组）。执行银行存款余额明细表编制、账户完整性检查、余额调节表检查、双向核对、截止测试、实质性分析程序与披露检查等实质性程序，输出四段式制式工作底稿。当执行银行存款（1002科目）审计程序、编制银行存款底稿或复核银行存款工作时使用。
 version: 1.0.0
+slug: aiauditox-z-1-2-bank-deposits
+displayName: 货币资金·银行存款
+summary: 审小牛AuditOx银行存款审计技能组（资产类Z-1货币资金组）
+license: CC-BY-NC-SA-4.0
 ---
 
 # Z-1-2 银行存款技能组（助理级主技能）

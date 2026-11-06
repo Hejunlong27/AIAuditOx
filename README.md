@@ -26,7 +26,7 @@
 
 ## 技能清单
 
-**30 个技能包 · 179 份程序卡文档**（数字由 `tools/build_index.py` 生成，以 `registry/skills.json` 为准）
+**31 个技能包 · 179 份程序卡文档**（数字由 `tools/build_index.py` 生成，以 `registry/skills.json` 为准）
 
 ### 全局规范（1）
 
@@ -75,13 +75,14 @@
 | [`s-12-payroll-expenses`](skills/s-12-payroll-expenses) | 工资费用 | 10 |
 | [`s-14-credit-impairment`](skills/s-14-credit-impairment) | 信用减值损失 | 2 |
 
-### 辅助分析类（3）
+### 辅助分析类（4）
 
 | 技能 | 形态 | 说明 |
 | --- | --- | --- |
 | [`heavy-asset-financial-analysis`](skills/heavy-asset-financial-analysis) | 总控 + 6 子技能 | 重资产企业财务分析：房企 / 矿业 / 能源 / 基建 |
 | [`financial-statement-analysis`](skills/financial-statement-analysis) | 工具型 | 四张报表进，可复算可追溯的分析底稿出 |
 | [`doc-ocr-extract`](skills/doc-ocr-extract) | 工具型 | 合同发票票据进，带溯源坐标的结构化文档出（全程本地） |
+| [`confirmation-address-auditor`](skills/confirmation-address-auditor) | 工具型 | 函证地址清单进，逐项核对工商注册地址并留痕 |
 
 ---
 
@@ -117,7 +118,7 @@ cp -r AIAuditOx/skills/* ~/.claude/skills/        # Claude Code
 ## 目录结构
 
 ```
-skills/                    30 个技能包
+skills/                    31 个技能包
 ├── auditox-wp-standard/   全局底稿制式（强制）
 ├── z-*/ f-*/ s-*/         26 个科目技能组（SKILL.md + dsl.json + procedures/）
 └── */                     辅助分析类（总控型 / 工具型）

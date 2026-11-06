@@ -2,6 +2,10 @@
 name: z-4-other-receivables
 description: 审小牛AuditOx其他应收款审计技能组（资产类Z组）。执行其他应收款明细表编制与核对、特殊项目检查（关联方资金占用/变相拆借/双挂账排查）、实质性分析、函证、账龄测试、坏账准备复核（11项子程序含个别认定与核销检查）与披露检查，输出四段式制式工作底稿。当执行其他应收款（1221科目）审计程序、编制其他应收款底稿或复核相关工作时使用。
 version: 1.0.0
+slug: aiauditox-z-4-other-receivables
+displayName: 其他应收·其他应收款
+summary: 审小牛AuditOx其他应收款审计技能组（资产类Z组）
+license: CC-BY-NC-SA-4.0
 ---
 
 # Z-4 其他应收款技能组（助理级主技能）

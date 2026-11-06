@@ -2,6 +2,10 @@
 name: doc-ocr-extract
 description: 审小牛AuditOx 基础技能·文档识别与结构化。把合同、增值税发票、票据/银行回单、对账单等原始文件（扫描件 PDF、电子 PDF、JPG/PNG 照片、批量目录）转换为可复用的 Markdown 全文与带溯源坐标的结构化 JSON，完成文档类型判别、发票字段抽取与金额勾稽校验、合同条款切分与要素提取、跨文档异常检测，输出人工复核清单。全程本地运行，客户资料不出本机。当需要读取原始凭证、批量识别发票/票据、把扫描合同转成可检索文本、或为其他审小牛技能准备结构化输入时使用。
 version: 1.0.0
+slug: aiauditox-doc-ocr-extract
+displayName: 文档识别与结构化
+summary: 审小牛AuditOx 基础技能·文档识别与结构化
+license: CC-BY-NC-SA-4.0
 ---
 
 # 文档识别与结构化（基础技能）

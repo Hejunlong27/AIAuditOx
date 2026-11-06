@@ -2,6 +2,10 @@
 name: z-2-1-notes-receivable
 description: 审小牛AuditOx应收票据审计技能组（资产类Z组）。执行应收票据明细表编制与核对（含逾期转应收账款）、库存票据监盘（含质押与背书连带责任检查）、函证、大额票据追查、已兑现票据检查、带息票据利息复核、已贴现票据检查与坏账准备评价、披露检查，输出四段式制式工作底稿。当执行应收票据（1121科目）审计程序、编制应收票据底稿或复核相关工作时使用。
 version: 1.0.0
+slug: aiauditox-z-2-1-notes-receivable
+displayName: 销售类·应收票据
+summary: 审小牛AuditOx应收票据审计技能组（资产类Z组）
+license: CC-BY-NC-SA-4.0
 ---
 
 # Z-2-1 应收票据技能组（助理级主技能）

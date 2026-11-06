@@ -2,6 +2,11 @@
 name: heavy-asset-financial-analysis
 description: 重资产企业财务分析总控（Heavy Asset Financial Analysis Orchestrator）。当用户要对房地产开发、城市更新/土地开发、矿产资源/矿山、能源、基础设施、工程建设、产业园区等重资产企业做财务分析、经营复盘、财务尽调、债务与现金流压力测试、资产质量诊断，或生成财务分析报告/管理层汇报/董事会材料/一页纸摘要时使用。职责是识别企业类型、任务类型、数据类型与分析深度（快速/标准/深度尽调），按「数据整理 → 三表及经营分析 → 行业专项 → 现金流债务风险 → 报告生成」路由到 6 个子技能（data-prep / statement-analysis / real-estate / mining / cashflow-debt-risk / report-generator）。触发词：重资产、财务分析、三表分析、财务尽调、经营复盘、年度复盘、债务压力测试、债务期限墙、现金流分析、资产质量、有息负债、净负债率、现金短债比、土地储备、去化率、回款率、单位成本、单吨毛利、矿山储量、品位、回收率、CAPEX、自由现金流、财务分析报告、管理层汇报、董事会材料、给董事长看、为什么有利润没有现金。
 agent_created: true
+slug: aiauditox-heavy-asset-financial-analysis
+displayName: 重资产企业财务分析
+summary: 重资产企业财务分析总控（Heavy Asset Financial Analysis Orchestrator）
+license: CC-BY-NC-SA-4.0
+version: 1.0.0
 ---
 
 # 重资产企业财务分析总控（heavy-asset-financial-analysis）

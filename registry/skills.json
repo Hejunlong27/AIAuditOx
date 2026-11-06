@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-06T07:52:15Z",
-  "count": 30,
+  "generatedAt": "2026-11-06T08:04:00Z",
+  "count": 31,
   "byVariant": {
     "skill-group": 26,
     "orchestrator": 1,
-    "tool": 2,
+    "tool": 3,
     "standard": 1
   },
   "totalProcedures": 179,
@@ -33,6 +33,25 @@
         "rule_check",
         "workpaper_fill"
       ]
+    },
+    {
+      "id": "confirmation-address-auditor",
+      "name": "confirmation-address-auditor",
+      "version": "1.0.0",
+      "description": "函证地址智能核对助手（Confirmation Address Auditor）。当审计人员上传银行/客户/供应商询证函地址清单（Excel/CSV/PDF/Word）及工商信息查询截图，需要核验函证地址是否真实有效、与工商注册地址是否一致、逐项说明差异、并留存工商信息来源网址与查询界面截图时使用。执行六阶段闭环：多格式读取→名称与地址标准化→三级匹配→逐项差异比对→高/中/低风险识别与审计判断→输出含超链接的 Excel 核对记录表与《函证地址核对执行记录》审计底稿（含附录一来源记录、附录二查询截图）。触发词：函证地址核对、询证函地址核验、地址一致性核对、函证地址比对、注册地址比对、函证清单核对、工商信息核对、地址异常识别、函证底稿。",
+      "variant": "tool",
+      "path": "skills/confirmation-address-auditor",
+      "hasSkillMd": true,
+      "hasChangelog": false,
+      "counts": {
+        "procedures": 0,
+        "templates": 0,
+        "tests": 0,
+        "scripts": 8,
+        "rules": 0,
+        "references": 4,
+        "roles": 0
+      }
     },
     {
       "id": "doc-ocr-extract",
@@ -318,7 +337,7 @@
     {
       "id": "financial-statement-analysis",
       "name": "financial-statement-analysis",
-      "version": "",
+      "version": "1.0.0",
       "description": "对已定稿的财务报表执行审计分析程序（分析性复核）并生成底稿。读取资产负债表、利润表、现金流量表、所有者权益变动表的本期与上期数据，完成数据校验与勾稽检查、结构分析、两年对比、财务比率与杜邦分解、期望值模型与业务配比测算、跨科目一致性检查，按 L1/L2/L3 分级输出异常清单、Excel 分析工作簿和 Word 分析底稿草稿（含待询问问题清单、结论占位与复核签字栏）。触发词：分析程序、分析性复核、报表分析、比率分析、同比分析、结构分析、期望值分析、审计分析底稿、勾稽检查、异常科目、财务报表分析、analytical procedures、ratio analysis。",
       "variant": "tool",
       "path": "skills/financial-statement-analysis",
@@ -337,7 +356,7 @@
     {
       "id": "heavy-asset-financial-analysis",
       "name": "heavy-asset-financial-analysis",
-      "version": "",
+      "version": "1.0.0",
       "description": "重资产企业财务分析总控（Heavy Asset Financial Analysis Orchestrator）。当用户要对房地产开发、城市更新/土地开发、矿产资源/矿山、能源、基础设施、工程建设、产业园区等重资产企业做财务分析、经营复盘、财务尽调、债务与现金流压力测试、资产质量诊断，或生成财务分析报告/管理层汇报/董事会材料/一页纸摘要时使用。职责是识别企业类型、任务类型、数据类型与分析深度（快速/标准/深度尽调），按「数据整理 → 三表及经营分析 → 行业专项 → 现金流债务风险 → 报告生成」路由到 6 个子技能（data-prep / statement-analysis / real-estate / mining / cashflow-debt-risk / report-generator）。触发词：重资产、财务分析、三表分析、财务尽调、经营复盘、年度复盘、债务压力测试、债务期限墙、现金流分析、资产质量、有息负债、净负债率、现金短债比、土地储备、去化率、回款率、单位成本、单吨毛利、矿山储量、品位、回收率、CAPEX、自由现金流、财务分析报告、管理层汇报、董事会材料、给董事长看、为什么有利润没有现金。",
       "variant": "orchestrator",
       "path": "skills/heavy-asset-financial-analysis",

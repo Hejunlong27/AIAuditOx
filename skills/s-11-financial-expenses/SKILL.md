@@ -2,6 +2,10 @@
 name: s-11-financial-expenses
 description: 财务费用审计技能组（损益类 S-11，对应所内科目 6603 / 程序库 S6603）。执行实质性分析程序、财务费用明细表编制与核对、利息支出检查、利息收入检查等实质性程序，输出四段式制式工作底稿。当执行财务费用（6603科目）审计程序、编制财务费用底稿或复核财务费用工作时使用。
 version: 1.0.0
+slug: aiauditox-s-11-financial-expenses
+displayName: 财务费用
+summary: 财务费用审计技能组（损益类 S-11，对应所内科目 6603 / 程序库 S6603）
+license: CC-BY-NC-SA-4.0
 ---
 
 # S-11 财务费用技能组（助理级主技能）

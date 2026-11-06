@@ -2,6 +2,10 @@
 name: f-3-notes-payable
 description: 审小牛AuditOx应付票据审计技能组（负债类F组）。执行应付票据明细表编制与核对（备查簿逐要素核对）、备查簿检查（保证金勾稽/期后偿付/贷款卡信息核对/完整性）、函证、逾期未兑付票据检查（转科目处理）、带息票据利息复核与披露检查，输出四段式制式工作底稿。当执行应付票据（2201科目）审计程序、编制应付票据底稿或复核相关工作时使用。
 version: 1.0.0
+slug: aiauditox-f-3-notes-payable
+displayName: 采购类·应付票据
+summary: 审小牛AuditOx应付票据审计技能组（负债类F组）
+license: CC-BY-NC-SA-4.0
 ---
 
 # F-3 应付票据技能组（助理级主技能）

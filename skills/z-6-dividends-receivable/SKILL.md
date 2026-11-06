@@ -2,6 +2,10 @@
 name: z-6-dividends-receivable
 description: 应收股利审计技能组（资产类 Z-6，对应所内科目 1131 / 程序库 Z1131）。执行实质性分析程序、应收股利明细表编制、应收股利增减变动检查、股利收入计算确认等实质性程序，输出四段式制式工作底稿。当执行应收股利（1131科目）审计程序、编制应收股利底稿或复核应收股利工作时使用。
 version: 1.0.0
+slug: aiauditox-z-6-dividends-receivable
+displayName: 应收股利
+summary: 应收股利审计技能组（资产类 Z-6，对应所内科目 1131 / 程序库 Z1131）
+license: CC-BY-NC-SA-4.0
 ---
 
 # Z-6 应收股利技能组（助理级主技能）

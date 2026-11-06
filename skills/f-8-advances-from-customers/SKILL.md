@@ -2,6 +2,10 @@
 name: f-8-advances-from-customers
 description: 预收账款审计技能组（负债类 F-8，对应所内科目 2203 / 程序库 F2203）。执行预收账款明细表编制与核对、转销与期后检查、预收账款函证程序、预收账款披露检查等实质性程序，输出四段式制式工作底稿。当执行预收账款（2203科目）审计程序、编制预收账款底稿或复核预收账款工作时使用。
 version: 1.0.0
+slug: aiauditox-f-8-advances-from-customers
+displayName: 预收账款
+summary: 预收账款审计技能组（负债类 F-8，对应所内科目 2203 / 程序库 F2203）
+license: CC-BY-NC-SA-4.0
 ---
 
 # F-8 预收账款技能组（助理级主技能）

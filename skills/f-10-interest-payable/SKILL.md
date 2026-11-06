@@ -2,6 +2,10 @@
 name: f-10-interest-payable
 description: 应付利息审计技能组（负债类 F-10，对应所内科目 2231 / 程序库 F2231）。执行实质性分析程序、应付利息明细表编制与完整性检查、应付利息披露检查等实质性程序，输出四段式制式工作底稿。当执行应付利息（2231科目）审计程序、编制应付利息底稿或复核应付利息工作时使用。
 version: 1.0.0
+slug: aiauditox-f-10-interest-payable
+displayName: 应付利息
+summary: 应付利息审计技能组（负债类 F-10，对应所内科目 2231 / 程序库 F2231）
+license: CC-BY-NC-SA-4.0
 ---
 
 # F-10 应付利息技能组（助理级主技能）
