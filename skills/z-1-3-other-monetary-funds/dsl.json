@@ -1,0 +1,23 @@
+{
+  "skill_id": "z-1-3-other-monetary-funds",
+  "name": "货币资金·其他货币资金",
+  "version": "1.0.0",
+  "owner_role": "审计助理",
+  "cycle": "Z",
+  "group_code": "Z",
+  "risk_level": "中",
+  "description": "按重要性阈值对货币资金·其他货币资金明细做异常打标；命中阈值 大额其他货币资金 的记录必须触发关注程序。",
+  "procedures": [
+    { "id": "P01", "name": "其他货币资金明细表编制", "tools": ["recalc_check", "balance_confirm"], "human": false },
+    { "id": "P02", "name": "保证金存款检查（勾稽）", "tools": ["recalc_check", "balance_confirm"], "human": false },
+    { "id": "P03", "name": "其他货币资金函证", "human": true },
+    { "id": "P04", "name": "第三方支付平台款项查验", "tools": ["bank_reconcile_dual"], "human": false },
+    { "id": "P05", "name": "存出投资款检查", "human": false },
+    { "id": "P06", "name": "大额支出抽查", "tools": ["threshold_flag"], "human": false },
+    { "id": "P07", "name": "截止测试", "human": false },
+    { "id": "P08", "name": "披露检查", "tools": ["rule_check"], "human": false }
+  ],
+  "quality_gate": {
+    "required_coverage_pct": 100
+  }
+}

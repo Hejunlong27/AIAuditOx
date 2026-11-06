@@ -1,0 +1,9 @@
+{
+  "type": "abnormal",
+  "desc": "测算应计提 90,000 元而账面仅 60,000 元，计提不足 30,000 元，须提请补提",
+  "expect": {
+    "markers": [
+      "anomaly:provision"
+    ]
+  }
+}

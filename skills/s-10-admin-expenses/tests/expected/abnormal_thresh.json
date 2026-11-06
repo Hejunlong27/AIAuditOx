@@ -1,0 +1,9 @@
+{
+  "type": "abnormal",
+  "desc": "董事会费 950,000 元超实际执行的重要性水平，须检查决议与审批依据",
+  "expect": {
+    "markers": [
+      "anomaly:thresh"
+    ]
+  }
+}

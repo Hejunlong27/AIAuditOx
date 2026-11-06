@@ -1,0 +1,26 @@
+{
+  "inputs": {
+    "period_end": "2025-12-31",
+    "window_days": 5,
+    "rows": [
+      {
+        "id": "C001",
+        "doc_date": "2025-12-15",
+        "recorded_period": "2025-12",
+        "amount": 320000.0
+      },
+      {
+        "id": "C003",
+        "doc_date": "2025-12-28",
+        "recorded_period": "2026-01",
+        "amount": 420000.0
+      },
+      {
+        "id": "C004",
+        "doc_date": "2026-01-03",
+        "recorded_period": "2025-12",
+        "amount": 260000.0
+      }
+    ]
+  }
+}

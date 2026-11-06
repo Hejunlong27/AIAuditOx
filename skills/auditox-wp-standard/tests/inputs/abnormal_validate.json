@@ -1,0 +1,31 @@
+{
+  "inputs": {
+    "data": {
+      "project": "案例-某制造企业",
+      "workpaper_version": "v1.0"
+    },
+    "schema": {
+      "type": "object",
+      "required": [
+        "project",
+        "workpaper_version",
+        "accounts",
+        "signoff"
+      ],
+      "properties": {
+        "project": {
+          "type": "string"
+        },
+        "workpaper_version": {
+          "type": "string"
+        },
+        "accounts": {
+          "type": "array"
+        },
+        "signoff": {
+          "type": "object"
+        }
+      }
+    }
+  }
+}

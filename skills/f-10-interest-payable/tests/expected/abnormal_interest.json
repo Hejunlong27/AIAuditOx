@@ -1,0 +1,9 @@
+{
+  "type": "abnormal",
+  "desc": "账面应付利息 1,350,000 元高于测算 1,301,424.66 元，差 48,575.34 元，须查明",
+  "expect": {
+    "markers": [
+      "anomaly:interest"
+    ]
+  }
+}

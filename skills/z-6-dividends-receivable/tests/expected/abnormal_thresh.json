@@ -1,0 +1,9 @@
+{
+  "type": "abnormal",
+  "desc": "D2 差异 68,000 元超实际执行的重要性水平，须取得说明与证据",
+  "expect": {
+    "markers": [
+      "anomaly:thresh"
+    ]
+  }
+}

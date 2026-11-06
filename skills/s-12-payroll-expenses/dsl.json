@@ -1,0 +1,95 @@
+{
+  "skill_id": "s-12-payroll-expenses",
+  "name": "工资费用",
+  "version": "1.0.0",
+  "owner_role": "审计助理",
+  "cycle": "S",
+  "group_code": "S",
+  "risk_level": "（待定）",
+  "description": "工资费用审计技能组（6604 科目，程序库 S6604）：10 张程序卡，产出四段式制式底稿。",
+  "procedures": [
+    {
+      "id": "P01",
+      "name": "实质性分析程序",
+      "tools": [
+        "recalc_check",
+        "threshold_flag"
+      ]
+    },
+    {
+      "id": "P02",
+      "name": "工资费用明细表编制与核对",
+      "tools": [
+        "recalc_check",
+        "balance_confirm"
+      ]
+    },
+    {
+      "id": "P03",
+      "name": "工资成本与分录抽样测试",
+      "tools": [
+        "sampling_draw",
+        "recalc_check"
+      ]
+    },
+    {
+      "id": "P04",
+      "name": "授薪员工工资确认",
+      "tools": [
+        "rule_check"
+      ],
+      "human": true
+    },
+    {
+      "id": "P05",
+      "name": "计时员工与节假日工资检查",
+      "tools": [
+        "sampling_draw",
+        "recalc_check"
+      ]
+    },
+    {
+      "id": "P06",
+      "name": "应付福利费复核",
+      "tools": [
+        "recalc_check",
+        "provision_calc"
+      ]
+    },
+    {
+      "id": "P07",
+      "name": "服务机构工资检查",
+      "tools": [
+        "rule_check"
+      ]
+    },
+    {
+      "id": "P08",
+      "name": "工资分配与报销费用检查",
+      "tools": [
+        "recalc_check",
+        "sampling_draw"
+      ]
+    },
+    {
+      "id": "P09",
+      "name": "舞弊风险应对—工薪循环职责分离测试",
+      "tools": [
+        "rule_check"
+      ],
+      "human": true
+    },
+    {
+      "id": "P10",
+      "name": "董事与关键管理人员薪酬检查",
+      "tools": [
+        "threshold_flag",
+        "rule_check",
+        "excel_read"
+      ]
+    }
+  ],
+  "quality_gate": {
+    "required_coverage_pct": 100
+  }
+}

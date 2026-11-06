@@ -1,0 +1,22 @@
+{
+  "skill_id": "z-2-1-notes-receivable",
+  "name": "销售类·应收票据",
+  "version": "1.0.0",
+  "owner_role": "审计助理",
+  "cycle": "Z",
+  "group_code": "Z",
+  "risk_level": "中",
+  "description": "按重要性阈值对销售类·应收票据明细做异常打标；命中阈值 大额票据 的记录必须触发关注程序。",
+  "procedures": [
+    { "id": "P01", "name": "明细表编制与核对", "tools": ["recalc_check"], "human": false },
+    { "id": "P02", "name": "库存票据监盘", "human": true },
+    { "id": "P03", "name": "函证", "human": true },
+    { "id": "P04", "name": "大额票据追查与已兑现检查", "tools": ["threshold_flag"], "human": false },
+    { "id": "P05", "name": "带息票据利息复核", "tools": ["recalc_check"], "human": false },
+    { "id": "P06", "name": "已贴现票据检查与坏账评价", "tools": ["recalc_check"], "human": false },
+    { "id": "P07", "name": "披露检查", "tools": ["rule_check"], "human": false }
+  ],
+  "quality_gate": {
+    "required_coverage_pct": 100
+  }
+}

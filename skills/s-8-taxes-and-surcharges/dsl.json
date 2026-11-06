@@ -1,0 +1,47 @@
+{
+  "skill_id": "s-8-taxes-and-surcharges",
+  "name": "税金及附加",
+  "version": "1.0.0",
+  "owner_role": "审计助理",
+  "cycle": "S",
+  "group_code": "S",
+  "risk_level": "（待定）",
+  "description": "税金及附加审计技能组（6403 科目，程序库 S6403）：4 张程序卡，产出四段式制式底稿。",
+  "procedures": [
+    {
+      "id": "P01",
+      "name": "税金及附加明细表编制与核对",
+      "tools": [
+        "recalc_check",
+        "balance_confirm"
+      ]
+    },
+    {
+      "id": "P02",
+      "name": "各税种计算与勾稽复核",
+      "tools": [
+        "recalc_check",
+        "excel_read",
+        "rule_check"
+      ]
+    },
+    {
+      "id": "P03",
+      "name": "税务合规、争议与特殊税收项目检查",
+      "tools": [
+        "rule_check"
+      ],
+      "human": true
+    },
+    {
+      "id": "P04",
+      "name": "税金及附加披露检查",
+      "tools": [
+        "rule_check"
+      ]
+    }
+  ],
+  "quality_gate": {
+    "required_coverage_pct": 100
+  }
+}

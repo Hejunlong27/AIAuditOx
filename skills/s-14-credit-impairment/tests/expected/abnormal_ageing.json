@@ -1,0 +1,9 @@
+{
+  "type": "abnormal",
+  "desc": "R3 账龄 945 天（超 365 天阈值），金额 500,000 元，须单独评估可收回性",
+  "expect": {
+    "markers": [
+      "anomaly:ageing"
+    ]
+  }
+}

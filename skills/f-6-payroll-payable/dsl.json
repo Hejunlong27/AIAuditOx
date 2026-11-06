@@ -1,0 +1,25 @@
+{
+  "skill_id": "f-6-payroll-payable",
+  "name": "应付职工薪酬",
+  "version": "1.0.0",
+  "owner_role": "审计助理",
+  "cycle": "F",
+  "group_code": "F",
+  "risk_level": "中",
+  "description": "核对应付职工薪酬账面计发与实际发放口径，余额不一致必须触发关注。",
+  "procedures": [
+    { "id": "P01", "name": "明细表编制与核对", "tools": ["recalc_check", "balance_confirm"], "human": false },
+    { "id": "P02", "name": "工资奖金津贴检查", "tools": ["recalc_check"], "human": false },
+    { "id": "P03", "name": "辞退福利检查", "tools": ["recalc_check"], "human": false },
+    { "id": "P04", "name": "非货币性福利检查", "human": false },
+    { "id": "P05", "name": "股份支付检查", "human": false },
+    { "id": "P06", "name": "离职后福利精算复核", "human": true },
+    { "id": "P07", "name": "个人所得税检查", "human": false },
+    { "id": "P08", "name": "期后付款与应计提合理性测试", "tools": ["recalc_check"], "human": false },
+    { "id": "P09", "name": "新员工与离职员工核查", "tools": ["sampling_draw"], "human": false },
+    { "id": "P10", "name": "披露检查", "tools": ["rule_check"], "human": false }
+  ],
+  "quality_gate": {
+    "required_coverage_pct": 100
+  }
+}

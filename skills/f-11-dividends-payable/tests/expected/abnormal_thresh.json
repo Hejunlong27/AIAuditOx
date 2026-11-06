@@ -1,0 +1,9 @@
+{
+  "type": "abnormal",
+  "desc": "股东A 应付股利 1,680,000 元超整体重要性水平，须核对利润分配方案与决议",
+  "expect": {
+    "markers": [
+      "anomaly:thresh"
+    ]
+  }
+}

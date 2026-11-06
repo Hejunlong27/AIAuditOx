@@ -1,0 +1,26 @@
+{
+  "inputs": {
+    "period_end": "2025-12-31",
+    "window_days": 5,
+    "rows": [
+      {
+        "id": "V001",
+        "doc_date": "2025-12-18",
+        "recorded_period": "2025-12",
+        "amount": 86000.0
+      },
+      {
+        "id": "V003",
+        "doc_date": "2025-12-29",
+        "recorded_period": "2026-01",
+        "amount": 156000.0
+      },
+      {
+        "id": "V004",
+        "doc_date": "2026-01-04",
+        "recorded_period": "2025-12",
+        "amount": 98000.0
+      }
+    ]
+  }
+}

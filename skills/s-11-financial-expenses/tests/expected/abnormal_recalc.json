@@ -1,0 +1,9 @@
+{
+  "type": "abnormal",
+  "desc": "汇兑损益重算与账面差 4,400.00 元，须核对所用汇率是否前后期一致",
+  "expect": {
+    "markers": [
+      "anomaly:recalc"
+    ]
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "skill_id": "s-11-financial-expenses",
+  "name": "财务费用",
+  "version": "1.0.0",
+  "owner_role": "审计助理",
+  "cycle": "S",
+  "group_code": "S",
+  "risk_level": "（待定）",
+  "description": "财务费用审计技能组（6603 科目，程序库 S6603）：6 张程序卡，产出四段式制式底稿。",
+  "procedures": [
+    {
+      "id": "P01",
+      "name": "实质性分析程序",
+      "tools": [
+        "interest_calc",
+        "threshold_flag"
+      ]
+    },
+    {
+      "id": "P02",
+      "name": "财务费用明细表编制与核对",
+      "tools": [
+        "recalc_check",
+        "balance_confirm",
+        "rule_check"
+      ]
+    },
+    {
+      "id": "P03",
+      "name": "利息支出检查",
+      "tools": [
+        "interest_calc",
+        "recalc_check"
+      ]
+    },
+    {
+      "id": "P04",
+      "name": "利息收入检查",
+      "tools": [
+        "interest_calc",
+        "recalc_check"
+      ]
+    },
+    {
+      "id": "P05",
+      "name": "汇兑损益与手续费检查",
+      "tools": [
+        "recalc_check",
+        "threshold_flag"
+      ]
+    },
+    {
+      "id": "P06",
+      "name": "财务费用披露检查",
+      "tools": [
+        "rule_check"
+      ]
+    }
+  ],
+  "quality_gate": {
+    "required_coverage_pct": 100
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "skill_id": "z-7-interest-receivable",
+  "name": "应收利息",
+  "version": "1.0.0",
+  "owner_role": "审计助理",
+  "cycle": "Z",
+  "group_code": "Z",
+  "risk_level": "（待定）",
+  "description": "应收利息审计技能组（1132 科目，程序库 Z1132）：5 张程序卡，产出四段式制式底稿。",
+  "procedures": [
+    {
+      "id": "P01",
+      "name": "实质性分析程序",
+      "tools": [
+        "interest_calc",
+        "threshold_flag"
+      ]
+    },
+    {
+      "id": "P02",
+      "name": "应收利息明细表编制",
+      "tools": [
+        "recalc_check",
+        "balance_confirm"
+      ]
+    },
+    {
+      "id": "P03",
+      "name": "应收利息增减变动检查",
+      "tools": [
+        "interest_calc",
+        "sampling_draw"
+      ]
+    },
+    {
+      "id": "P04",
+      "name": "期后收款情况检查",
+      "tools": [
+        "sampling_draw",
+        "threshold_flag"
+      ]
+    },
+    {
+      "id": "P05",
+      "name": "应收利息披露检查",
+      "tools": [
+        "rule_check"
+      ]
+    }
+  ],
+  "quality_gate": {
+    "required_coverage_pct": 100
+  }
+}

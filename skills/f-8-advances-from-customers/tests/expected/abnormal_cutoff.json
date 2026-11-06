@@ -1,0 +1,9 @@
+{
+  "type": "abnormal",
+  "desc": "C003（期内发货期后转销）、C004（期后发货期内转销）两笔跨期，须评估收入确认时点",
+  "expect": {
+    "markers": [
+      "anomaly:cutoff"
+    ]
+  }
+}

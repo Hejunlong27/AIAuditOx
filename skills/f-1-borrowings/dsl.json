@@ -1,0 +1,24 @@
+{
+  "skill_id": "f-1-borrowings",
+  "name": "借款类·短期借款",
+  "version": "1.0.0",
+  "owner_role": "审计助理",
+  "cycle": "F",
+  "group_code": "F",
+  "risk_level": "中",
+  "description": "按重要性阈值对借款类·短期借款明细做异常打标；命中阈值 大额借款 的记录必须触发关注程序。",
+  "procedures": [
+    { "id": "P01", "name": "借款清单检查与回函核对", "tools": ["recalc_check", "balance_confirm"], "human": false },
+    { "id": "P02", "name": "实质性分析程序", "tools": ["recalc_check", "threshold_flag"], "human": false },
+    { "id": "P03", "name": "借款函证（强制）", "human": true },
+    { "id": "P04", "name": "利息与摊余成本复核", "tools": ["recalc_check"], "human": false },
+    { "id": "P05", "name": "限制条款与违约检查", "tools": ["recalc_check"], "human": false },
+    { "id": "P06", "name": "借款增减与新融资检查", "human": false },
+    { "id": "P07", "name": "合同条款修改与债务重组", "human": false },
+    { "id": "P08", "name": "抵押资产检查与企业信用报告核对", "human": false },
+    { "id": "P09", "name": "披露检查", "tools": ["rule_check"], "human": false }
+  ],
+  "quality_gate": {
+    "required_coverage_pct": 100
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "inputs": {
+    "rows": [
+      {
+        "id": "r1",
+        "balance": 120000
+      },
+      {
+        "id": "r2",
+        "balance": 250000
+      },
+      {
+        "id": "r3",
+        "balance": 480000
+      }
+    ],
+    "field": "balance",
+    "thresholds": [
+      {
+        "op": "gte",
+        "value": 500000,
+        "label": "大额应付"
+      }
+    ]
+  }
+}

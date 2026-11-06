@@ -1,0 +1,30 @@
+{
+  "inputs": {
+    "rows": [
+      {
+        "id": "r1",
+        "amount": 800
+      },
+      {
+        "id": "r2",
+        "amount": 1500
+      },
+      {
+        "id": "r3",
+        "amount": 200
+      },
+      {
+        "id": "r4",
+        "amount": 4100
+      }
+    ],
+    "field": "amount",
+    "thresholds": [
+      {
+        "op": "gte",
+        "value": 5000,
+        "label": "大额现金"
+      }
+    ]
+  }
+}

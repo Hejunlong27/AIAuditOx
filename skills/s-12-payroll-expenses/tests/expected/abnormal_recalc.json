@@ -1,0 +1,9 @@
+{
+  "type": "abnormal",
+  "desc": "工资分配合计与工资总额差 40,000.00 元，须查明分配依据",
+  "expect": {
+    "markers": [
+      "anomaly:recalc"
+    ]
+  }
+}

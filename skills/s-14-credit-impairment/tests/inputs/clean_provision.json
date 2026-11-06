@@ -1,0 +1,17 @@
+{
+  "inputs": {
+    "booked_provision": 90000.0,
+    "ageing": [
+      {
+        "label": "1年以内",
+        "amount": 1200000.0,
+        "rate": 5
+      },
+      {
+        "label": "1-2年",
+        "amount": 300000.0,
+        "rate": 10
+      }
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "inputs": {
+    "rows": [
+      {
+        "id": "D1",
+        "amount": 12000.0
+      },
+      {
+        "id": "D2",
+        "amount": 68000.0
+      }
+    ],
+    "field": "amount",
+    "thresholds": [
+      {
+        "op": "gte",
+        "value": 50000,
+        "label": "股利差异超实际执行的重要性水平"
+      }
+    ]
+  }
+}

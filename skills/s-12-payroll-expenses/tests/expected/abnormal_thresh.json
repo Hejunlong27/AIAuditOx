@@ -1,0 +1,9 @@
+{
+  "type": "abnormal",
+  "desc": "关键管理人员 C 薪酬 2,400,000 元超整体重要性水平，须检查决议授权与披露",
+  "expect": {
+    "markers": [
+      "anomaly:thresh"
+    ]
+  }
+}

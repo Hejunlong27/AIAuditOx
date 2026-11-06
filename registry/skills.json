@@ -1,0 +1,770 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-06T07:52:15Z",
+  "count": 30,
+  "byVariant": {
+    "skill-group": 26,
+    "orchestrator": 1,
+    "tool": 2,
+    "standard": 1
+  },
+  "totalProcedures": 179,
+  "skills": [
+    {
+      "id": "auditox-wp-standard",
+      "name": "auditox-wp-standard",
+      "version": "1.0.0",
+      "description": "审小牛AuditOx底稿制式规范（全局强制）。规定所有审计工作底稿的四段式制式结构（项目基本信息/审计目标和程序说明/程序执行结果/审计说明），以及程序信息不足时的三段式兜底底稿（审定表/明细表/凭证抽查表）。任何AuditOx技能编制工作底稿前必须先加载本规范。",
+      "variant": "standard",
+      "path": "skills/auditox-wp-standard",
+      "hasSkillMd": true,
+      "hasChangelog": true,
+      "counts": {
+        "procedures": 0,
+        "templates": 1,
+        "tests": 4,
+        "scripts": 0,
+        "rules": 0,
+        "references": 0,
+        "roles": 0
+      },
+      "tools": [
+        "revision_record",
+        "rule_check",
+        "workpaper_fill"
+      ]
+    },
+    {
+      "id": "doc-ocr-extract",
+      "name": "doc-ocr-extract",
+      "version": "1.0.0",
+      "description": "审小牛AuditOx 基础技能·文档识别与结构化。把合同、增值税发票、票据/银行回单、对账单等原始文件（扫描件 PDF、电子 PDF、JPG/PNG 照片、批量目录）转换为可复用的 Markdown 全文与带溯源坐标的结构化 JSON，完成文档类型判别、发票字段抽取与金额勾稽校验、合同条款切分与要素提取、跨文档异常检测，输出人工复核清单。全程本地运行，客户资料不出本机。当需要读取原始凭证、批量识别发票/票据、把扫描合同转成可检索文本、或为其他审小牛技能准备结构化输入时使用。",
+      "variant": "tool",
+      "path": "skills/doc-ocr-extract",
+      "hasSkillMd": true,
+      "hasChangelog": true,
+      "counts": {
+        "procedures": 0,
+        "templates": 0,
+        "tests": 1,
+        "scripts": 12,
+        "rules": 4,
+        "references": 0,
+        "roles": 0
+      }
+    },
+    {
+      "id": "f-1-borrowings",
+      "name": "f-1-borrowings",
+      "version": "1.0.0",
+      "description": "审小牛AuditOx借款审计技能组（负债类F组，覆盖短期借款2001/长期借款2501）。执行借款清单检查与银行回函核对（完整性验证）、实质性分析、函证（强制）、利息与摊余成本复核（重算）、限制条款与违约检查（联动持续经营）、借款增减变动检查、新融资与合同条款修改检查、抵押资产与债务重组检查、企业信用报告核对与披露检查，输出四段式制式工作底稿。当执行借款（2001/2501科目）审计程序、编制借款底稿或复核相关工作时使用。",
+      "variant": "skill-group",
+      "path": "skills/f-1-borrowings",
+      "hasSkillMd": true,
+      "hasChangelog": true,
+      "counts": {
+        "procedures": 9,
+        "templates": 2,
+        "tests": 4,
+        "scripts": 0,
+        "rules": 0,
+        "references": 0,
+        "roles": 0
+      },
+      "tools": [
+        "balance_confirm",
+        "recalc_check",
+        "rule_check",
+        "threshold_flag"
+      ]
+    },
+    {
+      "id": "f-10-interest-payable",
+      "name": "f-10-interest-payable",
+      "version": "1.0.0",
+      "description": "应付利息审计技能组（负债类 F-10，对应所内科目 2231 / 程序库 F2231）。执行实质性分析程序、应付利息明细表编制与完整性检查、应付利息披露检查等实质性程序，输出四段式制式工作底稿。当执行应付利息（2231科目）审计程序、编制应付利息底稿或复核应付利息工作时使用。",
+      "variant": "skill-group",
+      "path": "skills/f-10-interest-payable",
+      "hasSkillMd": true,
+      "hasChangelog": true,
+      "counts": {
+        "procedures": 3,
+        "templates": 2,
+        "tests": 12,
+        "scripts": 0,
+        "rules": 0,
+        "references": 0,
+        "roles": 0
+      },
+      "tools": [
+        "balance_confirm",
+        "interest_calc",
+        "recalc_check",
+        "rule_check",
+        "threshold_flag"
+      ]
+    },
+    {
+      "id": "f-11-dividends-payable",
+      "name": "f-11-dividends-payable",
+      "version": "1.0.0",
+      "description": "应付股利审计技能组（负债类 F-11，对应所内科目 2232 / 程序库 F2232）。执行实质性分析程序、应付股利明细表编制与核对、股利分配程序与计提合规性检查、股利支付检查等实质性程序，输出四段式制式工作底稿。当执行应付股利（2232科目）审计程序、编制应付股利底稿或复核应付股利工作时使用。",
+      "variant": "skill-group",
+      "path": "skills/f-11-dividends-payable",
+      "hasSkillMd": true,
+      "hasChangelog": true,
+      "counts": {
+        "procedures": 5,
+        "templates": 2,
+        "tests": 12,
+        "scripts": 0,
+        "rules": 0,
+        "references": 0,
+        "roles": 0
+      },
+      "tools": [
+        "balance_confirm",
+        "recalc_check",
+        "rule_check",
+        "sampling_draw",
+        "threshold_flag"
+      ]
+    },
+    {
+      "id": "f-12-other-payables",
+      "name": "f-12-other-payables",
+      "version": "1.0.0",
+      "description": "其他应付款审计技能组（负债类 F-12，对应所内科目 2241 / 程序库 F2241）。执行实质性分析程序、其他应付款明细表编制与核对、其他应付款函证程序、期后付款与未入账负债检查等实质性程序，输出四段式制式工作底稿。当执行其他应付款（2241科目）审计程序、编制其他应付款底稿或复核其他应付款工作时使用。",
+      "variant": "skill-group",
+      "path": "skills/f-12-other-payables",
+      "hasSkillMd": true,
+      "hasChangelog": true,
+      "counts": {
+        "procedures": 8,
+        "templates": 2,
+        "tests": 12,
+        "scripts": 0,
+        "rules": 0,
+        "references": 0,
+        "roles": 0
+      },
+      "tools": [
+        "balance_confirm",
+        "cutoff_test",
+        "provision_calc",
+        "recalc_check",
+        "rule_check",
+        "sampling_draw",
+        "threshold_flag"
+      ]
+    },
+    {
+      "id": "f-13-deferred-income",
+      "name": "f-13-deferred-income",
+      "version": "1.0.0",
+      "description": "递延收益审计技能组（负债类 F-13，对应所内科目 2401 / 程序库 F2401）。执行实质性分析程序、递延收益明细表编制与核对、递延收益余额抽样与追溯检查、合同负债完整性检查等实质性程序，输出四段式制式工作底稿。当执行递延收益（2401科目）审计程序、编制递延收益底稿或复核递延收益工作时使用。",
+      "variant": "skill-group",
+      "path": "skills/f-13-deferred-income",
+      "hasSkillMd": true,
+      "hasChangelog": true,
+      "counts": {
+        "procedures": 5,
+        "templates": 2,
+        "tests": 12,
+        "scripts": 0,
+        "rules": 0,
+        "references": 0,
+        "roles": 0
+      },
+      "tools": [
+        "balance_confirm",
+        "cutoff_test",
+        "recalc_check",
+        "rule_check",
+        "sampling_draw",
+        "threshold_flag"
+      ]
+    },
+    {
+      "id": "f-3-notes-payable",
+      "name": "f-3-notes-payable",
+      "version": "1.0.0",
+      "description": "审小牛AuditOx应付票据审计技能组（负债类F组）。执行应付票据明细表编制与核对（备查簿逐要素核对）、备查簿检查（保证金勾稽/期后偿付/贷款卡信息核对/完整性）、函证、逾期未兑付票据检查（转科目处理）、带息票据利息复核与披露检查，输出四段式制式工作底稿。当执行应付票据（2201科目）审计程序、编制应付票据底稿或复核相关工作时使用。",
+      "variant": "skill-group",
+      "path": "skills/f-3-notes-payable",
+      "hasSkillMd": true,
+      "hasChangelog": true,
+      "counts": {
+        "procedures": 6,
+        "templates": 2,
+        "tests": 4,
+        "scripts": 0,
+        "rules": 0,
+        "references": 0,
+        "roles": 0
+      },
+      "tools": [
+        "balance_confirm",
+        "recalc_check",
+        "rule_check",
+        "threshold_flag"
+      ]
+    },
+    {
+      "id": "f-4-accounts-payable",
+      "name": "f-4-accounts-payable",
+      "version": "1.0.0",
+      "description": "审小牛AuditOx应付账款审计技能组（负债类F组）。执行应付账款明细表编制与核对（含预付账款双挂账排查）、实质性分析（采购比率/周转天数/余额预期/月度采购量/账龄）、供应商对账单调节复核、函证（含中期前推）、暂挂账户分析、查找未入账负债、采购截止测试、现金折扣与债务重组检查、负债完整性考虑、主要供应商核查与披露检查，输出四段式制式工作底稿。当执行应付账款（2202科目）审计程序、编制应付账款底稿或复核相关工作时使用。",
+      "variant": "skill-group",
+      "path": "skills/f-4-accounts-payable",
+      "hasSkillMd": true,
+      "hasChangelog": true,
+      "counts": {
+        "procedures": 8,
+        "templates": 2,
+        "tests": 4,
+        "scripts": 0,
+        "rules": 0,
+        "references": 0,
+        "roles": 0
+      },
+      "tools": [
+        "balance_confirm",
+        "recalc_check",
+        "rule_check",
+        "sampling_draw",
+        "threshold_flag"
+      ]
+    },
+    {
+      "id": "f-6-payroll-payable",
+      "name": "f-6-payroll-payable",
+      "version": "1.0.0",
+      "description": "审小牛AuditOx应付职工薪酬审计技能组（负债类F组）。执行薪酬明细表编制、工资奖金津贴检查（计提/分配/发放/拖欠/调节）、辞退福利检查、非货币性福利检查、股份支付（股票期权/现金结算）检查、离职后福利精算复核、个人所得税检查、期后付款与应计提合理性测试、新员工与离职员工核查、披露检查，输出四段式制式工作底稿。当执行应付职工薪酬（2211科目）审计程序、编制薪酬底稿或复核相关工作时使用。",
+      "variant": "skill-group",
+      "path": "skills/f-6-payroll-payable",
+      "hasSkillMd": true,
+      "hasChangelog": true,
+      "counts": {
+        "procedures": 3,
+        "templates": 0,
+        "tests": 4,
+        "scripts": 0,
+        "rules": 0,
+        "references": 0,
+        "roles": 0
+      },
+      "tools": [
+        "balance_confirm",
+        "recalc_check",
+        "rule_check",
+        "sampling_draw"
+      ]
+    },
+    {
+      "id": "f-8-advances-from-customers",
+      "name": "f-8-advances-from-customers",
+      "version": "1.0.0",
+      "description": "预收账款审计技能组（负债类 F-8，对应所内科目 2203 / 程序库 F2203）。执行预收账款明细表编制与核对、转销与期后检查、预收账款函证程序、预收账款披露检查等实质性程序，输出四段式制式工作底稿。当执行预收账款（2203科目）审计程序、编制预收账款底稿或复核预收账款工作时使用。",
+      "variant": "skill-group",
+      "path": "skills/f-8-advances-from-customers",
+      "hasSkillMd": true,
+      "hasChangelog": true,
+      "counts": {
+        "procedures": 4,
+        "templates": 2,
+        "tests": 12,
+        "scripts": 0,
+        "rules": 0,
+        "references": 0,
+        "roles": 0
+      },
+      "tools": [
+        "balance_confirm",
+        "cutoff_test",
+        "recalc_check",
+        "rule_check",
+        "sampling_draw"
+      ]
+    },
+    {
+      "id": "f-9-taxes-payable",
+      "name": "f-9-taxes-payable",
+      "version": "1.0.0",
+      "description": "应交税费审计技能组（负债类 F-9，对应所内科目 2221 / 程序库 F2221）。执行实质性分析程序、应交税费明细表编制与核对、纳税申报表核对、应交增值税检查等实质性程序，输出四段式制式工作底稿。当执行应交税费（2221科目）审计程序、编制应交税费底稿或复核应交税费工作时使用。",
+      "variant": "skill-group",
+      "path": "skills/f-9-taxes-payable",
+      "hasSkillMd": true,
+      "hasChangelog": true,
+      "counts": {
+        "procedures": 12,
+        "templates": 2,
+        "tests": 12,
+        "scripts": 0,
+        "rules": 0,
+        "references": 0,
+        "roles": 0
+      },
+      "tools": [
+        "balance_confirm",
+        "excel_read",
+        "recalc_check",
+        "rule_check",
+        "sampling_draw",
+        "sheet_to_csv",
+        "threshold_flag"
+      ]
+    },
+    {
+      "id": "financial-statement-analysis",
+      "name": "financial-statement-analysis",
+      "version": "",
+      "description": "对已定稿的财务报表执行审计分析程序（分析性复核）并生成底稿。读取资产负债表、利润表、现金流量表、所有者权益变动表的本期与上期数据，完成数据校验与勾稽检查、结构分析、两年对比、财务比率与杜邦分解、期望值模型与业务配比测算、跨科目一致性检查，按 L1/L2/L3 分级输出异常清单、Excel 分析工作簿和 Word 分析底稿草稿（含待询问问题清单、结论占位与复核签字栏）。触发词：分析程序、分析性复核、报表分析、比率分析、同比分析、结构分析、期望值分析、审计分析底稿、勾稽检查、异常科目、财务报表分析、analytical procedures、ratio analysis。",
+      "variant": "tool",
+      "path": "skills/financial-statement-analysis",
+      "hasSkillMd": true,
+      "hasChangelog": false,
+      "counts": {
+        "procedures": 0,
+        "templates": 0,
+        "tests": 1,
+        "scripts": 9,
+        "rules": 5,
+        "references": 0,
+        "roles": 0
+      }
+    },
+    {
+      "id": "heavy-asset-financial-analysis",
+      "name": "heavy-asset-financial-analysis",
+      "version": "",
+      "description": "重资产企业财务分析总控（Heavy Asset Financial Analysis Orchestrator）。当用户要对房地产开发、城市更新/土地开发、矿产资源/矿山、能源、基础设施、工程建设、产业园区等重资产企业做财务分析、经营复盘、财务尽调、债务与现金流压力测试、资产质量诊断，或生成财务分析报告/管理层汇报/董事会材料/一页纸摘要时使用。职责是识别企业类型、任务类型、数据类型与分析深度（快速/标准/深度尽调），按「数据整理 → 三表及经营分析 → 行业专项 → 现金流债务风险 → 报告生成」路由到 6 个子技能（data-prep / statement-analysis / real-estate / mining / cashflow-debt-risk / report-generator）。触发词：重资产、财务分析、三表分析、财务尽调、经营复盘、年度复盘、债务压力测试、债务期限墙、现金流分析、资产质量、有息负债、净负债率、现金短债比、土地储备、去化率、回款率、单位成本、单吨毛利、矿山储量、品位、回收率、CAPEX、自由现金流、财务分析报告、管理层汇报、董事会材料、给董事长看、为什么有利润没有现金。",
+      "variant": "orchestrator",
+      "path": "skills/heavy-asset-financial-analysis",
+      "hasSkillMd": true,
+      "hasChangelog": false,
+      "counts": {
+        "procedures": 0,
+        "templates": 0,
+        "tests": 0,
+        "scripts": 2,
+        "rules": 0,
+        "references": 7,
+        "roles": 6
+      }
+    },
+    {
+      "id": "s-1-revenue",
+      "name": "s-1-revenue",
+      "version": "1.0.0",
+      "description": "审小牛AuditOx营业收入审计技能组（损益类S组）。执行主营与其他业务收入明细表编制、实质性分析（毛利率/月度波动/收入预期/退货率/非财务信息等十项）、主要客户背景核查与货款回收测试、特殊销售模式（经销商/代理商/出口/委托代销/售后代管）评价、收入确认政策与CAS14合同专项、抽样双向测试、截止测试、退货退款与可变对价检查、合同成本与质保、现金收入舞弊专项与披露检查，输出四段式制式工作底稿。当执行营业收入（6001/6051科目）审计程序、编制收入底稿或复核相关工作时使用。",
+      "variant": "skill-group",
+      "path": "skills/s-1-revenue",
+      "hasSkillMd": true,
+      "hasChangelog": true,
+      "counts": {
+        "procedures": 12,
+        "templates": 2,
+        "tests": 4,
+        "scripts": 0,
+        "rules": 0,
+        "references": 0,
+        "roles": 0
+      },
+      "tools": [
+        "recalc_check",
+        "sampling_draw",
+        "threshold_flag"
+      ]
+    },
+    {
+      "id": "s-10-admin-expenses",
+      "name": "s-10-admin-expenses",
+      "version": "1.0.0",
+      "description": "管理费用审计技能组（损益类 S-10，对应所内科目 6602 / 程序库 S6602）。执行实质性分析程序、管理费用明细表编制与核对、费用归集与明细项目设置检查、重点费用项目合规性检查等实质性程序，输出四段式制式工作底稿。当执行管理费用（6602科目）审计程序、编制管理费用底稿或复核管理费用工作时使用。",
+      "variant": "skill-group",
+      "path": "skills/s-10-admin-expenses",
+      "hasSkillMd": true,
+      "hasChangelog": true,
+      "counts": {
+        "procedures": 9,
+        "templates": 2,
+        "tests": 12,
+        "scripts": 0,
+        "rules": 0,
+        "references": 0,
+        "roles": 0
+      },
+      "tools": [
+        "balance_confirm",
+        "excel_read",
+        "recalc_check",
+        "rule_check",
+        "sampling_draw",
+        "threshold_flag"
+      ]
+    },
+    {
+      "id": "s-11-financial-expenses",
+      "name": "s-11-financial-expenses",
+      "version": "1.0.0",
+      "description": "财务费用审计技能组（损益类 S-11，对应所内科目 6603 / 程序库 S6603）。执行实质性分析程序、财务费用明细表编制与核对、利息支出检查、利息收入检查等实质性程序，输出四段式制式工作底稿。当执行财务费用（6603科目）审计程序、编制财务费用底稿或复核财务费用工作时使用。",
+      "variant": "skill-group",
+      "path": "skills/s-11-financial-expenses",
+      "hasSkillMd": true,
+      "hasChangelog": true,
+      "counts": {
+        "procedures": 6,
+        "templates": 2,
+        "tests": 8,
+        "scripts": 0,
+        "rules": 0,
+        "references": 0,
+        "roles": 0
+      },
+      "tools": [
+        "balance_confirm",
+        "interest_calc",
+        "recalc_check",
+        "rule_check",
+        "threshold_flag"
+      ]
+    },
+    {
+      "id": "s-12-payroll-expenses",
+      "name": "s-12-payroll-expenses",
+      "version": "1.0.0",
+      "description": "工资费用审计技能组（损益类 S-12，对应所内科目 6604 / 程序库 S6604）。执行实质性分析程序、工资费用明细表编制与核对、工资成本与分录抽样测试、授薪员工工资确认等实质性程序，输出四段式制式工作底稿。当执行工资费用（6604科目）审计程序、编制工资费用底稿或复核工资费用工作时使用。",
+      "variant": "skill-group",
+      "path": "skills/s-12-payroll-expenses",
+      "hasSkillMd": true,
+      "hasChangelog": true,
+      "counts": {
+        "procedures": 10,
+        "templates": 2,
+        "tests": 12,
+        "scripts": 0,
+        "rules": 0,
+        "references": 0,
+        "roles": 0
+      },
+      "tools": [
+        "balance_confirm",
+        "excel_read",
+        "provision_calc",
+        "recalc_check",
+        "rule_check",
+        "sampling_draw",
+        "threshold_flag"
+      ]
+    },
+    {
+      "id": "s-14-credit-impairment",
+      "name": "s-14-credit-impairment",
+      "version": "1.0.0",
+      "description": "信用减值损失审计技能组（损益类 S-14，对应所内科目 6702 / 程序库 S6702）。执行预期信用损失检查（强制）、信用减值损失披露检查等实质性程序，输出四段式制式工作底稿。当执行信用减值损失（6702科目）审计程序、编制信用减值损失底稿或复核信用减值损失工作时使用。",
+      "variant": "skill-group",
+      "path": "skills/s-14-credit-impairment",
+      "hasSkillMd": true,
+      "hasChangelog": true,
+      "counts": {
+        "procedures": 2,
+        "templates": 2,
+        "tests": 8,
+        "scripts": 0,
+        "rules": 0,
+        "references": 0,
+        "roles": 0
+      },
+      "tools": [
+        "ageing_bucket",
+        "provision_calc",
+        "rule_check",
+        "threshold_flag"
+      ]
+    },
+    {
+      "id": "s-8-taxes-and-surcharges",
+      "name": "s-8-taxes-and-surcharges",
+      "version": "1.0.0",
+      "description": "税金及附加审计技能组（损益类 S-8，对应所内科目 6403 / 程序库 S6403）。执行税金及附加明细表编制与核对、各税种计算与勾稽复核、税务合规、争议与特殊税收项目检查、税金及附加披露检查等实质性程序，输出四段式制式工作底稿。当执行税金及附加（6403科目）审计程序、编制税金及附加底稿或复核税金及附加工作时使用。",
+      "variant": "skill-group",
+      "path": "skills/s-8-taxes-and-surcharges",
+      "hasSkillMd": true,
+      "hasChangelog": true,
+      "counts": {
+        "procedures": 4,
+        "templates": 2,
+        "tests": 12,
+        "scripts": 0,
+        "rules": 0,
+        "references": 0,
+        "roles": 0
+      },
+      "tools": [
+        "balance_confirm",
+        "excel_read",
+        "recalc_check",
+        "rule_check"
+      ]
+    },
+    {
+      "id": "s-9-selling-expenses",
+      "name": "s-9-selling-expenses",
+      "version": "1.0.0",
+      "description": "销售费用审计技能组（损益类 S-9，对应所内科目 6601 / 程序库 S6601）。执行实质性分析程序、销售费用明细表编制与核对、费用归集与勾稽关系检查、应付未付销售费用截止检查等实质性程序，输出四段式制式工作底稿。当执行销售费用（6601科目）审计程序、编制销售费用底稿或复核销售费用工作时使用。",
+      "variant": "skill-group",
+      "path": "skills/s-9-selling-expenses",
+      "hasSkillMd": true,
+      "hasChangelog": true,
+      "counts": {
+        "procedures": 9,
+        "templates": 2,
+        "tests": 12,
+        "scripts": 0,
+        "rules": 0,
+        "references": 0,
+        "roles": 0
+      },
+      "tools": [
+        "balance_confirm",
+        "cutoff_test",
+        "excel_read",
+        "recalc_check",
+        "rule_check",
+        "sampling_draw",
+        "threshold_flag"
+      ]
+    },
+    {
+      "id": "z-1-1-cash-on-hand",
+      "name": "z-1-1-cash-on-hand",
+      "version": "1.0.0",
+      "description": "审小牛AuditOx库存现金审计技能组（资产类Z-1货币资金组）。执行库存现金余额核对、现金监盘、大额现金收支检查、余额合理性分析与披露检查等实质性程序，输出四段式制式工作底稿。当执行库存现金（1001科目）审计程序、编制库存现金底稿或复核库存现金工作时使用。",
+      "variant": "skill-group",
+      "path": "skills/z-1-1-cash-on-hand",
+      "hasSkillMd": true,
+      "hasChangelog": true,
+      "counts": {
+        "procedures": 5,
+        "templates": 1,
+        "tests": 4,
+        "scripts": 0,
+        "rules": 0,
+        "references": 0,
+        "roles": 0
+      },
+      "tools": [
+        "balance_confirm",
+        "recalc_check",
+        "rule_check",
+        "threshold_flag"
+      ]
+    },
+    {
+      "id": "z-1-2-bank-deposits",
+      "name": "z-1-2-bank-deposits",
+      "version": "1.0.0",
+      "description": "审小牛AuditOx银行存款审计技能组（资产类Z-1货币资金组）。执行银行存款余额明细表编制、账户完整性检查、余额调节表检查、双向核对、截止测试、实质性分析程序与披露检查等实质性程序，输出四段式制式工作底稿。当执行银行存款（1002科目）审计程序、编制银行存款底稿或复核银行存款工作时使用。",
+      "variant": "skill-group",
+      "path": "skills/z-1-2-bank-deposits",
+      "hasSkillMd": true,
+      "hasChangelog": true,
+      "counts": {
+        "procedures": 10,
+        "templates": 3,
+        "tests": 15,
+        "scripts": 0,
+        "rules": 0,
+        "references": 0,
+        "roles": 0
+      },
+      "tools": [
+        "balance_confirm",
+        "bank_reconcile_dual",
+        "recalc_check",
+        "recon_statement_recalc",
+        "rule_check",
+        "sampling_draw",
+        "threshold_flag"
+      ]
+    },
+    {
+      "id": "z-1-3-other-monetary-funds",
+      "name": "z-1-3-other-monetary-funds",
+      "version": "1.0.0",
+      "description": "审小牛AuditOx其他货币资金审计技能组（资产类Z-1货币资金组）。执行其他货币资金明细表编制、保证金存款检查、函证、第三方支付平台查验、存出投资款检查、大额支出抽查、截止测试与披露检查等实质性程序，输出四段式制式工作底稿。当执行其他货币资金（1012科目）审计程序、编制其他货币资金底稿或复核相关工作时使用。",
+      "variant": "skill-group",
+      "path": "skills/z-1-3-other-monetary-funds",
+      "hasSkillMd": true,
+      "hasChangelog": true,
+      "counts": {
+        "procedures": 6,
+        "templates": 1,
+        "tests": 4,
+        "scripts": 0,
+        "rules": 0,
+        "references": 0,
+        "roles": 0
+      },
+      "tools": [
+        "balance_confirm",
+        "bank_reconcile_dual",
+        "recalc_check",
+        "rule_check",
+        "threshold_flag"
+      ]
+    },
+    {
+      "id": "z-2-1-notes-receivable",
+      "name": "z-2-1-notes-receivable",
+      "version": "1.0.0",
+      "description": "审小牛AuditOx应收票据审计技能组（资产类Z组）。执行应收票据明细表编制与核对（含逾期转应收账款）、库存票据监盘（含质押与背书连带责任检查）、函证、大额票据追查、已兑现票据检查、带息票据利息复核、已贴现票据检查与坏账准备评价、披露检查，输出四段式制式工作底稿。当执行应收票据（1121科目）审计程序、编制应收票据底稿或复核相关工作时使用。",
+      "variant": "skill-group",
+      "path": "skills/z-2-1-notes-receivable",
+      "hasSkillMd": true,
+      "hasChangelog": true,
+      "counts": {
+        "procedures": 7,
+        "templates": 2,
+        "tests": 4,
+        "scripts": 0,
+        "rules": 0,
+        "references": 0,
+        "roles": 0
+      },
+      "tools": [
+        "recalc_check",
+        "rule_check",
+        "threshold_flag"
+      ]
+    },
+    {
+      "id": "z-2-accounts-receivable",
+      "name": "z-2-accounts-receivable",
+      "version": "1.0.0",
+      "description": "审小牛AuditOx应收账款审计技能组（资产类Z组）。执行应收账款明细表编制与核对、实质性分析（余额预期/借方发生额与收入关系/周转天数/账龄/坏账准备）、抽样检查、函证（强制）、账龄测试、坏账准备与核销检查、保理质押安排复核、回款截止测试、期后收款比较与披露检查，输出四段式制式工作底稿。当执行应收账款（1122科目）审计程序、编制应收账款底稿或复核相关工作时使用。",
+      "variant": "skill-group",
+      "path": "skills/z-2-accounts-receivable",
+      "hasSkillMd": true,
+      "hasChangelog": true,
+      "counts": {
+        "procedures": 10,
+        "templates": 2,
+        "tests": 4,
+        "scripts": 0,
+        "rules": 0,
+        "references": 0,
+        "roles": 0
+      },
+      "tools": [
+        "recalc_check",
+        "rule_check",
+        "sampling_draw",
+        "threshold_flag"
+      ]
+    },
+    {
+      "id": "z-3-prepayments",
+      "name": "z-3-prepayments",
+      "version": "1.0.0",
+      "description": "审小牛AuditOx预付账款审计技能组（资产类Z组）。执行预付账款明细表编制与核对（含应付账款重复挂账排查）、实质性分析（余额波动与预期比较）、账龄与余额构成分析（长期未核销检查）、函证、期后转销检查、抽样检查与披露检查，输出四段式制式工作底稿。当执行预付账款（1123科目）审计程序、编制预付账款底稿或复核相关工作时使用。",
+      "variant": "skill-group",
+      "path": "skills/z-3-prepayments",
+      "hasSkillMd": true,
+      "hasChangelog": true,
+      "counts": {
+        "procedures": 7,
+        "templates": 2,
+        "tests": 4,
+        "scripts": 0,
+        "rules": 0,
+        "references": 0,
+        "roles": 0
+      },
+      "tools": [
+        "recalc_check",
+        "rule_check",
+        "sampling_draw",
+        "threshold_flag"
+      ]
+    },
+    {
+      "id": "z-4-other-receivables",
+      "name": "z-4-other-receivables",
+      "version": "1.0.0",
+      "description": "审小牛AuditOx其他应收款审计技能组（资产类Z组）。执行其他应收款明细表编制与核对、特殊项目检查（关联方资金占用/变相拆借/双挂账排查）、实质性分析、函证、账龄测试、坏账准备复核（11项子程序含个别认定与核销检查）与披露检查，输出四段式制式工作底稿。当执行其他应收款（1221科目）审计程序、编制其他应收款底稿或复核相关工作时使用。",
+      "variant": "skill-group",
+      "path": "skills/z-4-other-receivables",
+      "hasSkillMd": true,
+      "hasChangelog": true,
+      "counts": {
+        "procedures": 7,
+        "templates": 2,
+        "tests": 4,
+        "scripts": 0,
+        "rules": 0,
+        "references": 0,
+        "roles": 0
+      },
+      "tools": [
+        "recalc_check",
+        "rule_check",
+        "threshold_flag"
+      ]
+    },
+    {
+      "id": "z-6-dividends-receivable",
+      "name": "z-6-dividends-receivable",
+      "version": "1.0.0",
+      "description": "应收股利审计技能组（资产类 Z-6，对应所内科目 1131 / 程序库 Z1131）。执行实质性分析程序、应收股利明细表编制、应收股利增减变动检查、股利收入计算确认等实质性程序，输出四段式制式工作底稿。当执行应收股利（1131科目）审计程序、编制应收股利底稿或复核应收股利工作时使用。",
+      "variant": "skill-group",
+      "path": "skills/z-6-dividends-receivable",
+      "hasSkillMd": true,
+      "hasChangelog": true,
+      "counts": {
+        "procedures": 7,
+        "templates": 2,
+        "tests": 12,
+        "scripts": 0,
+        "rules": 0,
+        "references": 0,
+        "roles": 0
+      },
+      "tools": [
+        "balance_confirm",
+        "recalc_check",
+        "rule_check",
+        "sampling_draw",
+        "threshold_flag"
+      ]
+    },
+    {
+      "id": "z-7-interest-receivable",
+      "name": "z-7-interest-receivable",
+      "version": "1.0.0",
+      "description": "应收利息审计技能组（资产类 Z-7，对应所内科目 1132 / 程序库 Z1132）。执行实质性分析程序、应收利息明细表编制、应收利息增减变动检查、期后收款情况检查等实质性程序，输出四段式制式工作底稿。当执行应收利息（1132科目）审计程序、编制应收利息底稿或复核应收利息工作时使用。",
+      "variant": "skill-group",
+      "path": "skills/z-7-interest-receivable",
+      "hasSkillMd": true,
+      "hasChangelog": true,
+      "counts": {
+        "procedures": 5,
+        "templates": 2,
+        "tests": 8,
+        "scripts": 0,
+        "rules": 0,
+        "references": 0,
+        "roles": 0
+      },
+      "tools": [
+        "balance_confirm",
+        "interest_calc",
+        "recalc_check",
+        "rule_check",
+        "sampling_draw",
+        "threshold_flag"
+      ]
+    }
+  ]
+}

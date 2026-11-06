@@ -1,0 +1,87 @@
+{
+  "skill_id": "s-10-admin-expenses",
+  "name": "管理费用",
+  "version": "1.0.0",
+  "owner_role": "审计助理",
+  "cycle": "S",
+  "group_code": "S",
+  "risk_level": "（待定）",
+  "description": "管理费用审计技能组（6602 科目，程序库 S6602）：9 张程序卡，产出四段式制式底稿。",
+  "procedures": [
+    {
+      "id": "P01",
+      "name": "实质性分析程序",
+      "tools": [
+        "threshold_flag",
+        "recalc_check"
+      ]
+    },
+    {
+      "id": "P02",
+      "name": "管理费用明细表编制与核对",
+      "tools": [
+        "recalc_check",
+        "balance_confirm"
+      ]
+    },
+    {
+      "id": "P03",
+      "name": "费用归集与明细项目设置检查",
+      "tools": [
+        "recalc_check",
+        "rule_check"
+      ]
+    },
+    {
+      "id": "P04",
+      "name": "重点费用项目合规性检查",
+      "tools": [
+        "threshold_flag",
+        "sampling_draw",
+        "rule_check"
+      ]
+    },
+    {
+      "id": "P05",
+      "name": "特殊与异常费用检查",
+      "tools": [
+        "threshold_flag",
+        "rule_check"
+      ]
+    },
+    {
+      "id": "P06",
+      "name": "费用凭证抽样追查",
+      "tools": [
+        "sampling_draw",
+        "rule_check"
+      ]
+    },
+    {
+      "id": "P07",
+      "name": "舞弊风险应对—供应商与发票重复性测试",
+      "tools": [
+        "rule_check",
+        "excel_read"
+      ],
+      "human": true
+    },
+    {
+      "id": "P08",
+      "name": "服务机构费用检查",
+      "tools": [
+        "rule_check"
+      ]
+    },
+    {
+      "id": "P09",
+      "name": "管理费用披露检查",
+      "tools": [
+        "rule_check"
+      ]
+    }
+  ],
+  "quality_gate": {
+    "required_coverage_pct": 100
+  }
+}

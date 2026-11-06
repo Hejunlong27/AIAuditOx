@@ -1,0 +1,9 @@
+{
+  "type": "abnormal",
+  "desc": "明细表合计与总账相差 60,000.00 元，须查明并联动 P02 逐税种复核",
+  "expect": {
+    "markers": [
+      "anomaly:confirm"
+    ]
+  }
+}

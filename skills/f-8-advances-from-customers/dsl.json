@@ -1,0 +1,44 @@
+{
+  "skill_id": "f-8-advances-from-customers",
+  "name": "预收账款",
+  "version": "1.0.0",
+  "owner_role": "审计助理",
+  "cycle": "F",
+  "group_code": "F",
+  "risk_level": "（待定）",
+  "description": "预收账款审计技能组（2203 科目，程序库 F2203）：4 张程序卡，产出四段式制式底稿。",
+  "procedures": [
+    {
+      "id": "P01",
+      "name": "预收账款明细表编制与核对",
+      "tools": [
+        "recalc_check",
+        "balance_confirm",
+        "rule_check"
+      ]
+    },
+    {
+      "id": "P02",
+      "name": "转销与期后检查",
+      "tools": [
+        "sampling_draw",
+        "cutoff_test"
+      ]
+    },
+    {
+      "id": "P03",
+      "name": "预收账款函证程序",
+      "human": true
+    },
+    {
+      "id": "P04",
+      "name": "预收账款披露检查",
+      "tools": [
+        "rule_check"
+      ]
+    }
+  ],
+  "quality_gate": {
+    "required_coverage_pct": 100
+  }
+}

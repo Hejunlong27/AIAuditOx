@@ -1,0 +1,9 @@
+{
+  "type": "abnormal",
+  "desc": "产业扶持资金 560,000 元超实际执行的重要性水平，须核对批准文件与摊销依据",
+  "expect": {
+    "markers": [
+      "anomaly:thresh"
+    ]
+  }
+}

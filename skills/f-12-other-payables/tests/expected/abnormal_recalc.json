@@ -1,0 +1,9 @@
+{
+  "type": "abnormal",
+  "desc": "明细表加计与账面差 8,000.00 元，须查明并说明",
+  "expect": {
+    "markers": [
+      "anomaly:recalc"
+    ]
+  }
+}

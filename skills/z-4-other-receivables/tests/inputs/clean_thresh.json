@@ -1,0 +1,26 @@
+{
+  "inputs": {
+    "rows": [
+      {
+        "id": "r1",
+        "amount": 20000
+      },
+      {
+        "id": "r2",
+        "amount": 60000
+      },
+      {
+        "id": "r3",
+        "amount": 90000
+      }
+    ],
+    "field": "amount",
+    "thresholds": [
+      {
+        "op": "gte",
+        "value": 100000,
+        "label": "大额其他应收"
+      }
+    ]
+  }
+}

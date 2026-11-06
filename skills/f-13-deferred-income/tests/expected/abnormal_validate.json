@@ -1,0 +1,9 @@
+{
+  "type": "abnormal",
+  "desc": "递延收益披露校验数据缺「计入损益金额」，披露完整性无法确认",
+  "expect": {
+    "markers": [
+      "anomaly:validate"
+    ]
+  }
+}

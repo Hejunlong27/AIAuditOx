@@ -1,0 +1,9 @@
+{
+  "type": "abnormal",
+  "desc": "土地使用税 128,000 元超实际执行的重要性水平，须取得计税依据与完税凭证",
+  "expect": {
+    "markers": [
+      "anomaly:thresh"
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "skill_id": "auditox-wp-standard",
+  "name": "审计工作底稿标准",
+  "version": "1.0.0",
+  "owner_role": "审计助理",
+  "cycle": "A",
+  "group_code": "A",
+  "risk_level": "全局",
+  "description": "全局底稿制式规范（全局强制）：四段式结构 + 表头七要素 + 索引号 + 修订记录；所有技能编制底稿前先加载并对底稿做确定性校验。",
+  "procedures": [
+    { "id": "G0", "name": "底稿制式校验（四段/三段 + 七要素 + 修订记录伴随）", "tools": ["rule_check", "revision_record"], "human": false },
+    { "id": "G1", "name": "四段式底稿填充", "tools": ["workpaper_fill"], "human": false }
+  ],
+  "quality_gate": {
+    "required_coverage_pct": 100
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "skill_id": "s-14-credit-impairment",
+  "name": "信用减值损失",
+  "version": "1.0.0",
+  "owner_role": "审计助理",
+  "cycle": "S",
+  "group_code": "S",
+  "risk_level": "（待定）",
+  "description": "信用减值损失审计技能组（6702 科目，程序库 S6702）：2 张程序卡，产出四段式制式底稿。",
+  "procedures": [
+    {
+      "id": "P01",
+      "name": "预期信用损失检查（强制）",
+      "tools": [
+        "ageing_bucket",
+        "provision_calc",
+        "threshold_flag"
+      ]
+    },
+    {
+      "id": "P02",
+      "name": "信用减值损失披露检查",
+      "tools": [
+        "rule_check"
+      ]
+    }
+  ],
+  "quality_gate": {
+    "required_coverage_pct": 100
+  }
+}

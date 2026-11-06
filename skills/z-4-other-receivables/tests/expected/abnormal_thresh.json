@@ -1,0 +1,9 @@
+{
+  "type": "abnormal",
+  "desc": "存在超过阈值 大额其他应收 的其他应收·其他应收款明细，须触发关注",
+  "expect": {
+    "markers": [
+      "anomaly:thresh"
+    ]
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "skill_id": "f-9-taxes-payable",
+  "name": "应交税费",
+  "version": "1.0.0",
+  "owner_role": "审计助理",
+  "cycle": "F",
+  "group_code": "F",
+  "risk_level": "（待定）",
+  "description": "应交税费审计技能组（2221 科目，程序库 F2221）：12 张程序卡，产出四段式制式底稿。",
+  "procedures": [
+    {
+      "id": "P01",
+      "name": "实质性分析程序",
+      "tools": [
+        "threshold_flag",
+        "recalc_check"
+      ]
+    },
+    {
+      "id": "P02",
+      "name": "应交税费明细表编制与核对",
+      "tools": [
+        "recalc_check",
+        "balance_confirm",
+        "rule_check"
+      ]
+    },
+    {
+      "id": "P03",
+      "name": "纳税申报表核对",
+      "tools": [
+        "recalc_check",
+        "excel_read",
+        "sheet_to_csv"
+      ]
+    },
+    {
+      "id": "P04",
+      "name": "应交增值税检查",
+      "tools": [
+        "recalc_check",
+        "threshold_flag",
+        "excel_read"
+      ]
+    },
+    {
+      "id": "P05",
+      "name": "各税种计算与凭证检查",
+      "tools": [
+        "recalc_check",
+        "sampling_draw",
+        "rule_check"
+      ]
+    },
+    {
+      "id": "P06",
+      "name": "企业所得税检查",
+      "tools": [
+        "recalc_check",
+        "excel_read",
+        "threshold_flag"
+      ]
+    },
+    {
+      "id": "P07",
+      "name": "税收减免与返还检查",
+      "tools": [
+        "rule_check",
+        "recalc_check"
+      ]
+    },
+    {
+      "id": "P08",
+      "name": "税务检查、争议与不确定性处理",
+      "tools": [
+        "rule_check"
+      ],
+      "human": true
+    },
+    {
+      "id": "P09",
+      "name": "集团税务处理复核",
+      "tools": [
+        "recalc_check",
+        "excel_read"
+      ]
+    },
+    {
+      "id": "P10",
+      "name": "税收会计政策复核",
+      "tools": [
+        "rule_check"
+      ]
+    },
+    {
+      "id": "P11",
+      "name": "境外公司税费检查",
+      "human": true
+    },
+    {
+      "id": "P12",
+      "name": "应交税费披露检查",
+      "tools": [
+        "rule_check"
+      ]
+    }
+  ],
+  "quality_gate": {
+    "required_coverage_pct": 100
+  }
+}

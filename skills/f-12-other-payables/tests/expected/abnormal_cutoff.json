@@ -1,0 +1,9 @@
+{
+  "type": "abnormal",
+  "desc": "P003 单据在期内、入账在期后，存在未入账负债 280,000.00 元，须提请调整",
+  "expect": {
+    "markers": [
+      "anomaly:cutoff"
+    ]
+  }
+}

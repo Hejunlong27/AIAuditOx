@@ -1,0 +1,42 @@
+{
+  "inputs": {
+    "data": {
+      "project": "案例-某制造企业",
+      "workpaper_version": "v1.0",
+      "accounts": [
+        {
+          "code": "1002",
+          "name": "银行存款",
+          "balance": 1000
+        }
+      ],
+      "signoff": {
+        "preparer": "审计助理",
+        "reviewer": "项目经理"
+      }
+    },
+    "schema": {
+      "type": "object",
+      "required": [
+        "project",
+        "workpaper_version",
+        "accounts",
+        "signoff"
+      ],
+      "properties": {
+        "project": {
+          "type": "string"
+        },
+        "workpaper_version": {
+          "type": "string"
+        },
+        "accounts": {
+          "type": "array"
+        },
+        "signoff": {
+          "type": "object"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "type": "abnormal",
+  "desc": "营业收入记录数与明细加总不一致，须触发勾稽关注",
+  "expect": {
+    "markers": [
+      "anomaly:recalc"
+    ]
+  }
+}

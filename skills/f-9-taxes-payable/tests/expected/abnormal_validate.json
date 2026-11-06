@@ -1,0 +1,9 @@
+{
+  "type": "abnormal",
+  "desc": "税收会计政策校验数据缺「与编制基础一致」，政策合规性无法确认",
+  "expect": {
+    "markers": [
+      "anomaly:validate"
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "inputs": {
+    "rows": [
+      {
+        "id": "r1",
+        "amount": 150000
+      },
+      {
+        "id": "r2",
+        "amount": 520000
+      },
+      {
+        "id": "r3",
+        "amount": 450000
+      }
+    ],
+    "field": "amount",
+    "thresholds": [
+      {
+        "op": "gte",
+        "value": 500000,
+        "label": "大额应付票据"
+      }
+    ]
+  }
+}

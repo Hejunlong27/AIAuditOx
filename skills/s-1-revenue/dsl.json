@@ -1,0 +1,27 @@
+{
+  "skill_id": "s-1-revenue",
+  "name": "营业收入",
+  "version": "1.0.0",
+  "owner_role": "审计助理",
+  "cycle": "S",
+  "group_code": "S",
+  "risk_level": "高",
+  "description": "复核营业收入记录数与明细加总的一致性，加总差异必须触发关注。",
+  "procedures": [
+    { "id": "P01", "name": "收入明细表编制与核对", "tools": ["recalc_check"], "human": false },
+    { "id": "P02", "name": "实质性分析程序", "tools": ["recalc_check", "threshold_flag"], "human": false },
+    { "id": "P03", "name": "主要客户背景与货款回收核查", "human": false },
+    { "id": "P04", "name": "特殊销售模式与出口销售评价", "human": false },
+    { "id": "P05", "name": "收入确认政策与 CAS14 合同专项", "human": false },
+    { "id": "P06", "name": "抽样检查与双向测试", "tools": ["sampling_draw"], "human": false },
+    { "id": "P07", "name": "截止测试", "human": false },
+    { "id": "P08", "name": "退货退款与可变对价检查", "human": false },
+    { "id": "P09", "name": "合同成本与质量保证检查", "human": false },
+    { "id": "P10", "name": "现金收入与舞弊专项（必经）", "tools": ["threshold_flag"], "human": false },
+    { "id": "P11", "name": "其他业务收入专项", "human": false },
+    { "id": "P12", "name": "收入函证与披露检查", "human": true }
+  ],
+  "quality_gate": {
+    "required_coverage_pct": 100
+  }
+}

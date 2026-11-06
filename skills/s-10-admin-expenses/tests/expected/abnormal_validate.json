@@ -1,0 +1,9 @@
+{
+  "type": "abnormal",
+  "desc": "披露校验数据缺「附注金额」，披露完整性无法确认",
+  "expect": {
+    "markers": [
+      "anomaly:validate"
+    ]
+  }
+}

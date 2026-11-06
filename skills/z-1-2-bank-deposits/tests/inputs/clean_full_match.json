@@ -1,0 +1,14 @@
+{
+  "inputs": {
+    "statement": [
+      {"id": "S1", "amount": 1000.00},
+      {"id": "S2", "amount": 2000.00},
+      {"id": "S3", "amount": 3500.00}
+    ],
+    "journal": [
+      {"id": "S1", "amount": 1000.00},
+      {"id": "S2", "amount": 2000.00},
+      {"id": "S3", "amount": 3500.00}
+    ]
+  }
+}

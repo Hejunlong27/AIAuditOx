@@ -1,0 +1,22 @@
+{
+  "inputs": {
+    "rows": [
+      {
+        "id": "股东A",
+        "amount": 1200000.0
+      },
+      {
+        "id": "股东B",
+        "amount": 800000.0
+      }
+    ],
+    "field": "amount",
+    "thresholds": [
+      {
+        "op": "gte",
+        "value": 1500000,
+        "label": "单股东应付股利超整体重要性水平"
+      }
+    ]
+  }
+}

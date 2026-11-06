@@ -1,0 +1,25 @@
+{
+  "skill_id": "z-1-2-bank-deposits",
+  "name": "货币资金·银行存款",
+  "version": "1.0.0",
+  "owner_role": "审计助理",
+  "cycle": "Z",
+  "group_code": "Z",
+  "risk_level": "中",
+  "description": "银行存款审计技能组（1002 科目，程序库 Z1002）：余额明细表/账户完整性/定期存款/调节表/函证/双向核对/截止/分析/披露，产出四段式制式底稿。",
+  "procedures": [
+    { "id": "P01", "name": "银行存款余额明细表编制", "tools": ["recalc_check", "balance_confirm"], "human": false },
+    { "id": "P02", "name": "银行账户完整性检查", "human": false },
+    { "id": "P03", "name": "定期存款检查", "human": true },
+    { "id": "P04", "name": "银行存款余额调节表检查", "tools": ["recon_statement_recalc", "threshold_flag"], "human": false },
+    { "id": "P05", "name": "银行函证程序（强制）", "human": true },
+    { "id": "P06", "name": "发生额双向核对", "tools": ["bank_reconcile_dual", "sampling_draw"], "human": false },
+    { "id": "P07", "name": "银行存款截止测试", "human": false },
+    { "id": "P08", "name": "实质性分析程序", "tools": ["recalc_check", "threshold_flag"], "human": false },
+    { "id": "P09", "name": "资金划转与关联方资金往来检查", "human": false },
+    { "id": "P10", "name": "银行存款披露检查", "tools": ["rule_check"], "human": false }
+  ],
+  "quality_gate": {
+    "required_coverage_pct": 100
+  }
+}

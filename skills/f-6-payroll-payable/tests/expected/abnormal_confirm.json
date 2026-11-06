@@ -1,0 +1,9 @@
+{
+  "type": "abnormal",
+  "desc": "应付职工薪酬账面与实发不一致，须触发差异调查",
+  "expect": {
+    "markers": [
+      "anomaly:confirm"
+    ]
+  }
+}

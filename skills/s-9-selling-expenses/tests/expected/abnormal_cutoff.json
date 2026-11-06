@@ -1,0 +1,9 @@
+{
+  "type": "abnormal",
+  "desc": "V003（期内单据期后入账）、V004（期后单据期内入账）两笔跨期，须提请调整",
+  "expect": {
+    "markers": [
+      "anomaly:cutoff"
+    ]
+  }
+}

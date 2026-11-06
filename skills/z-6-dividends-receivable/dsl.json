@@ -1,0 +1,67 @@
+{
+  "skill_id": "z-6-dividends-receivable",
+  "name": "应收股利",
+  "version": "1.0.0",
+  "owner_role": "审计助理",
+  "cycle": "Z",
+  "group_code": "Z",
+  "risk_level": "（待定）",
+  "description": "应收股利审计技能组（1131 科目，程序库 Z1131）：7 张程序卡，产出四段式制式底稿。",
+  "procedures": [
+    {
+      "id": "P01",
+      "name": "实质性分析程序",
+      "tools": [
+        "threshold_flag",
+        "recalc_check"
+      ]
+    },
+    {
+      "id": "P02",
+      "name": "应收股利明细表编制",
+      "tools": [
+        "recalc_check",
+        "balance_confirm"
+      ]
+    },
+    {
+      "id": "P03",
+      "name": "应收股利增减变动检查",
+      "tools": [
+        "sampling_draw",
+        "threshold_flag"
+      ]
+    },
+    {
+      "id": "P04",
+      "name": "股利收入计算确认",
+      "tools": [
+        "recalc_check",
+        "threshold_flag"
+      ]
+    },
+    {
+      "id": "P05",
+      "name": "期后回款情况检查",
+      "tools": [
+        "sampling_draw",
+        "threshold_flag"
+      ]
+    },
+    {
+      "id": "P06",
+      "name": "境外投资股利汇回限制检查",
+      "human": true
+    },
+    {
+      "id": "P07",
+      "name": "应收股利披露检查",
+      "tools": [
+        "rule_check"
+      ]
+    }
+  ],
+  "quality_gate": {
+    "required_coverage_pct": 100
+  }
+}

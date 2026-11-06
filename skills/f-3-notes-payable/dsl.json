@@ -1,0 +1,21 @@
+{
+  "skill_id": "f-3-notes-payable",
+  "name": "采购类·应付票据",
+  "version": "1.0.0",
+  "owner_role": "审计助理",
+  "cycle": "F",
+  "group_code": "F",
+  "risk_level": "中",
+  "description": "按重要性阈值对采购类·应付票据明细做异常打标；命中阈值 大额应付票据 的记录必须触发关注程序。",
+  "procedures": [
+    { "id": "P01", "name": "明细表编制与核对", "tools": ["recalc_check"], "human": false },
+    { "id": "P02", "name": "备查簿检查（保证金勾稽与完整性）", "tools": ["recalc_check", "balance_confirm"], "human": false },
+    { "id": "P03", "name": "函证", "human": true },
+    { "id": "P04", "name": "逾期未兑付票据检查", "tools": ["threshold_flag"], "human": false },
+    { "id": "P05", "name": "带息票据利息复核", "tools": ["recalc_check"], "human": false },
+    { "id": "P06", "name": "披露检查", "tools": ["rule_check"], "human": false }
+  ],
+  "quality_gate": {
+    "required_coverage_pct": 100
+  }
+}

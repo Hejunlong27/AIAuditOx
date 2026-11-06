@@ -1,0 +1,9 @@
+{
+  "type": "abnormal",
+  "desc": "明细表合计与总账相差 20,000 元，须查明并联动 P03 检查增减变动",
+  "expect": {
+    "markers": [
+      "anomaly:confirm"
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "skill_id": "z-3-prepayments",
+  "name": "预付类·预付账款",
+  "version": "1.0.0",
+  "owner_role": "审计助理",
+  "cycle": "Z",
+  "group_code": "Z",
+  "risk_level": "中",
+  "description": "按重要性阈值对预付类·预付账款明细做异常打标；命中阈值 大额预付 的记录必须触发关注程序。",
+  "procedures": [
+    { "id": "P01", "name": "预付账款明细表编制与核对", "tools": ["recalc_check"], "human": false },
+    { "id": "P02", "name": "实质性分析程序", "tools": ["recalc_check", "threshold_flag"], "human": false },
+    { "id": "P03", "name": "账龄与余额构成分析", "tools": ["threshold_flag"], "human": false },
+    { "id": "P04", "name": "预付账款函证", "human": true },
+    { "id": "P05", "name": "期后转销与红字冲销检查", "tools": ["sampling_draw"], "human": false },
+    { "id": "P06", "name": "抽样检查", "tools": ["sampling_draw"], "human": false },
+    { "id": "P07", "name": "披露检查", "tools": ["rule_check"], "human": false }
+  ],
+  "quality_gate": {
+    "required_coverage_pct": 100
+  }
+}

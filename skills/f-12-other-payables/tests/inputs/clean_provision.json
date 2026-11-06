@@ -1,0 +1,12 @@
+{
+  "inputs": {
+    "booked_provision": 312000.0,
+    "ageing": [
+      {
+        "label": "年终奖预提",
+        "amount": 2600000.0,
+        "rate": 12
+      }
+    ]
+  }
+}

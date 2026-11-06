@@ -1,0 +1,9 @@
+{
+  "type": "abnormal",
+  "desc": "存在超过阈值 大额应收/长账龄 的销售类·应收账款明细，须触发关注",
+  "expect": {
+    "markers": [
+      "anomaly:thresh"
+    ]
+  }
+}

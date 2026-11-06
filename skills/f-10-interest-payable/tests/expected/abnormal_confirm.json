@@ -1,0 +1,9 @@
+{
+  "type": "abnormal",
+  "desc": "明细表合计与总账相差 51,424.66 元，须与借款、债券科目交叉核对是否漏记",
+  "expect": {
+    "markers": [
+      "anomaly:confirm"
+    ]
+  }
+}

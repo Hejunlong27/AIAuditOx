@@ -1,0 +1,54 @@
+{
+  "skill_id": "f-13-deferred-income",
+  "name": "递延收益",
+  "version": "1.0.0",
+  "owner_role": "审计助理",
+  "cycle": "F",
+  "group_code": "F",
+  "risk_level": "（待定）",
+  "description": "递延收益审计技能组（2401 科目，程序库 F2401）：5 张程序卡，产出四段式制式底稿。",
+  "procedures": [
+    {
+      "id": "P01",
+      "name": "实质性分析程序",
+      "tools": [
+        "threshold_flag",
+        "recalc_check"
+      ]
+    },
+    {
+      "id": "P02",
+      "name": "递延收益明细表编制与核对",
+      "tools": [
+        "recalc_check",
+        "balance_confirm"
+      ]
+    },
+    {
+      "id": "P03",
+      "name": "递延收益余额抽样与追溯检查",
+      "tools": [
+        "sampling_draw",
+        "rule_check"
+      ]
+    },
+    {
+      "id": "P04",
+      "name": "合同负债完整性检查",
+      "tools": [
+        "cutoff_test",
+        "rule_check"
+      ]
+    },
+    {
+      "id": "P05",
+      "name": "递延收益披露检查",
+      "tools": [
+        "rule_check"
+      ]
+    }
+  ],
+  "quality_gate": {
+    "required_coverage_pct": 100
+  }
+}

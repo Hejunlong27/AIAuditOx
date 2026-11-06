@@ -1,0 +1,9 @@
+{
+  "type": "abnormal",
+  "desc": "销售佣金 1,200,000 元超整体重要性水平，须检查合同与结算依据",
+  "expect": {
+    "markers": [
+      "anomaly:thresh"
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "type": "abnormal",
+  "desc": "测算应预提 312,000.00 元而账面仅 280,000.00 元，预提不足 32,000.00 元",
+  "expect": {
+    "markers": [
+      "anomaly:provision"
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "type": "abnormal",
+  "desc": "账面利息 200,000 元高于测算 191,972.60 元，差 8,027.40 元，须查明",
+  "expect": {
+    "markers": [
+      "anomaly:interest"
+    ]
+  }
+}

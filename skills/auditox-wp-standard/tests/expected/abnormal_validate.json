@@ -1,0 +1,9 @@
+{
+  "type": "abnormal",
+  "desc": "审计工作底稿标准缺失必需字段、不合法，须触发补全程序",
+  "expect": {
+    "markers": [
+      "anomaly:validate"
+    ]
+  }
+}

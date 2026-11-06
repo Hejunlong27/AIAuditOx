@@ -1,0 +1,22 @@
+{
+  "inputs": {
+    "rows": [
+      {
+        "id": "董事A",
+        "amount": 860000.0
+      },
+      {
+        "id": "关键管理人员C",
+        "amount": 2400000.0
+      }
+    ],
+    "field": "amount",
+    "thresholds": [
+      {
+        "op": "gte",
+        "value": 2000000,
+        "label": "关键管理人员薪酬超整体重要性水平"
+      }
+    ]
+  }
+}

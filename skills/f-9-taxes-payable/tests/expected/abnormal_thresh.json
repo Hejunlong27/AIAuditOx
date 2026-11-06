@@ -1,0 +1,9 @@
+{
+  "type": "abnormal",
+  "desc": "应交企业所得税 1,250,000 元超整体重要性水平，须核对纳税申报表与汇算清缴资料",
+  "expect": {
+    "markers": [
+      "anomaly:thresh"
+    ]
+  }
+}

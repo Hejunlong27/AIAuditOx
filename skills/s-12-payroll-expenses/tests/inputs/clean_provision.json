@@ -1,0 +1,12 @@
+{
+  "inputs": {
+    "booked_provision": 436800.0,
+    "ageing": [
+      {
+        "label": "福利费计提",
+        "amount": 3120000.0,
+        "rate": 14
+      }
+    ]
+  }
+}

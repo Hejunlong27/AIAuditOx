@@ -1,0 +1,23 @@
+{
+  "skill_id": "f-4-accounts-payable",
+  "name": "采购类·应付账款",
+  "version": "1.0.0",
+  "owner_role": "审计助理",
+  "cycle": "F",
+  "group_code": "F",
+  "risk_level": "中",
+  "description": "按重要性阈值对采购类·应付账款明细做异常打标；命中阈值 大额应付 的记录必须触发关注程序。",
+  "procedures": [
+    { "id": "P01", "name": "明细表编制与核对", "tools": ["recalc_check"], "human": false },
+    { "id": "P02", "name": "实质性分析程序", "tools": ["recalc_check", "threshold_flag"], "human": false },
+    { "id": "P03", "name": "供应商对账单调节复核", "tools": ["balance_confirm"], "human": false },
+    { "id": "P04", "name": "函证（含中期前推）", "human": true },
+    { "id": "P05", "name": "暂挂账户分析与未入账负债查找", "tools": ["sampling_draw"], "human": false },
+    { "id": "P06", "name": "采购截止测试", "human": false },
+    { "id": "P07", "name": "现金折扣与债务重组检查", "human": false },
+    { "id": "P08", "name": "主要供应商核查与披露检查", "tools": ["rule_check"], "human": false }
+  ],
+  "quality_gate": {
+    "required_coverage_pct": 100
+  }
+}

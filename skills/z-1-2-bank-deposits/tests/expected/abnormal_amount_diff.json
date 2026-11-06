@@ -1,0 +1,7 @@
+{
+  "type": "abnormal",
+  "desc": "第二笔日记账金额 1480 与对账单 2000 不一致，存在金额差异，须触发差异核对程序",
+  "expect": {
+    "markers": ["anomaly:reconcile"]
+  }
+}

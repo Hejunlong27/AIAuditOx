@@ -1,0 +1,39 @@
+{
+  "skill_id": "f-10-interest-payable",
+  "name": "应付利息",
+  "version": "1.0.0",
+  "owner_role": "审计助理",
+  "cycle": "F",
+  "group_code": "F",
+  "risk_level": "（待定）",
+  "description": "应付利息审计技能组（2231 科目，程序库 F2231）：3 张程序卡，产出四段式制式底稿。",
+  "procedures": [
+    {
+      "id": "P01",
+      "name": "实质性分析程序",
+      "tools": [
+        "interest_calc",
+        "threshold_flag"
+      ]
+    },
+    {
+      "id": "P02",
+      "name": "应付利息明细表编制与完整性检查",
+      "tools": [
+        "recalc_check",
+        "balance_confirm",
+        "interest_calc"
+      ]
+    },
+    {
+      "id": "P03",
+      "name": "应付利息披露检查",
+      "tools": [
+        "rule_check"
+      ]
+    }
+  ],
+  "quality_gate": {
+    "required_coverage_pct": 100
+  }
+}

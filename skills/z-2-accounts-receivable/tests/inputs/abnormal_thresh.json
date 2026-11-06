@@ -1,0 +1,30 @@
+{
+  "inputs": {
+    "rows": [
+      {
+        "id": "r1",
+        "balance": 120000
+      },
+      {
+        "id": "r2",
+        "balance": 520000
+      },
+      {
+        "id": "r3",
+        "balance": 300000
+      },
+      {
+        "id": "r4",
+        "balance": 450000
+      }
+    ],
+    "field": "balance",
+    "thresholds": [
+      {
+        "op": "gte",
+        "value": 500000,
+        "label": "大额应收/长账龄"
+      }
+    ]
+  }
+}

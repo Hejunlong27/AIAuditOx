@@ -1,0 +1,9 @@
+{
+  "type": "abnormal",
+  "desc": "测算应付股利与账面相差 120,000.00 元，须核对利润分配方案与计提依据",
+  "expect": {
+    "markers": [
+      "anomaly:confirm"
+    ]
+  }
+}
