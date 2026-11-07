@@ -155,7 +155,7 @@ python tools/validate_skills.py  # 校验结构（CI 同款）
 
 ## 交流与共建
 
-这个项目是开放的，欢迎一起把它做厚。
+欢迎一起研究讨论AI时代，在财务报表审计领域的实操和应用。
 
 <img src="assets/images/wechat-group-qr.png" width="230" alt="审小牛开源交流群二维码">
 
