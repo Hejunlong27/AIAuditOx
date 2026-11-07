@@ -36,30 +36,69 @@ version: 1.0.0
 
 **程序分派表必须是标准 Markdown 表格**。解析器靠它确定程序卡清单，表格格式错会导致程序卡识别为 0。
 
+表头必须使用上表列出的名称（解析器**按表头名取列，不按列的位置**）。其中「执行方式」列可以省略（`s-1-revenue` 就没有），省略时该程序按"未声明"处理，运行时从程序卡 Steps 的 `【人工】` 标签补判；其余五列建议齐全。
+
 ## 3. dsl.json
+
+以下是**实物格式**，与 `skills/*/dsl.json` 完全一致（以实际文件为准）：
 
 ```json
 {
-  "skill": "z-1-2-bank-deposits",
+  "skill_id": "z-1-2-bank-deposits",
+  "name": "货币资金·银行存款",
+  "version": "1.0.0",
+  "owner_role": "审计助理",
+  "cycle": "Z",
+  "group_code": "Z",
+  "risk_level": "中",
+  "description": "银行存款审计技能组（1002 科目，程序库 Z1002）……",
   "procedures": [
     {
       "id": "P01",
       "name": "银行存款余额明细表编制",
-      "source": "Z1002 程序1",
-      "assertions": ["C", "E", "A"],
-      "mode": "hybrid",
-      "human": false,
-      "tools": ["excel_read", "recalc_check"],
-      "output": "Z-1-2-01"
+      "tools": ["recalc_check", "balance_confirm"],
+      "human": false
     }
-  ]
+  ],
+  "quality_gate": { "required_coverage_pct": 100 }
 }
 ```
 
-- `assertions`：认定编码 `E` 存在性 / `C` 完整性 / `A` 准确性 / `V` 计价 / `P` 列报
-- `mode`：`auto` 全自动 / `hybrid` 自动+人工 / `manual` 人工主导
-- `human: true` 时 agent 只准备资料，不代替判断
-- `tools` 为确定性工具标识，须与运行时注册的工具一致
+**字段说明**
+
+| 字段 | 必填 | 说明 |
+| --- | --- | --- |
+| `skill_id` | 是 | 必须与目录名一致 |
+| `name` / `description` / `version` | 是 | 与 SKILL.md frontmatter 保持同步 |
+| `owner_role` / `cycle` / `group_code` / `risk_level` | 是 | 技能分类元信息 |
+| `procedures[].id` | 是 | `P01`…`Pn`；规范型包用 `G0`/`G1`。正则 `^[A-Z]\d{1,3}$` |
+| `procedures[].name` | 是 | 程序名，含「（强制）」标记的会被识别为强制程序 |
+| `procedures[].tools` | 否 | 确定性工具标识数组。**可缺省**，缺省表示该程序无工具依赖（纯判断类） |
+| `procedures[].human` | 否 | 布尔。**可缺省；缺省 ≠ `false`**，表示"未声明"，运行时按保守策略处理 |
+| `quality_gate.required_coverage_pct` | 是 | 程序覆盖率要求，银行存款为 100 |
+
+**dsl.json 不承载的字段**（不要往这里写，写了也会被忽略）：
+
+| 想表达的内容 | 正确位置 |
+| --- | --- |
+| 对应认定（E/C/A/V/P） | `SKILL.md` 程序分派表「对应认定」列 |
+| 产出底稿索引号（如 `Z-1-2-04`） | `SKILL.md` 程序分派表「产出底稿」列 |
+| 程序库来源（如 `Z1002 程序2`） | `SKILL.md` 程序分派表「程序库来源」列 |
+| 执行方式（自动 / 人工为主） | `SKILL.md` 程序分派表「执行方式」列 + 程序卡 Steps 的 `【人工】` 标签 |
+| 程序间依赖顺序 | 技能包的 `SKILL.md` Steps 第 3 条（文字描述），由运行时配置落成 DAG |
+| 程序详情（输入 / 步骤 / 质量门 / 升级路径） | `procedures/Pxx-*.md` 程序卡 |
+
+**为什么要这样切分**：程序分派表是给人读的完整台账，dsl.json 只放机器必须精确匹配的那几项（id / 名称 / 工具 / 是否人工）。重复存放必然漂移——银行存款包就出现过 `dsl.json` 写 `human: false`、而分派表写「自动+人工判断」的情况。
+
+**`human` 缺省时的判定规则**（运行时实现，写在这里供技能作者遵守）：
+
+```
+需要人工 = dsl.human 为 true
+        或 分派表「执行方式」含"人工"
+        或 程序卡 Steps 含【人工】
+```
+
+任一命中即需人工。**不允许**用 `human: false` 把分派表里的人工要求降下来。
 
 ## 4. 程序卡文档
 
