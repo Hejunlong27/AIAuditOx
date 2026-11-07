@@ -181,6 +181,40 @@ python tools/validate_skills.py  # 校验结构（CI 同款）
 
 ---
 
+## Agent Runtime（开发中）
+
+把技能库从「可读的方法论」变成「能跑的执行体」：运行时负责识别科目、生成计划、
+调用确定性工具、管理人工参与、产出底稿并做质量检查。
+
+**当前进度**（截至 2026-11-07）
+
+| 阶段 | 内容 | 状态 |
+| --- | --- | --- |
+| Phase 0 | 工程配置、Pydantic 数据模型、SQLite 9 张表、工作区隔离与脱敏审计日志 | ✅ |
+| Phase 1 | Skill Registry / Loader / DSL Parser / Router（只读消费 `skills/`） | ✅ |
+| Phase 2 | Planner（DAG、依赖、人工/条件程序识别） | 待做 |
+| Phase 3 | Tool Engine（11 个确定性审计工具） | 待做 |
+| Phase 4 | Executor / Orchestrator / 人工审批与断点恢复 | 待做 |
+| Phase 5 | Quality Gate / Workpaper Writer | 待做 |
+| Phase 6 | CLI + REST API | 待做 |
+| Phase 7 | MCP Adapter | 待做 |
+
+**已经可以跑的部分**：把银行存款技能包读成 10 条结构化程序定义，自动识别
+强制程序（P05 函证）、人工程序（P03/P05）、条件程序（P09），并把
+`dsl.json` 与 `SKILL.md` 的人工要求冲突按保守策略解决。
+
+```bash
+python -m venv .venv && ./.venv/Scripts/python.exe -m pip install -e ".[dev]"
+./.venv/Scripts/python.exe -m pytest tests -q       # 127 项测试
+```
+
+架构与边界见 [`docs/development/architecture.md`](docs/development/architecture.md)，
+仓库现状分析见 [`docs/development/repository-analysis.md`](docs/development/repository-analysis.md)。
+
+**边界**：运行时只读 `skills/`，不改写任何技能内容；技能库脱离运行时仍可被任意 agent 使用。
+
+---
+
 ## 声明
 
 - 本仓库输出内容仅供学习与工作参考，**不构成任何审计意见或专业建议**。

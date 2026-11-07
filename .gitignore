@@ -12,6 +12,16 @@ output/
 .tmp/
 publish-log.jsonl
 
+# Agent 运行时产物（数据与客户资料，绝不入库）
+storage/
+workspaces/
+artifacts/
+*.db
+*.db-wal
+*.db-shm
+.coverage
+htmlcov/
+
 # 系统
 .DS_Store
 Thumbs.db
