@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "skills": {
+    "confirmation-address-auditor": [
+      {"name": "excel_read", "level": "preferred", "fallback": "skill_local"},
+      {"name": "pdf_to_word", "level": "optional", "fallback": "skill_local"},
+      {"name": "wp_to_docx", "level": "preferred", "fallback": "skill_local"},
+      {"name": "manifest_json", "level": "optional", "fallback": "skill_local"}
+    ],
+    "doc-ocr-extract": [
+      {"name": "manifest_json", "level": "optional", "fallback": "skill_local"}
+    ],
+    "financial-statement-analysis": [
+      {"name": "excel_read", "level": "preferred", "fallback": "skill_local"},
+      {"name": "xlsx_export", "level": "preferred", "fallback": "skill_local"},
+      {"name": "wp_to_docx", "level": "preferred", "fallback": "skill_local"}
+    ],
+    "heavy-asset-financial-analysis": [
+      {"name": "excel_read", "level": "preferred", "fallback": "skill_local"},
+      {"name": "xlsx_export", "level": "preferred", "fallback": "skill_local"}
+    ],
+    "universal-annual-audit": [
+      {"name": "excel_read", "level": "preferred", "fallback": "skill_local"},
+      {"name": "xlsx_export", "level": "preferred", "fallback": "skill_local"},
+      {"name": "wp_to_docx", "level": "preferred", "fallback": "skill_local"}
+    ]
+  }
+}

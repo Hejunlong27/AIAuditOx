@@ -17,10 +17,11 @@ import sys
 import time
 from pathlib import Path
 
-SKILLS = Path("D:/deepseek/AI AduitOx/skills") if Path("D:/deepseek/AI AduitOx/skills").exists() else Path("D:/deepseek/AIAuditOx/skills")
+ROOT = Path(__file__).resolve().parent.parent
+SKILLS = ROOT / "skill-library"
 CLI_PY = Path.home() / ".skillhub" / "skills_store_cli.py"
 PYEXE = sys.executable
-LOG = Path("D:/deepseek/AIAuditOx/publish-log.jsonl")
+LOG = Path(__file__).resolve().parent / "publish-log.jsonl"
 CHANGELOG = "迁移至个人账户 @indiv-27，slug 前缀 aiauditox-"
 
 # 已确认发布成功的（避免重复发）

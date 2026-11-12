@@ -19,6 +19,15 @@ AIAuditOx 把审计程序库逐条拆解成**可复用、可组合、可扩展�
 
 **确定性优先**：凡是能本地算的（金额勾稽、比例重算、抽样、索引号、文件哈希）一律调确定性工具；LLM 只做分析、解释、判断。差异类结论必须标注「待人工确认」。
 
+### Agent 工具层
+
+- 契约、Registry、Executor 与能力三态位于 `agent/tools/`。
+- 中心 Node 工具在统一工作区的 `../skill-tools/auditox-tools`，经固定白名单 JSON Lines 桥调用。
+- Python 公共能力在统一工作区的 `../skill-tools/auditox-python-core`。
+- 生产技能事实源在统一工作区的 `../skill-library`；仓库内 `skills/` 是 31 包测试 fixture。
+- 单独 clone 本仓库时，依赖统一工作区兄弟目录的集成测试会自动跳过；本地统一工作区中必须实际执行。
+- 文件工具必须提供 `workspace_root`，路径越界或工具返回 `ok:false` 时转 `NEED_HUMAN`。
+
 ---
 
 ## 2. 目录结构

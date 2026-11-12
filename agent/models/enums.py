@@ -102,3 +102,10 @@ class ConflictSeverity(str, Enum):
     INFO = "INFO"
     WARNING = "WARNING"
     BLOCKING = "BLOCKING"
+
+class ToolRequirementLevel(str, Enum):
+    """技能对工具能力的依赖强度，用于双模式降级。"""
+
+    REQUIRED = "required"
+    PREFERRED = "preferred"
+    OPTIONAL = "optional"

@@ -16,6 +16,7 @@ from agent.models.enums import (
     FailureClass,
     StepStatus,
     TaskStatus,
+    ToolRequirementLevel,
     ToolRiskLevel,
 )
 from agent.models.evidence import Evidence, ResultRef, SourceRef
@@ -23,7 +24,7 @@ from agent.models.plan import AuditPlan, PlanStep
 from agent.models.procedure import ConflictRecord, ExecutionPolicy, ProcedureDefinition
 from agent.models.result import ToolResult
 from agent.models.task import AuditTask
-from agent.models.tool import ToolInvocation, ToolSpec
+from agent.models.tool import ToolInvocation, ToolRequirement, ToolSpec
 
 __all__ = [
     "ApprovalRequest",
@@ -49,6 +50,8 @@ __all__ = [
     "TaskStatus",
     "ToolInvocation",
     "ToolResult",
+    "ToolRequirement",
+    "ToolRequirementLevel",
     "ToolRiskLevel",
     "ToolSpec",
     "to_money",
