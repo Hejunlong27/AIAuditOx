@@ -20,6 +20,13 @@ from agent.models.enums import (
     ToolRiskLevel,
 )
 from agent.models.evidence import Evidence, ResultRef, SourceRef
+from agent.models.execution import (
+    HumanSubmission,
+    OrchestrationResult,
+    QualityDecision,
+    StateChange,
+    ToolCall,
+)
 from agent.models.plan import AuditPlan, PlanStep
 from agent.models.procedure import ConflictRecord, ExecutionPolicy, ProcedureDefinition
 from agent.models.result import ToolResult
@@ -39,15 +46,20 @@ __all__ = [
     "EvidenceStatus",
     "ExecutionMode",
     "ExecutionPolicy",
+    "HumanSubmission",
     "FailureClass",
     "Money",
+    "OrchestrationResult",
     "Percent",
     "PlanStep",
     "ProcedureDefinition",
+    "QualityDecision",
     "ResultRef",
     "SourceRef",
+    "StateChange",
     "StepStatus",
     "TaskStatus",
+    "ToolCall",
     "ToolInvocation",
     "ToolResult",
     "ToolRequirement",

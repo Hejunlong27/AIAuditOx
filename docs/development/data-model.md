@@ -63,3 +63,23 @@ P01
 - `P03`、`P05` 为人工主导任务。
 - `P09` 默认跳过；激活“资金池/集团资金往来”条件后加入 DAG。
 - `P05` 是强制程序，缺失配置会阻断校验。
+## 6. 执行记录模型
+
+| 模型 | 用途 |
+| --- | --- |
+| `ToolCall` | 一个程序内待执行的确定性工具、参数与审批状态 |
+| `HumanSubmission` | 人工提交的说明与证据文件，必须至少有其中一项 |
+| `QualityDecision` | 程序级质量门结论：通过 / 人工 / 重试 / 终止，四选一 |
+| `StateChange` | 一次任务或步骤状态迁移，可供审计事件落库 |
+| `OrchestrationResult` | 一次执行或恢复后的任务快照与等待项 |
+
+`PlanStep.execution_mode` 保留 `AUTO / AUTO_WITH_CONFIRM / AUTO_WITH_JUDGMENT / HUMAN_LED / HUMAN_ONLY`，
+执行器不能只凭工具数量猜测人工程序。
+
+## 7. 编排状态约束
+
+- 自动步骤的工具集合必须与 `required_tools` 完全覆盖，不接受漏调或越权增调。
+- `RETRYABLE` 失败先重试；耗尽后步骤进入 `WAITING_HUMAN`，允许人工接管。
+- `NEED_HUMAN` 直接进入 `WAITING_HUMAN`。
+- `TERMINAL` 失败可触发一次或多次受上限约束的重规划；没有有效新计划时任务进入 `FAILED`。
+- 人工材料提交后必须经过质量门，`HUMAN_COMPLETED` 不等于 `VERIFIED`。

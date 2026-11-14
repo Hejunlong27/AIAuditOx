@@ -11,7 +11,7 @@ SkillRegistry
 → ToolRegistry / ToolExecutor
 ```
 
-当前已完成到 `AuditPlanner`，任务执行器和状态机是下一步。
+当前已完成到 `AgentOrchestrator`。任务按 DAG 推进，自动步骤统一经过 `ToolExecutor` 和程序级质量门。
 
 ## 2. SkillValidator
 
@@ -78,3 +78,57 @@ plan = planner.build_plan(
     provided_inputs={"bank_statement", "bank_journal"},
 )
 ```
+## 7. TaskStateMachine
+
+任务和步骤只允许通过合法迁移推进：
+
+```text
+任务：CREATED → PLANNING → READY → RUNNING → VERIFYING → COMPLETED
+暂停：PLANNING/RUNNING → WAITING_INPUT
+人工：RUNNING → WAITING_HUMAN → RUNNING
+步骤：PENDING → READY → RUNNING → VERIFYING → VERIFIED
+人工：WAITING_HUMAN → HUMAN_COMPLETED → VERIFYING → VERIFIED
+```
+
+`HUMAN_COMPLETED` 只表示“人交了材料”，不能直接关闭程序；仍须经过质量门。
+
+## 8. AgentOrchestrator
+
+输入：
+
+- 已通过三源校验的 `AuditPlan`。
+- `PermissionPolicy`。
+- `tool_call_provider`：只负责为程序组装确定性工具参数，不承载状态推进。
+- 可选人工提交、重规划器和工作区根目录。
+
+执行规则：
+
+- 缺少输入：任务 `WAITING_INPUT`，相关步骤不得执行。
+- 人工程序：任务 `WAITING_HUMAN`；材料提交后进入 `VERIFYING`。
+- 自动程序：声明工具必须全部调用，未声明工具不得调用。
+- 工具失败：
+  - `RETRYABLE`：按步骤重试额度重试，耗尽后转人工接管。
+  - `NEED_HUMAN`：立即暂停为 `WAITING_HUMAN`。
+  - `TERMINAL`：可调用重规划器生成新的已验证计划；否则任务失败。
+- 同一层内相互独立的步骤会继续推进；该层有人工等待时，后续依赖层暂停。
+- 所有活动步骤 `VERIFIED`，条件未激活步骤 `SKIPPED_NOT_APPLICABLE` 后，任务才可 `COMPLETED`。
+
+## 9. 当前入口
+
+```python
+orchestrator = AgentOrchestrator(
+    state_machine=TaskStateMachine(event_sink=events.append),
+    tool_executor=ToolExecutor(tool_registry),
+)
+result = await orchestrator.execute(
+    task,
+    plan,
+    permission_policy=PermissionPolicy(allowed_tools=allowed_tools),
+    tool_call_provider=provider,
+    workspace_root=workspace.root,
+    human_submissions=submissions,
+)
+```
+
+真实验收：`tests/integration/test_bank_deposits_e2e.py` 使用真实 SkillRegistry/Loader/Validator/Planner，按
+`P01 → (P02,P08) → P04 → P06 → P07 → P10` 跑到 `COMPLETED`，并验证 P09 条件跳过。

@@ -90,6 +90,7 @@ class AuditPlanner:
                     missing_inputs=missing,
                     required_tools=list(procedure.tools),
                     human_required=human,
+                    execution_mode=procedure.execution_policy.mode,
                     condition=procedure.enabled_when,
                     mandatory=procedure.mandatory or procedure.execution_policy.mandatory,
                     status=status,

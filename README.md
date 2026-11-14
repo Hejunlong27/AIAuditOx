@@ -186,26 +186,27 @@ python tools/validate_skills.py  # 校验结构（CI 同款）
 把技能库从「可读的方法论」变成「能跑的执行体」：运行时负责识别科目、生成计划、
 调用确定性工具、管理人工参与、产出底稿并做质量检查。
 
-**当前进度**（截至 2026-11-07）
+**当前进度**（截至 2026-11-14）
 
 | 阶段 | 内容 | 状态 |
 | --- | --- | --- |
 | Phase 0 | 工程配置、Pydantic 数据模型、SQLite 9 张表、工作区隔离与脱敏审计日志 | ✅ |
 | Phase 1 | Skill Registry / Loader / DSL Parser / Router（只读消费 `skills/`） | ✅ |
-| Phase 2 | Planner（DAG、依赖、人工/条件程序识别） | 待做 |
-| Phase 3 | Tool Engine（11 个确定性审计工具） | 待做 |
-| Phase 4 | Executor / Orchestrator / 人工审批与断点恢复 | 待做 |
-| Phase 5 | Quality Gate / Workpaper Writer | 待做 |
+| Phase 2 | Planner（DAG、依赖、人工/条件程序识别） | ✅ |
+| Phase 3 | Tool Engine（中心工具、权限、超时、重试与审计） | ✅ |
+| Phase 4 | Executor / Orchestrator / 状态机与人工暂停恢复 | 进行中 |
+| Phase 5 | 程序级 Quality Gate / Workpaper Writer | 进行中 |
 | Phase 6 | CLI + REST API | 待做 |
 | Phase 7 | MCP Adapter | 待做 |
 
-**已经可以跑的部分**：把银行存款技能包读成 10 条结构化程序定义，自动识别
-强制程序（P05 函证）、人工程序（P03/P05）、条件程序（P09），并把
-`dsl.json` 与 `SKILL.md` 的人工要求冲突按保守策略解决。
+**已经可以跑的部分**：把银行存款技能包读成 10 条结构化程序定义，生成并校验依赖 DAG，
+再由 `AgentOrchestrator` 统一经过工具执行器和程序级质量门推进。运行支持输入等待、
+人工暂停/恢复、可重试失败、人工接管和受上限约束的重规划。银行存款端到端验收会按
+`P01 → (P02,P08) → P04 → P06 → P07 → P10` 跑到 `COMPLETED`，P09 条件未激活时正确跳过。
 
 ```bash
 python -m venv .venv && ./.venv/Scripts/python.exe -m pip install -e ".[dev]"
-./.venv/Scripts/python.exe -m pytest tests -q       # 127 项测试
+./.venv/Scripts/python.exe -m pytest tests -q       # 179 项测试
 ```
 
 架构与边界见 [`docs/development/architecture.md`](docs/development/architecture.md)，

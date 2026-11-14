@@ -7,7 +7,7 @@ from datetime import datetime
 from pydantic import Field, model_validator
 
 from agent.models.base import AuditModel, utcnow
-from agent.models.enums import StepStatus
+from agent.models.enums import ExecutionMode, StepStatus
 
 
 class PlanStep(AuditModel):
@@ -21,6 +21,7 @@ class PlanStep(AuditModel):
     missing_inputs: list[str] = Field(default_factory=list, description="当前仍缺失的输入键")
     required_tools: list[str] = Field(default_factory=list)
     human_required: bool = False
+    execution_mode: ExecutionMode = ExecutionMode.AUTO
     condition: str | None = None
     mandatory: bool = False
     status: StepStatus = StepStatus.PENDING
