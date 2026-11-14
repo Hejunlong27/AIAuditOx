@@ -1,0 +1,82 @@
+schema_version: 1
+skill_id: z-1-2-bank-deposits
+procedures:
+  P01:
+    depends_on: []
+    required_inputs:
+      - bank_balance_detail
+      - general_ledger
+      - financial_statement
+    tools:
+      - recalc_check
+      - balance_confirm
+    enabled_when: null
+  P02:
+    depends_on: [P01]
+    required_inputs:
+      - bank_account_list
+      - bank_balance_detail
+    tools: []
+    enabled_when: null
+  P03:
+    depends_on: []
+    required_inputs:
+      - time_deposit_certificates
+    tools: []
+    enabled_when: null
+  P04:
+    depends_on: [P02, P08]
+    required_inputs:
+      - bank_reconciliation
+      - bank_statement
+    tools:
+      - recon_statement_recalc
+      - threshold_flag
+    enabled_when: null
+  P05:
+    depends_on: []
+    required_inputs:
+      - confirmation_requests_responses
+    tools: []
+    enabled_when: null
+  P06:
+    depends_on: [P04]
+    required_inputs:
+      - bank_journal
+      - bank_statement
+    tools:
+      - bank_reconcile_dual
+      - sampling_draw
+    enabled_when: null
+  P07:
+    depends_on: [P06]
+    required_inputs:
+      - bank_journal
+      - bank_statement
+    tools: []
+    enabled_when: null
+  P08:
+    depends_on: [P01]
+    required_inputs:
+      - bank_balance_detail
+      - interest_income
+      - interest_rate
+    tools:
+      - recalc_check
+      - threshold_flag
+    enabled_when: null
+  P09:
+    depends_on: [P06]
+    required_inputs:
+      - fund_pool_agreements
+      - related_party_transactions
+    tools: []
+    enabled_when: 存在资金池或集团资金往来时
+  P10:
+    depends_on: [P07]
+    required_inputs:
+      - financial_statement
+      - disclosure_draft
+    tools:
+      - rule_check
+    enabled_when: null

@@ -56,6 +56,8 @@ class ProcedureDefinition(AuditModel):
     assertions: list[str] = Field(default_factory=list, description="认定编码 E/C/A/V/P")
     execution_policy: ExecutionPolicy = Field(default_factory=ExecutionPolicy)
     dependencies: list[str] = Field(default_factory=list, description="必须先完成的程序 ID")
+    required_inputs: list[str] = Field(default_factory=list, description="执行前必须具备的输入键")
+    enabled_when: str | None = Field(default=None, description="条件程序启用条件")
     mandatory: bool = False
     conditional: bool = False
     condition: str | None = Field(default=None, description="条件程序启用条件（自然语言，来自 SKILL.md）")

@@ -18,6 +18,7 @@ class PlanStep(AuditModel):
     name: str = Field(min_length=1)
     dependencies: list[str] = Field(default_factory=list, description="依赖的 step_id")
     required_inputs: list[str] = Field(default_factory=list, description="输入资料键（缺失则阻塞）")
+    missing_inputs: list[str] = Field(default_factory=list, description="当前仍缺失的输入键")
     required_tools: list[str] = Field(default_factory=list)
     human_required: bool = False
     condition: str | None = None
