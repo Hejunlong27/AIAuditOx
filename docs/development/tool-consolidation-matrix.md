@@ -153,12 +153,14 @@
 已完成第一批基础工作：
 
 - Word run 字体应用收敛到 `auditox_common.docx_style.set_run_font`。
-- `confirmation-address-auditor` 和 `financial-statement-analysis` 已接入。
+- `confirmation-address-auditor` 和 `financial-statement-analysis` 已接入 Word 字体。
+- `confirmation-address-auditor`、`financial-statement-analysis`、`universal-annual-audit` 已接入 Excel 单元格/区域样式、边框和列宽底层。
 - 新增 Excel/Word 结构指纹：
   - 单元格值、公式、格式、字体、填充、边框、列宽、行高、合并区域。
   - Word 段落、run、表格、页面尺寸与边距。
 - 新增比较 CLI：
   `python agent-runtime/tools/report_fingerprint.py 基线文件 --diff 新文件`
+- `universal-annual-audit` 已实际生成 10 个 Excel/Word 模板，并对生成物完成指纹读取与自比。
 
 尚未迁移：
 
