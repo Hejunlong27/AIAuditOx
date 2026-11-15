@@ -8,10 +8,13 @@ SkillRegistry
 → SkillLoader
 → SkillValidator
 → AuditPlanner
+→ TaskApplicationService
+→ TaskStateMachine / AgentOrchestrator
 → ToolRegistry / ToolExecutor
+→ Evidence / Workpaper Writer
 ```
 
-当前已完成到 `AgentOrchestrator`。任务按 DAG 推进，自动步骤统一经过 `ToolExecutor` 和程序级质量门。
+当前已完成到 `TaskApplicationService`、SQLite 持久化、人工审批、证据链和银行存款 Excel 底稿生成。任务按 DAG 推进，自动步骤统一经过 `ToolExecutor` 和程序级质量门。
 
 ## 2. SkillValidator
 
@@ -132,3 +135,28 @@ result = await orchestrator.execute(
 
 真实验收：`tests/integration/test_bank_deposits_e2e.py` 使用真实 SkillRegistry/Loader/Validator/Planner，按
 `P01 → (P02,P08) → P04 → P06 → P07 → P10` 跑到 `COMPLETED`，并验证 P09 条件跳过。
+
+## 10. TaskApplicationService
+
+应用层负责项目、任务、工作区、输入文件、计划、审批、证据和底稿的生命周期协调。
+
+```text
+create_project
+→ create_task
+→ import input files / SHA-256
+→ build + persist plan
+→ run_task / resume
+→ create pending approvals
+→ load approved submissions
+→ persist task + plan + evidence
+→ export_workpaper
+```
+
+关键边界：
+
+- 数据库是恢复状态的事实源。
+- 人工审批通过后由下一次 `run_task` 自动加载。
+- 工具结果通过 `result_sink` 写入 `evidences`。
+- 人工附件按哈希去重写入 `evidences`。
+- 银行存款底稿生成 Excel + Markdown，并登记为 `artifacts`。
+- CLI 入口为 `python -m cli.main`。

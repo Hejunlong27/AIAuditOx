@@ -11,7 +11,16 @@ from agent.planning import AuditPlanner, SkillValidator
 from agent.skills import SkillLoader, SkillRegistry
 from agent.tools import NodeToolBridge, ToolRegistry, register_node_core_tools
 
-pytestmark = pytest.mark.integration
+PROJECT_ROOT = Path(__file__).resolve().parents[3]
+WORKSPACE_AVAILABLE = (
+    (PROJECT_ROOT / "skill-library").is_dir()
+    and (PROJECT_ROOT / "skill-tools" / "auditox-tools").is_dir()
+)
+
+pytestmark = [
+    pytest.mark.integration,
+    pytest.mark.skipif(not WORKSPACE_AVAILABLE, reason="需要统一工作区中的 skill-library/skill-tools"),
+]
 
 
 def test_bank_planner_uses_registered_runtime_tools(repo_root: Path) -> None:

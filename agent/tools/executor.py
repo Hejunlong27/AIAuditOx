@@ -19,14 +19,22 @@ from agent.tools.schema import SchemaValidationError, validate_json_schema
 
 
 AuditSink = Callable[[ToolInvocation], None]
+ResultSink = Callable[[ToolInvocation, ToolResult], None]
 
 
 class ToolExecutor:
     """所有工具调用的唯一运行时入口。"""
 
-    def __init__(self, registry: ToolRegistry, *, audit_sink: AuditSink | None = None) -> None:
+    def __init__(
+        self,
+        registry: ToolRegistry,
+        *,
+        audit_sink: AuditSink | None = None,
+        result_sink: ResultSink | None = None,
+    ) -> None:
         self.registry = registry
         self.audit_sink = audit_sink
+        self.result_sink = result_sink
 
     async def execute(
         self,
@@ -156,7 +164,7 @@ class ToolExecutor:
                 if result.success and spec.output_schema:
                     validate_json_schema(result.result, spec.output_schema, path="$.result")
                 if result.success:
-                    self._emit(
+                    invocation = self._emit(
                         tool_name=tool_name,
                         task_id=task_id,
                         procedure_id=procedure_id,
@@ -166,6 +174,7 @@ class ToolExecutor:
                         attempts=attempts,
                         duration_ms=result.duration_ms,
                     )
+                    self._emit_result(invocation, result)
                     return result
                 last_failure = result
                 if result.failure_class is not FailureClass.RETRYABLE:
@@ -214,7 +223,7 @@ class ToolExecutor:
             execution_id=execution_id,
             duration_ms=int((time.perf_counter() - started) * 1000),
         )
-        self._emit(
+        invocation = self._emit(
             tool_name=tool_name,
             task_id=task_id,
             procedure_id=procedure_id,
@@ -226,6 +235,7 @@ class ToolExecutor:
             error=result.error,
             failure_class=result.failure_class,
         )
+        self._emit_result(invocation, result)
         return result
 
     def _finish_failure(
@@ -242,7 +252,14 @@ class ToolExecutor:
         started: float,
     ) -> ToolResult:
         duration_ms = int((time.perf_counter() - started) * 1000)
-        self._emit(
+        result = ToolResult.fail(
+            tool_name,
+            error,
+            failure_class=failure_class,
+            execution_id=execution_id,
+            duration_ms=duration_ms,
+        )
+        invocation = self._emit(
             tool_name=tool_name,
             task_id=task_id,
             procedure_id=procedure_id,
@@ -254,13 +271,8 @@ class ToolExecutor:
             error=error,
             failure_class=failure_class,
         )
-        return ToolResult.fail(
-            tool_name,
-            error,
-            failure_class=failure_class,
-            execution_id=execution_id,
-            duration_ms=duration_ms,
-        )
+        self._emit_result(invocation, result)
+        return result
 
     def _emit(
         self,
@@ -275,21 +287,24 @@ class ToolExecutor:
         duration_ms: int,
         error: str | None = None,
         failure_class: FailureClass | None = None,
-    ) -> None:
-        if self.audit_sink is None:
-            return
-        self.audit_sink(
-            ToolInvocation(
-                execution_id=execution_id,
-                task_id=task_id,
-                procedure_id=procedure_id,
-                tool_name=tool_name,
-                arguments=arguments,
-                success=success,
-                error=error,
-                failure_class=failure_class,
-                attempts=attempts,
-                duration_ms=duration_ms,
-                created_at_ts=utcnow().isoformat(),
-            )
+    ) -> ToolInvocation:
+        invocation = ToolInvocation(
+            execution_id=execution_id,
+            task_id=task_id,
+            procedure_id=procedure_id,
+            tool_name=tool_name,
+            arguments=arguments,
+            success=success,
+            error=error,
+            failure_class=failure_class,
+            attempts=attempts,
+            duration_ms=duration_ms,
+            created_at_ts=utcnow().isoformat(),
         )
+        if self.audit_sink is not None:
+            self.audit_sink(invocation)
+        return invocation
+
+    def _emit_result(self, invocation: ToolInvocation, result: ToolResult) -> None:
+        if self.result_sink is not None:
+            self.result_sink(invocation, result)

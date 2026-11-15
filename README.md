@@ -194,9 +194,9 @@ python tools/validate_skills.py  # 校验结构（CI 同款）
 | Phase 1 | Skill Registry / Loader / DSL Parser / Router（只读消费 `skills/`） | ✅ |
 | Phase 2 | Planner（DAG、依赖、人工/条件程序识别） | ✅ |
 | Phase 3 | Tool Engine（中心工具、权限、超时、重试与审计） | ✅ |
-| Phase 4 | Executor / Orchestrator / 状态机与人工暂停恢复 | 进行中 |
-| Phase 5 | 程序级 Quality Gate / Workpaper Writer | 进行中 |
-| Phase 6 | CLI + REST API | 待做 |
+| Phase 4 | Executor / Orchestrator / 状态机与人工暂停恢复 | ✅ |
+| Phase 5 | 程序级 Quality Gate / Workpaper Writer | 进行中（银行存款） |
+| Phase 6 | CLI + REST API | 进行中（CLI 已可用） |
 | Phase 7 | MCP Adapter | 待做 |
 
 **已经可以跑的部分**：把银行存款技能包读成 10 条结构化程序定义，生成并校验依赖 DAG，
@@ -204,9 +204,19 @@ python tools/validate_skills.py  # 校验结构（CI 同款）
 人工暂停/恢复、可重试失败、人工接管和受上限约束的重规划。银行存款端到端验收会按
 `P01 → (P02,P08) → P04 → P06 → P07 → P10` 跑到 `COMPLETED`，P09 条件未激活时正确跳过。
 
+应用层已接入 SQLite 持久化、任务工作区、输入文件复制与哈希、人工审批、工具/人工证据链、
+CLI 和银行存款 Excel 底稿生成。任务执行到人工等待后可以关闭进程、重新创建服务并从数据库恢复。
+详见 [`docs/development/application-service.md`](docs/development/application-service.md)。
+
+```powershell
+python -m cli.main --help
+python -m cli.main project create --name "某公司 2026 年报审计" --period 2026
+python -m cli.main task list
+```
+
 ```bash
 python -m venv .venv && ./.venv/Scripts/python.exe -m pip install -e ".[dev]"
-./.venv/Scripts/python.exe -m pytest tests -q       # 179 项测试
+./.venv/Scripts/python.exe -m pytest tests -q       # 185 项测试
 ```
 
 架构与边界见 [`docs/development/architecture.md`](docs/development/architecture.md)，

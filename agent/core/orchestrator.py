@@ -551,6 +551,7 @@ class AgentOrchestrator:
         return OrchestrationResult(
             task_id=task.task_id,
             plan_id=plan.plan_id,
+            final_plan=plan,
             status=task.status,
             verified_steps=sorted(
                 step.step_id for step in plan.steps if step.status is StepStatus.VERIFIED

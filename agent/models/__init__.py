@@ -6,6 +6,7 @@
 from __future__ import annotations
 
 from agent.models.approval import ApprovalRequest
+from agent.models.artifact import ArtifactRecord
 from agent.models.base import AuditModel, Money, Percent, to_money, utcnow
 from agent.models.enums import (
     ApprovalStatus,
@@ -29,15 +30,18 @@ from agent.models.execution import (
 )
 from agent.models.plan import AuditPlan, PlanStep
 from agent.models.procedure import ConflictRecord, ExecutionPolicy, ProcedureDefinition
+from agent.models.project import AuditProject
 from agent.models.result import ToolResult
 from agent.models.task import AuditTask
 from agent.models.tool import ToolInvocation, ToolRequirement, ToolSpec
 
 __all__ = [
     "ApprovalRequest",
+    "ArtifactRecord",
     "ApprovalStatus",
     "AuditModel",
     "AuditPlan",
+    "AuditProject",
     "AuditTask",
     "ConflictRecord",
     "ConflictSeverity",

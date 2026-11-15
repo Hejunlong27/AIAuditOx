@@ -9,6 +9,7 @@ from pydantic import Field, model_validator
 
 from agent.models.base import AuditModel, utcnow
 from agent.models.enums import FailureClass, TaskStatus
+from agent.models.plan import AuditPlan
 
 
 class ToolCall(AuditModel):
@@ -86,6 +87,7 @@ class OrchestrationResult(AuditModel):
 
     task_id: str = Field(min_length=1)
     plan_id: str = Field(min_length=1)
+    final_plan: AuditPlan
     status: TaskStatus
     verified_steps: list[str] = Field(default_factory=list)
     waiting_human_steps: list[str] = Field(default_factory=list)

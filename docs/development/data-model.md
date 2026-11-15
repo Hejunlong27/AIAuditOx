@@ -71,7 +71,9 @@ P01
 | `HumanSubmission` | 人工提交的说明与证据文件，必须至少有其中一项 |
 | `QualityDecision` | 程序级质量门结论：通过 / 人工 / 重试 / 终止，四选一 |
 | `StateChange` | 一次任务或步骤状态迁移，可供审计事件落库 |
-| `OrchestrationResult` | 一次执行或恢复后的任务快照与等待项 |
+| `OrchestrationResult` | 一次执行或恢复后的任务快照、最终计划与等待项 |
+| `AuditProject` | 本地审计项目元数据 |
+| `ArtifactRecord` | 输入文件、底稿和其他产物的路径、哈希与版本 |
 
 `PlanStep.execution_mode` 保留 `AUTO / AUTO_WITH_CONFIRM / AUTO_WITH_JUDGMENT / HUMAN_LED / HUMAN_ONLY`，
 执行器不能只凭工具数量猜测人工程序。
@@ -83,3 +85,16 @@ P01
 - `NEED_HUMAN` 直接进入 `WAITING_HUMAN`。
 - `TERMINAL` 失败可触发一次或多次受上限约束的重规划；没有有效新计划时任务进入 `FAILED`。
 - 人工材料提交后必须经过质量门，`HUMAN_COMPLETED` 不等于 `VERIFIED`。
+
+## 8. 应用层持久化
+
+`TaskApplicationService` 将执行内核与 SQLite 连接：
+
+- 任务、计划、步骤状态写入 `tasks / plans / plan_steps`。
+- 每次状态迁移写入 `audit_events`。
+- 工具调用写入 `tool_runs`。
+- 工具结果和人工附件写入 `evidences`。
+- 人工待办与决定写入 `approvals`。
+- 原始资料和底稿写入 `artifacts`，文件本体留在任务工作区。
+
+银行存款端到端验收已验证：任务执行到人工等待后重建 `TaskApplicationService`，仍能加载任务、计划、审批和证据并继续到 `COMPLETED`。

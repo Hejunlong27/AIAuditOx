@@ -21,3 +21,9 @@ jobs:
 
       - name: 校验索引可生成
         run: python tools/build_index.py --check
+
+      - name: 安装 Runtime 测试依赖
+        run: python -m pip install -e ".[dev]"
+
+      - name: 运行 Runtime 测试
+        run: python -m pytest tests -q
