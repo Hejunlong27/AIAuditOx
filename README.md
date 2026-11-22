@@ -8,6 +8,8 @@
 - 技能商店：SkillHub（org `org-c491l5hl`）
 - 作者：何小疯27
 
+**English** — AIAuditOx is an audit-workpaper automation platform that turns audit procedures into installable AI skills. It ships 31 skill packages and 179 procedure cards covering cash, receivables, payables, revenue and expenses, plus deterministic local tools for reconciliation, recalculation, sampling and index numbering; the LLM only analyzes and explains, never estimates the numbers. Client data stays on the local machine. Works with Claude Code, Codex, Cursor, WorkBuddy and any MCP-compatible agent.
+
 ---
 
 ## 这是什么
