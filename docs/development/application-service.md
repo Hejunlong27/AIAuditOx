@@ -56,7 +56,30 @@ SQLite 9 表 + 工作区文件
 
 任务、计划和步骤每次关键状态变化均写审计事件。工具结果通过 `result_sink` 自动形成证据记录；人工附件按文件哈希去重后登记为 `HUMAN_ATTACHMENT`。
 
-## 4. 输入导入
+## 4. 技能事实源
+
+统一工作区中的 CLI 默认使用：
+
+```text
+D:\编程\AIAuditOx\skill-library
+```
+
+Runtime 索引是生成物，默认写入：
+
+```text
+D:\编程\AIAuditOx\agent-runtime\registry\skill-library.json
+```
+
+重建命令：
+
+```powershell
+cd D:\编程\AIAuditOx\agent-runtime
+python tools/build_index.py --skills-dir ../skill-library --out registry/skill-library.json
+```
+
+`agent-runtime/skills/` 的 31 包仅用于仓库存活测试，不再是生产事实源。
+
+## 5. 输入导入
 
 `create_task(input_files=...)` 接收逻辑输入键到源文件路径的映射：
 
@@ -75,7 +98,7 @@ bank_journal=/path/bank-journal.xlsx
 
 不会引用外部原文件作为证据源。
 
-## 5. 人工审批
+## 6. 人工审批
 
 流水线：
 
@@ -92,7 +115,7 @@ bank_journal=/path/bank-journal.xlsx
 
 拒绝不会自动关闭程序；下一次执行会重新形成待办。`HUMAN_COMPLETED` 永远不等于 `VERIFIED`。
 
-## 6. 银行存款底稿
+## 7. 银行存款底稿
 
 当前 Workpaper Writer 支持：
 
@@ -114,7 +137,7 @@ bank_journal=/path/bank-journal.xlsx
 
 底稿只记录实际执行状态和证据，不虚构金额、结论或审计意见。
 
-## 7. CLI
+## 8. CLI
 
 安装：
 
@@ -168,7 +191,7 @@ python -m cli.main task run TASK-xxxx --calls-file .\calls.json
 
 显式参数文件是过渡层。下一步应建设“规范化输入数据 → 工具参数”的生产级 Skill Adapter，替代用户手写调用参数。
 
-## 8. 当前验收
+## 9. 当前验收
 
 ```text
 Agent Runtime  185 passed
@@ -184,11 +207,11 @@ Agent Runtime  185 passed
 - Excel/Word 底稿文件结构与内容。
 - CLI 项目创建和查询烟雾测试。
 
-## 9. 尚未完成
+## 10. 尚未完成
 
 - 自动把业务文件转换成每个工具的参数。
 - 全部技能的 Runtime YAML。
 - REST API、DSH 完整工具插件和独立 EXE。
 - 人工审批图形界面。
 - 通用 Workpaper Writer（目前只支持银行存款）。
-- 与根目录 32 包技能事实源的完全统一。
+- 更多技能的 Runtime YAML 与自动工具参数适配。

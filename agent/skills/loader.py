@@ -41,10 +41,19 @@ class LoadedSkill:
 class SkillLoader:
     """技能包读取器。"""
 
-    def __init__(self, repo_root: Path, registry: SkillRegistry | None = None) -> None:
+    def __init__(
+        self,
+        repo_root: Path,
+        registry: SkillRegistry | None = None,
+        *,
+        skills_root: Path | None = None,
+    ) -> None:
         self.repo_root = Path(repo_root).resolve()
-        self.skills_root = (self.repo_root / "skills").resolve()
-        self.registry = registry or SkillRegistry(self.repo_root).load()
+        self.registry = registry or SkillRegistry(
+            self.repo_root,
+            skills_dir=skills_root,
+        ).load()
+        self.skills_root = self.registry.skills_root
         self._dsl_parser = DSLParser()
         self._table_parser = DispatchTableParser()
         self._cache: dict[str, LoadedSkill] = {}

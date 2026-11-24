@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import asyncio
 import json
+import subprocess
+import sys
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
@@ -51,15 +53,28 @@ def root(
     ),
     data_root: Path | None = typer.Option(None, "--data-root", help="运行数据目录"),
     workspace_root: Path | None = typer.Option(None, "--workspace-root", help="任务工作区根目录"),
+    skills_dir: Path | None = typer.Option(None, "--skills-dir", help="技能事实源目录"),
+    registry_path: Path | None = typer.Option(None, "--registry-path", help="技能索引文件"),
     database_url: str = typer.Option("", "--database-url", help="覆盖 SQLite/PostgreSQL URL"),
 ) -> None:
+    resolved_repo = repo_root.resolve()
+    workspace_library = resolved_repo.parent / "skill-library"
+    effective_skills = skills_dir or (workspace_library if workspace_library.is_dir() else resolved_repo / "skills")
+    effective_registry = registry_path or (
+        resolved_repo / "registry" / "skill-library.json"
+        if effective_skills.resolve() != (resolved_repo / "skills").resolve()
+        else resolved_repo / "registry" / "skills.json"
+    )
     settings = Settings(
-        repo_root=repo_root.resolve(),
+        repo_root=resolved_repo,
+        skills_dir=effective_skills,
+        registry_path=effective_registry,
         data_root=data_root,
         workspace_root=workspace_root,
         database_url=database_url,
     )
     settings.ensure_dirs()
+    _ensure_skill_index(settings)
     ctx.obj = CliState(settings=settings)
 
 
@@ -67,6 +82,23 @@ def _emit(value: Any) -> None:
     if hasattr(value, "model_dump"):
         value = value.model_dump(mode="json")
     typer.echo(json.dumps(value, ensure_ascii=False, indent=2, default=str))
+
+
+def _ensure_skill_index(settings: Settings) -> None:
+    if settings.registry_file.is_file():
+        return
+    generator = settings.repo_root / "tools" / "build_index.py"
+    subprocess.run(
+        [
+            sys.executable,
+            str(generator),
+            "--skills-dir",
+            str(settings.skills_path),
+            "--out",
+            str(settings.registry_file),
+        ],
+        check=True,
+    )
 
 
 def _database(settings: Settings) -> Database:
@@ -78,7 +110,11 @@ def _database(settings: Settings) -> Database:
 def _sync_service(settings: Settings, tool_registry: ToolRegistry | None = None) -> TaskApplicationService:
     database = _database(settings)
     registry = tool_registry or ToolRegistry()
-    skill_registry = SkillRegistry(settings.repo_root).load()
+    skill_registry = SkillRegistry(
+        settings.repo_root,
+        skills_dir=settings.skills_path,
+        registry_file=settings.registry_file,
+    ).load()
     loader = SkillLoader(settings.repo_root, skill_registry)
     validator = SkillValidator(
         loader,
@@ -99,7 +135,11 @@ async def _async_service(settings: Settings):
     registry = ToolRegistry()
     try:
         await register_node_core_tools(registry, bridge)
-        skill_registry = SkillRegistry(settings.repo_root).load()
+        skill_registry = SkillRegistry(
+            settings.repo_root,
+            skills_dir=settings.skills_path,
+            registry_file=settings.registry_file,
+        ).load()
         loader = SkillLoader(settings.repo_root, skill_registry)
         validator = SkillValidator(loader, available_tools=set(registry.list_names()))
         planner = AuditPlanner(

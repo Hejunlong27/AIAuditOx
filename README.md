@@ -210,6 +210,13 @@ python tools/validate_skills.py  # 校验结构（CI 同款）
 CLI 和银行存款 Excel 底稿生成。任务执行到人工等待后可以关闭进程、重新创建服务并从数据库恢复。
 详见 [`docs/development/application-service.md`](docs/development/application-service.md)。
 
+生产 CLI 默认消费统一工作区根目录的 `../skill-library/`（当前 33 包），仓库内 `skills/`
+只保留为 31 包隔离测试 fixture。技能事实源变化后重建 Runtime 索引：
+
+```powershell
+python tools/build_index.py --skills-dir ../skill-library --out registry/skill-library.json
+```
+
 ```powershell
 python -m cli.main --help
 python -m cli.main project create --name "某公司 2026 年报审计" --period 2026

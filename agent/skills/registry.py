@@ -53,9 +53,18 @@ class SkillRegistry:
 
     SUPPORTED_SCHEMA = 1
 
-    def __init__(self, repo_root: Path) -> None:
+    def __init__(
+        self,
+        repo_root: Path,
+        *,
+        skills_dir: Path | None = None,
+        registry_file: Path | None = None,
+    ) -> None:
         self.repo_root = Path(repo_root).resolve()
-        self.registry_file = self.repo_root / "registry" / "skills.json"
+        self.skills_root = Path(skills_dir or (self.repo_root / "skills")).resolve()
+        self.registry_file = Path(
+            registry_file or (self.repo_root / "registry" / "skills.json")
+        ).resolve()
         self._entries: dict[str, SkillEntry] = {}
         self._loaded = False
         self.schema_version = 0
@@ -111,7 +120,13 @@ class SkillRegistry:
         module = _load_module(gen, "_auditox_build_index")
         saved_argv = sys.argv
         try:
-            sys.argv = [str(gen)] + ([] if write else ["--check"])
+            sys.argv = [
+                str(gen),
+                "--skills-dir",
+                str(self.skills_root),
+                "--out",
+                str(self.registry_file),
+            ] + ([] if write else ["--check"])
             code = module.main()
         finally:
             sys.argv = saved_argv
@@ -150,12 +165,11 @@ class SkillRegistry:
         return items
 
     def get_skill_path(self, skill_id: str) -> Path:
-        """技能的绝对目录，且必须落在仓库 ``skills/`` 内。"""
-        entry = self.get(skill_id)
-        path = (self.repo_root / entry.path).resolve()
-        skills_root = (self.repo_root / "skills").resolve()
-        if not path.is_relative_to(skills_root):
-            raise SecurityError(f"技能路径越界：{path} 不在 {skills_root} 内")
+        """Return an indexed skill directory contained by ``skills_root``."""
+        self.get(skill_id)
+        path = (self.skills_root / skill_id).resolve()
+        if not path.is_relative_to(self.skills_root):
+            raise SecurityError(f"技能路径越界：{path} 不在 {self.skills_root} 内")
         if not path.is_dir():
             raise FileNotFoundError(f"技能目录不存在：{path}")
         return path

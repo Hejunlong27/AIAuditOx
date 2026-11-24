@@ -22,7 +22,7 @@ ROOT = Path(__file__).resolve().parent.parent
 SKILLS = ROOT / "skills"
 OUT = ROOT / "registry" / "skills.json"
 
-SKIP = {"_index", "_templates", "__pycache__", ".pytest_cache", "output"}
+SKIP = {"_index", "_templates", "__pycache__", ".pytest_cache", "output", ".git", ".github"}
 
 
 def parse_frontmatter(text: str) -> dict:
@@ -62,7 +62,7 @@ def count_files(d: Path, pattern: str = "*") -> int:
     return sum(1 for p in d.rglob(pattern) if p.is_file()) if d.is_dir() else 0
 
 
-def build_one(pkg: Path) -> dict:
+def build_one(pkg: Path, *, path_prefix: str = "skills") -> dict:
     skill_md = pkg / "SKILL.md"
     meta = parse_frontmatter(skill_md.read_text(encoding="utf-8", errors="replace")) if skill_md.exists() else {}
     variant = detect_variant(pkg)
@@ -72,7 +72,7 @@ def build_one(pkg: Path) -> dict:
         "version": meta.get("version") or "",
         "description": meta.get("description") or "",
         "variant": variant,
-        "path": f"skills/{pkg.name}",
+        "path": f"{path_prefix.rstrip('/')}/{pkg.name}",
         "hasSkillMd": skill_md.exists(),
         "hasChangelog": (pkg / "CHANGELOG.md").exists(),
         "counts": {
@@ -97,17 +97,22 @@ def build_one(pkg: Path) -> dict:
     return item
 
 
-def main() -> int:
+def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--check", action="store_true", help="只校验，不写文件")
-    args = ap.parse_args()
+    ap.add_argument("--skills-dir", type=Path, default=SKILLS, help="技能包根目录")
+    ap.add_argument("--out", type=Path, default=OUT, help="输出索引文件")
+    ap.add_argument("--path-prefix", default="skills", help="索引 path 字段前缀")
+    args = ap.parse_args(argv)
 
-    if not SKILLS.is_dir():
-        print(f"[FAIL] 找不到技能目录：{SKILLS}")
+    skills_dir = args.skills_dir.resolve()
+    output = args.out.resolve()
+    if not skills_dir.is_dir():
+        print(f"[FAIL] 找不到技能目录：{skills_dir}")
         return 1
 
-    packages = sorted(p for p in SKILLS.iterdir() if p.is_dir() and p.name not in SKIP)
-    skills = [build_one(p) for p in packages]
+    packages = sorted(p for p in skills_dir.iterdir() if p.is_dir() and p.name not in SKIP)
+    skills = [build_one(p, path_prefix=args.path_prefix) for p in packages]
 
     missing = [s["id"] for s in skills if not s["hasSkillMd"]]
     index = {
@@ -128,9 +133,13 @@ def main() -> int:
         print("[OK] 校验模式，未写文件")
         return 1 if missing else 0
 
-    OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(json.dumps(index, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(f"已写入 {OUT.relative_to(ROOT)}")
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text(json.dumps(index, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    try:
+        rendered = output.relative_to(ROOT)
+    except ValueError:
+        rendered = output
+    print(f"已写入 {rendered}")
     return 0
 
 
