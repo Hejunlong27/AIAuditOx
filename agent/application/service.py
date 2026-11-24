@@ -7,6 +7,7 @@ from collections.abc import Mapping
 from pathlib import Path
 from uuid import uuid4
 
+from agent.adapters import AdapterError, AdapterRegistry, AutoToolCallProvider
 from agent.application.dto import TaskBundle, TaskRunResult
 from agent.config.settings import Settings
 from agent.core.orchestrator import AgentOrchestrator
@@ -63,6 +64,7 @@ class TaskApplicationService:
         planner: AuditPlanner,
         repository: AuditRepository | None = None,
         workpaper_writer: WorkpaperWriter | None = None,
+        adapter_registry: AdapterRegistry | None = None,
     ) -> None:
         self.settings = settings
         self.database = database
@@ -71,6 +73,7 @@ class TaskApplicationService:
         self.planner = planner
         self.repository = repository or AuditRepository(database)
         self.workpaper_writer = workpaper_writer or WorkpaperWriter()
+        self.adapter_registry = adapter_registry or AdapterRegistry()
 
     # ---------- project lifecycle ----------
 
@@ -242,7 +245,7 @@ class TaskApplicationService:
         self,
         task_id: str,
         *,
-        tool_call_provider,
+        tool_call_provider=None,
         permission_policy: PermissionPolicy | None = None,
         human_submissions: Mapping[str, HumanSubmission] | None = None,
         replanner=None,
@@ -251,6 +254,11 @@ class TaskApplicationService:
         task = self.get_task(task_id)
         plan = self.get_plan(task_id)
         workspace = self._validated_workspace(task)
+        if tool_call_provider is None:
+            if plan.missing_inputs:
+                tool_call_provider = _missing_input_provider
+            else:
+                tool_call_provider = self.auto_tool_call_provider(task_id)
         policy = permission_policy or PermissionPolicy(
             allowed_tools=set(self.tool_registry.list_names()),
             max_tool_calls=self.settings.max_tool_calls,
@@ -318,7 +326,9 @@ class TaskApplicationService:
     ) -> None:
         if not invocation.procedure_id:
             return
-        source_path = self._first_existing_argument_file(invocation.arguments, workspace)
+        source_path = self._first_existing_source_file(invocation.source_files, workspace)
+        if source_path is None:
+            source_path = self._first_existing_argument_file(invocation.arguments, workspace)
         source_sha = sha256_file(source_path) if source_path else None
         result_path = self._first_existing_evidence_file(result.evidence_files, workspace)
         result_sha = sha256_file(result_path) if result_path else None
@@ -413,6 +423,17 @@ class TaskApplicationService:
         return None
 
     @staticmethod
+    def _first_existing_source_file(paths: list[str], workspace: Workspace) -> Path | None:
+        for value in paths:
+            try:
+                resolved = workspace.resolve_inside(value)
+            except SecurityError:
+                continue
+            if resolved.is_file():
+                return resolved
+        return None
+
+    @staticmethod
     def _first_existing_evidence_file(paths: list[str], workspace: Workspace) -> Path | None:
         for value in paths:
             try:
@@ -433,6 +454,11 @@ class TaskApplicationService:
                 yield from TaskApplicationService._walk_values(child)
         else:
             yield value
+
+    def auto_tool_call_provider(self, task_id: str) -> AutoToolCallProvider:
+        task = self.get_task(task_id)
+        plan = self.get_plan(task_id)
+        return self.adapter_registry.build(plan.skill_id, self.task_inputs(task.task_id))
 
     def export_workpaper(
         self,
@@ -517,6 +543,10 @@ class TaskApplicationService:
             candidates = [item.skill_id for item in decision.candidates]
             raise RouteConfirmationRequired(candidates, decision.reason)
         return decision.skill_id
+
+
+def _missing_input_provider(_task, _step):
+    raise AdapterError("任务尚未补齐输入，不能生成工具调用")
 
 
 __all__ = [

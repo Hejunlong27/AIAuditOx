@@ -59,6 +59,7 @@ class ToolInvocation(AuditModel):
     procedure_id: str | None = None
     tool_name: str = Field(min_length=1)
     arguments: dict = Field(default_factory=dict)
+    source_files: list[str] = Field(default_factory=list)
     success: bool = False
     error: str | None = None
     failure_class: FailureClass | None = None

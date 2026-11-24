@@ -169,7 +169,13 @@ python -m cli.main task create `
   --input bank_balance_detail=C:\data\accounts.csv
 ```
 
-执行任务必须提供显式工具调用文件，当前格式如下：
+银行存款任务默认使用自动 Skill Adapter。创建任务时只需要把业务文件映射到逻辑输入键：
+
+```powershell
+python -m cli.main task run TASK-xxxx
+```
+
+对于尚未实现 Adapter 的技能，可临时使用显式工具调用文件：
 
 ```json
 {
@@ -189,7 +195,7 @@ python -m cli.main task create `
 python -m cli.main task run TASK-xxxx --calls-file .\calls.json
 ```
 
-显式参数文件是过渡层。下一步应建设“规范化输入数据 → 工具参数”的生产级 Skill Adapter，替代用户手写调用参数。
+银行存款已经完成“规范化输入数据 → 工具参数”的自动适配。其他技能仍可使用上述显式参数文件作为受控过渡方案。
 
 ## 9. 当前验收
 

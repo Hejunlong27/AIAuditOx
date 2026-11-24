@@ -376,6 +376,7 @@ class AgentOrchestrator:
                 task_id=task.task_id,
                 procedure_id=step.procedure_id,
                 workspace_root=workspace_root,
+                source_files=call.source_files,
                 approval_granted=call.approval_granted,
             )
             results.append(result)

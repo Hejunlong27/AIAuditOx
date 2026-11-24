@@ -282,7 +282,10 @@ class AuditRepository:
                     procedure_id=invocation.procedure_id,
                     tool_name=invocation.tool_name,
                     arguments_json=json.dumps(invocation.arguments, ensure_ascii=False, default=str),
-                    result_json="{}",
+                    result_json=json.dumps(
+                        {"source_files": invocation.source_files},
+                        ensure_ascii=False,
+                    ),
                     success=1 if invocation.success else 0,
                     error=invocation.error,
                     duration_ms=invocation.duration_ms,
@@ -294,6 +297,10 @@ class AuditRepository:
                 row.error = invocation.error
                 row.duration_ms = invocation.duration_ms
                 row.arguments_json = json.dumps(invocation.arguments, ensure_ascii=False, default=str)
+                row.result_json = json.dumps(
+                    {"source_files": invocation.source_files},
+                    ensure_ascii=False,
+                )
 
     def add_audit_event(
         self,

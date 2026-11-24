@@ -17,6 +17,7 @@ class ToolCall(AuditModel):
 
     tool_name: str = Field(min_length=1, pattern=r"^[a-z][a-z0-9_]*$")
     arguments: dict[str, Any] = Field(default_factory=dict)
+    source_files: list[str] = Field(default_factory=list)
     approval_granted: bool = False
 
 

@@ -242,11 +242,15 @@ def task_show(ctx: typer.Context, task_id: str = typer.Argument(...)) -> None:
 def task_run(
     ctx: typer.Context,
     task_id: str = typer.Argument(...),
-    calls_file: Path = typer.Option(..., "--calls-file", help="按程序提供工具调用的 JSON 文件"),
+    calls_file: Path | None = typer.Option(
+        None,
+        "--calls-file",
+        help="可选：显式工具调用 JSON；省略时使用技能自动适配器",
+    ),
     max_replans: int = typer.Option(1, "--max-replans", min=0, max=5),
 ) -> None:
     settings: Settings = ctx.obj.settings
-    provider = JsonToolCallProvider.from_file(calls_file)
+    provider = JsonToolCallProvider.from_file(calls_file) if calls_file else None
 
     async def action() -> None:
         async for service in _async_service(settings):

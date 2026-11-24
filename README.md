@@ -207,8 +207,11 @@ python tools/validate_skills.py  # 校验结构（CI 同款）
 `P01 → (P02,P08) → P04 → P06 → P07 → P10` 跑到 `COMPLETED`，P09 条件未激活时正确跳过。
 
 应用层已接入 SQLite 持久化、任务工作区、输入文件复制与哈希、人工审批、工具/人工证据链、
-CLI 和银行存款 Excel 底稿生成。任务执行到人工等待后可以关闭进程、重新创建服务并从数据库恢复。
-详见 [`docs/development/application-service.md`](docs/development/application-service.md)。
+CLI 和银行存款 Excel 底稿生成。银行存款已接入自动 Skill Adapter：用户只需把资料映射到逻辑输入键，
+Runtime 会自动读取 CSV/Excel、规范化字段并生成工具调用，不再需要手写 `calls.json`。
+任务执行到人工等待后可以关闭进程、重新创建服务并从数据库恢复。
+详见 [`docs/development/application-service.md`](docs/development/application-service.md) 和
+[`docs/development/skill-adapters.md`](docs/development/skill-adapters.md)。
 
 生产 CLI 默认消费统一工作区根目录的 `../skill-library/`（当前 33 包），仓库内 `skills/`
 只保留为 31 包隔离测试 fixture。技能事实源变化后重建 Runtime 索引：
@@ -225,7 +228,7 @@ python -m cli.main task list
 
 ```bash
 python -m venv .venv && ./.venv/Scripts/python.exe -m pip install -e ".[dev]"
-./.venv/Scripts/python.exe -m pytest tests -q       # 185 项测试
+./.venv/Scripts/python.exe -m pytest tests -q       # 189 项测试
 ```
 
 架构与边界见 [`docs/development/architecture.md`](docs/development/architecture.md)，

@@ -9,6 +9,7 @@ SkillRegistry
 → SkillValidator
 → AuditPlanner
 → TaskApplicationService
+→ Skill Adapter（自动生成 ToolCall）
 → TaskStateMachine / AgentOrchestrator
 → ToolRegistry / ToolExecutor
 → Evidence / Workpaper Writer
@@ -160,3 +161,28 @@ create_project
 - 人工附件按哈希去重写入 `evidences`。
 - 银行存款底稿生成 Excel + Markdown，并登记为 `artifacts`。
 - CLI 入口为 `python -m cli.main`。
+
+## 11. 自动 Skill Adapter
+
+银行存款任务已经不需要手写 `calls.json`。`TaskApplicationService.run_task()` 在未提供显式
+provider 时会调用 `AdapterRegistry`，根据技能 ID 创建 Adapter。
+
+Adapter 负责：
+
+- 读取任务逻辑输入文件。
+- 识别 CSV/XLSX 表头和字段别名。
+- 规范化金额、日期、借贷方向和对手方。
+- 生成程序所需工具调用。
+- 把源文件路径写入 `ToolCall.source_files`，形成可追溯证据。
+
+当前支持：
+
+```text
+z-1-2-bank-deposits
+```
+
+验收：
+
+```powershell
+.\.venv\Scripts\python.exe -m pytest tests\integration	est_bank_adapter.py -o addopts='' -q
+```
