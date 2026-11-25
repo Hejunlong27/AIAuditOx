@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-06T08:04:00Z",
-  "count": 31,
+  "generatedAt": "2026-11-25T22:40:42Z",
+  "count": 40,
   "byVariant": {
-    "skill-group": 26,
+    "skill-group": 35,
     "orchestrator": 1,
     "tool": 3,
     "standard": 1
   },
-  "totalProcedures": 179,
+  "totalProcedures": 243,
   "skills": [
     {
       "id": "auditox-wp-standard",
@@ -42,7 +42,7 @@
       "variant": "tool",
       "path": "skills/confirmation-address-auditor",
       "hasSkillMd": true,
-      "hasChangelog": false,
+      "hasChangelog": true,
       "counts": {
         "procedures": 0,
         "templates": 0,
@@ -635,6 +635,110 @@
       ]
     },
     {
+      "id": "z-16-fixed-assets",
+      "name": "z-16-fixed-assets",
+      "version": "1.0.0",
+      "description": "固定资产审计技能组（长期资产 Z-16，对应所内科目 1601/1602/1603 / 程序库 Z1601+Z1602+Z1603）。执行固定资产及折旧减值明细表编制与核对、固定资产原值、折旧及减值率实质性分析、固定资产新增检查、固定资产处置检查等实质性程序，输出四段式制式工作底稿。当执行固定资产（1601/1602/1603科目）审计程序、编制固定资产底稿或复核固定资产工作时使用。",
+      "variant": "skill-group",
+      "path": "skills/z-16-fixed-assets",
+      "hasSkillMd": true,
+      "hasChangelog": true,
+      "counts": {
+        "procedures": 12,
+        "templates": 2,
+        "tests": 8,
+        "scripts": 0,
+        "rules": 0,
+        "references": 0,
+        "roles": 0
+      },
+      "tools": [
+        "balance_confirm",
+        "recalc_check",
+        "rule_check",
+        "sampling_draw",
+        "threshold_flag"
+      ]
+    },
+    {
+      "id": "z-17-construction-in-progress",
+      "name": "z-17-construction-in-progress",
+      "version": "1.0.0",
+      "description": "在建工程审计技能组（长期资产 Z-17，对应所内科目 1604 / 程序库 Z1604）。执行在建工程明细表编制与核对、在建工程本期增加检查、在建工程减少与转固检查、在建工程实地检查与减值评估等实质性程序，输出四段式制式工作底稿。当执行在建工程（1604科目）审计程序、编制在建工程底稿或复核在建工程工作时使用。",
+      "variant": "skill-group",
+      "path": "skills/z-17-construction-in-progress",
+      "hasSkillMd": true,
+      "hasChangelog": true,
+      "counts": {
+        "procedures": 6,
+        "templates": 2,
+        "tests": 8,
+        "scripts": 0,
+        "rules": 0,
+        "references": 0,
+        "roles": 0
+      },
+      "tools": [
+        "balance_confirm",
+        "recalc_check",
+        "rule_check",
+        "sampling_draw",
+        "threshold_flag"
+      ]
+    },
+    {
+      "id": "z-18-construction-materials",
+      "name": "z-18-construction-materials",
+      "version": "1.0.0",
+      "description": "工程物资审计技能组（长期资产 Z-18，对应所内科目 1605 / 程序库 Z1605）。执行工程物资明细表编制与核对、工程物资实地检查与呆滞物资识别、工程物资采购授权与原始凭证检查、完工剩余工程物资转存货及增值税检查等实质性程序，输出四段式制式工作底稿。当执行工程物资（1605科目）审计程序、编制工程物资底稿或复核工程物资工作时使用。",
+      "variant": "skill-group",
+      "path": "skills/z-18-construction-materials",
+      "hasSkillMd": true,
+      "hasChangelog": true,
+      "counts": {
+        "procedures": 6,
+        "templates": 2,
+        "tests": 8,
+        "scripts": 0,
+        "rules": 0,
+        "references": 0,
+        "roles": 0
+      },
+      "tools": [
+        "balance_confirm",
+        "recalc_check",
+        "rule_check",
+        "sampling_draw",
+        "threshold_flag"
+      ]
+    },
+    {
+      "id": "z-19-fixed-asset-disposal",
+      "name": "z-19-fixed-asset-disposal",
+      "version": "1.0.0",
+      "description": "固定资产清理审计技能组（长期资产 Z-19，对应所内科目 1606 / 程序库 Z1606）。执行固定资产清理明细表编制与核对、固定资产清理发生、转销与损益检查、非货币性转出固定资产清理检查、固定资产清理长期挂账检查等实质性程序，输出四段式制式工作底稿。当执行固定资产清理（1606科目）审计程序、编制固定资产清理底稿或复核固定资产清理工作时使用。",
+      "variant": "skill-group",
+      "path": "skills/z-19-fixed-asset-disposal",
+      "hasSkillMd": true,
+      "hasChangelog": true,
+      "counts": {
+        "procedures": 5,
+        "templates": 2,
+        "tests": 8,
+        "scripts": 0,
+        "rules": 0,
+        "references": 0,
+        "roles": 0
+      },
+      "tools": [
+        "balance_confirm",
+        "recalc_check",
+        "rule_check",
+        "sampling_draw",
+        "threshold_flag"
+      ]
+    },
+    {
       "id": "z-2-1-notes-receivable",
       "name": "z-2-1-notes-receivable",
       "version": "1.0.0",
@@ -677,6 +781,135 @@
         "roles": 0
       },
       "tools": [
+        "recalc_check",
+        "rule_check",
+        "sampling_draw",
+        "threshold_flag"
+      ]
+    },
+    {
+      "id": "z-20-right-of-use-assets",
+      "name": "z-20-right-of-use-assets",
+      "version": "1.0.0",
+      "description": "使用权资产审计技能组（长期资产 Z-20，对应所内科目 1641 / 程序库 Z1641）。执行使用权资产明细表编制与核对、新租赁准则衔接方法与控制评价、衔接资本承诺、租赁负债与留存收益调整检查、新租赁准则衔接披露检查等实质性程序，输出四段式制式工作底稿。当执行使用权资产（1641科目）审计程序、编制使用权资产底稿或复核使用权资产工作时使用。",
+      "variant": "skill-group",
+      "path": "skills/z-20-right-of-use-assets",
+      "hasSkillMd": true,
+      "hasChangelog": true,
+      "counts": {
+        "procedures": 9,
+        "templates": 2,
+        "tests": 8,
+        "scripts": 0,
+        "rules": 0,
+        "references": 0,
+        "roles": 0
+      },
+      "tools": [
+        "balance_confirm",
+        "recalc_check",
+        "rule_check",
+        "sampling_draw",
+        "threshold_flag"
+      ]
+    },
+    {
+      "id": "z-21-intangible-assets",
+      "name": "z-21-intangible-assets",
+      "version": "1.0.0",
+      "description": "无形资产审计技能组（长期资产 Z-21，对应所内科目 1701/1702/1703 / 程序库 Z1701+Z1702+Z1703）。执行无形资产及累计摊销、减值准备明细表编制与核对、无形资产成本、摊销与研发预算实质性分析、无形资产权属、存在性与受益期限检查、无形资产新增检查等实质性程序，输出四段式制式工作底稿。当执行无形资产（1701/1702/1703科目）审计程序、编制无形资产底稿或复核无形资产工作时使用。",
+      "variant": "skill-group",
+      "path": "skills/z-21-intangible-assets",
+      "hasSkillMd": true,
+      "hasChangelog": true,
+      "counts": {
+        "procedures": 11,
+        "templates": 2,
+        "tests": 8,
+        "scripts": 0,
+        "rules": 0,
+        "references": 0,
+        "roles": 0
+      },
+      "tools": [
+        "balance_confirm",
+        "recalc_check",
+        "rule_check",
+        "sampling_draw",
+        "threshold_flag"
+      ]
+    },
+    {
+      "id": "z-22-goodwill",
+      "name": "z-22-goodwill",
+      "version": "1.0.0",
+      "description": "商誉审计技能组（长期资产 Z-22，对应所内科目 1711 / 程序库 Z1711）。执行商誉及减值准备明细表编制与核对、商誉审计工作簿强制核对、商誉年度减值测试、企业合并形成商誉检查等实质性程序，输出四段式制式工作底稿。当执行商誉（1711科目）审计程序、编制商誉底稿或复核商誉工作时使用。",
+      "variant": "skill-group",
+      "path": "skills/z-22-goodwill",
+      "hasSkillMd": true,
+      "hasChangelog": true,
+      "counts": {
+        "procedures": 5,
+        "templates": 2,
+        "tests": 8,
+        "scripts": 0,
+        "rules": 0,
+        "references": 0,
+        "roles": 0
+      },
+      "tools": [
+        "balance_confirm",
+        "recalc_check",
+        "rule_check",
+        "threshold_flag"
+      ]
+    },
+    {
+      "id": "z-23-long-term-deferred-expenses",
+      "name": "z-23-long-term-deferred-expenses",
+      "version": "1.0.0",
+      "description": "长期待摊费用审计技能组（长期资产 Z-23，对应所内科目 1801 / 程序库 Z1801）。执行长期待摊费用明细表编制与核对、长期待摊费用摊销政策与重算、长期待摊费用抽样检查、长期待摊费用披露检查等实质性程序，输出四段式制式工作底稿。当执行长期待摊费用（1801科目）审计程序、编制长期待摊费用底稿或复核长期待摊费用工作时使用。",
+      "variant": "skill-group",
+      "path": "skills/z-23-long-term-deferred-expenses",
+      "hasSkillMd": true,
+      "hasChangelog": true,
+      "counts": {
+        "procedures": 4,
+        "templates": 2,
+        "tests": 8,
+        "scripts": 0,
+        "rules": 0,
+        "references": 0,
+        "roles": 0
+      },
+      "tools": [
+        "balance_confirm",
+        "recalc_check",
+        "rule_check",
+        "sampling_draw",
+        "threshold_flag"
+      ]
+    },
+    {
+      "id": "z-25-rd-expenditure",
+      "name": "z-25-rd-expenditure",
+      "version": "1.0.0",
+      "description": "研发支出审计技能组（长期资产 Z-25，对应所内科目 5301 / 程序库 Z5301）。执行研发支出明细表编制与核对、研发支出增加检查、研发支出减少与结转检查、研发支出截止测试等实质性程序，输出四段式制式工作底稿。当执行研发支出（5301科目）审计程序、编制研发支出底稿或复核研发支出工作时使用。",
+      "variant": "skill-group",
+      "path": "skills/z-25-rd-expenditure",
+      "hasSkillMd": true,
+      "hasChangelog": true,
+      "counts": {
+        "procedures": 6,
+        "templates": 2,
+        "tests": 8,
+        "scripts": 0,
+        "rules": 0,
+        "references": 0,
+        "roles": 0
+      },
+      "tools": [
+        "balance_confirm",
         "recalc_check",
         "rule_check",
         "sampling_draw",

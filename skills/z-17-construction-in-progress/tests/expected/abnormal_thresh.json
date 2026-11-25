@@ -1,0 +1,9 @@
+{
+  "type": "abnormal",
+  "desc": "存在大额在建工程项目命中阈值，须触发关注程序",
+  "expect": {
+    "markers": [
+      "anomaly:threshold"
+    ]
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "skill_id": "z-16-fixed-assets",
+  "name": "长期资产·固定资产",
+  "version": "1.0.0",
+  "owner_role": "审计助理",
+  "cycle": "Z",
+  "group_code": "Z",
+  "risk_level": "高",
+  "description": "执行固定资产及累计折旧、减值准备明细核对、实质性分析、新增处置、权属、监盘、闲置与抵押、折旧重算、减值测试和披露检查。",
+  "procedures": [
+    {
+      "id": "P01",
+      "name": "固定资产及折旧减值明细表编制与核对",
+      "tools": [
+        "recalc_check",
+        "balance_confirm"
+      ]
+    },
+    {
+      "id": "P02",
+      "name": "固定资产原值、折旧及减值率实质性分析",
+      "tools": [
+        "recalc_check",
+        "threshold_flag"
+      ]
+    },
+    {
+      "id": "P03",
+      "name": "固定资产新增检查",
+      "tools": [
+        "sampling_draw"
+      ]
+    },
+    {
+      "id": "P04",
+      "name": "固定资产处置检查",
+      "tools": [
+        "sampling_draw"
+      ]
+    },
+    {
+      "id": "P05",
+      "name": "固定资产重要项目与权属检查",
+      "tools": [
+        "sampling_draw"
+      ]
+    },
+    {
+      "id": "P06",
+      "name": "固定资产监盘与账实核对",
+      "tools": [
+        "sampling_draw"
+      ],
+      "human": true
+    },
+    {
+      "id": "P07",
+      "name": "持有待售、资产变更会议记录与维修费测试",
+      "tools": [
+        "sampling_draw",
+        "threshold_flag"
+      ]
+    },
+    {
+      "id": "P08",
+      "name": "弃置费用与固定资产重估检查",
+      "tools": [
+        "recalc_check"
+      ]
+    },
+    {
+      "id": "P09",
+      "name": "闲置资产、保险、关联交易与抵押担保检查",
+      "tools": [
+        "rule_check",
+        "threshold_flag"
+      ]
+    },
+    {
+      "id": "P10",
+      "name": "累计折旧计提准确性与费用分配检查",
+      "tools": [
+        "recalc_check",
+        "threshold_flag"
+      ]
+    },
+    {
+      "id": "P11",
+      "name": "固定资产减值迹象与减值测试",
+      "tools": [
+        "recalc_check"
+      ],
+      "human": true
+    },
+    {
+      "id": "P12",
+      "name": "固定资产披露检查",
+      "tools": [
+        "rule_check"
+      ]
+    }
+  ],
+  "quality_gate": {
+    "required_coverage_pct": 100
+  }
+}

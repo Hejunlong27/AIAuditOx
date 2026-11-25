@@ -1,0 +1,9 @@
+{
+  "type": "abnormal",
+  "desc": "固定资产明细加计与账面差 0.01 元，须查明并说明",
+  "expect": {
+    "markers": [
+      "anomaly:recalc"
+    ]
+  }
+}

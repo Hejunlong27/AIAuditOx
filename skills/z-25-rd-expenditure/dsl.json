@@ -1,0 +1,62 @@
+{
+  "skill_id": "z-25-rd-expenditure",
+  "name": "长期资产·研发支出",
+  "version": "1.0.0",
+  "owner_role": "审计助理",
+  "cycle": "Z",
+  "group_code": "Z",
+  "risk_level": "高",
+  "description": "执行研发支出明细核对、增加减少、截止测试、资本化条件、费用化结转和披露检查。",
+  "procedures": [
+    {
+      "id": "P01",
+      "name": "研发支出明细表编制与核对",
+      "tools": [
+        "recalc_check",
+        "balance_confirm"
+      ]
+    },
+    {
+      "id": "P02",
+      "name": "研发支出增加检查",
+      "tools": [
+        "sampling_draw",
+        "recalc_check"
+      ]
+    },
+    {
+      "id": "P03",
+      "name": "研发支出减少与结转检查",
+      "tools": [
+        "recalc_check",
+        "sampling_draw"
+      ]
+    },
+    {
+      "id": "P04",
+      "name": "研发支出截止测试",
+      "tools": [
+        "sampling_draw"
+      ]
+    },
+    {
+      "id": "P05",
+      "name": "研发支出资本化条件与内容合理性检查",
+      "tools": [
+        "recalc_check",
+        "threshold_flag"
+      ],
+      "human": true
+    },
+    {
+      "id": "P06",
+      "name": "研发支出披露检查",
+      "tools": [
+        "rule_check"
+      ]
+    }
+  ],
+  "quality_gate": {
+    "required_coverage_pct": 100
+  }
+}

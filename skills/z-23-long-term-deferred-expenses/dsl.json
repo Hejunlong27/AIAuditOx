@@ -1,0 +1,45 @@
+{
+  "skill_id": "z-23-long-term-deferred-expenses",
+  "name": "长期资产·长期待摊费用",
+  "version": "1.0.0",
+  "owner_role": "审计助理",
+  "cycle": "Z",
+  "group_code": "Z",
+  "risk_level": "中",
+  "description": "执行长期待摊费用明细核对、摊销政策与重算、抽样检查和披露检查。",
+  "procedures": [
+    {
+      "id": "P01",
+      "name": "长期待摊费用明细表编制与核对",
+      "tools": [
+        "recalc_check",
+        "balance_confirm"
+      ]
+    },
+    {
+      "id": "P02",
+      "name": "长期待摊费用摊销政策与重算",
+      "tools": [
+        "recalc_check",
+        "threshold_flag"
+      ]
+    },
+    {
+      "id": "P03",
+      "name": "长期待摊费用抽样检查",
+      "tools": [
+        "sampling_draw"
+      ]
+    },
+    {
+      "id": "P04",
+      "name": "长期待摊费用披露检查",
+      "tools": [
+        "rule_check"
+      ]
+    }
+  ],
+  "quality_gate": {
+    "required_coverage_pct": 100
+  }
+}

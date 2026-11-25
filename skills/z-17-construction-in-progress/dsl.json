@@ -1,0 +1,61 @@
+{
+  "skill_id": "z-17-construction-in-progress",
+  "name": "长期资产·在建工程",
+  "version": "1.0.0",
+  "owner_role": "审计助理",
+  "cycle": "Z",
+  "group_code": "Z",
+  "risk_level": "高",
+  "description": "执行在建工程明细核对、增加减少、转固、实地检查、减值、借款费用资本化、项目成本测试和披露检查。",
+  "procedures": [
+    {
+      "id": "P01",
+      "name": "在建工程明细表编制与核对",
+      "tools": [
+        "recalc_check",
+        "balance_confirm"
+      ]
+    },
+    {
+      "id": "P02",
+      "name": "在建工程本期增加检查",
+      "tools": [
+        "sampling_draw"
+      ]
+    },
+    {
+      "id": "P03",
+      "name": "在建工程减少与转固检查",
+      "tools": [
+        "recalc_check",
+        "sampling_draw"
+      ]
+    },
+    {
+      "id": "P04",
+      "name": "在建工程实地检查与减值评估",
+      "tools": [
+        "recalc_check"
+      ],
+      "human": true
+    },
+    {
+      "id": "P05",
+      "name": "借款费用资本化与在建工程项目成本测试",
+      "tools": [
+        "recalc_check",
+        "threshold_flag"
+      ]
+    },
+    {
+      "id": "P06",
+      "name": "在建工程披露检查",
+      "tools": [
+        "rule_check"
+      ]
+    }
+  ],
+  "quality_gate": {
+    "required_coverage_pct": 100
+  }
+}

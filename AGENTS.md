@@ -24,7 +24,7 @@ AIAuditOx 把审计程序库逐条拆解成**可复用、可组合、可扩展�
 - 契约、Registry、Executor 与能力三态位于 `agent/tools/`。
 - 中心 Node 工具在统一工作区的 `../skill-tools/auditox-tools`，经固定白名单 JSON Lines 桥调用。
 - Python 公共能力在统一工作区的 `../skill-tools/auditox-python-core`。
-- 生产技能事实源在统一工作区的 `../skill-library`；仓库内 `skills/` 是 31 包测试 fixture。
+- 生产技能事实源在统一工作区的 `../skill-library`；仓库内 `skills/` 是 40 包测试 fixture。
 - 单独 clone 本仓库时，依赖统一工作区兄弟目录的集成测试会自动跳过；本地统一工作区中必须实际执行。
 - 文件工具必须提供 `workspace_root`，路径越界或工具返回 `ok:false` 时转 `NEED_HUMAN`。
 
@@ -33,9 +33,9 @@ AIAuditOx 把审计程序库逐条拆解成**可复用、可组合、可扩展�
 ## 2. 目录结构
 
 ```
-skills/                        31 个技能包，一包一目录
+skills/                        40 个技能包，一包一目录
 ├── auditox-wp-standard/       ★ 全局底稿制式，编制任何底稿前必须加载
-├── z-*-*/ f-*-*/ s-*-*/       26 个科目技能组（资产 / 负债 / 损益）
+├── z-*-*/ f-*-*/ s-*-*/       35 个科目技能组（资产 / 负债 / 损益）
 ├── heavy-asset-financial-analysis/   总控型（roles/ 子技能）
 ├── financial-statement-analysis/     工具型（scripts/ + rules/）
 └── doc-ocr-extract/                  工具型（原始凭证 → 结构化输入）
@@ -117,3 +117,4 @@ python tools/validate_skills.py  # 校验结构、frontmatter、程序卡引用
 - 保持 `skills/` 为纯内容层，运行时通过 `registry/skills.json` 发现技能
 
 **约束**：新增运行时不得把业务逻辑写进 `skills/`；技能包必须能被任意 agent 直接读取使用（无运行时也能工作）。
+

@@ -1,0 +1,9 @@
+{
+  "type": "abnormal",
+  "desc": "长期待摊费用明细加计与账面差 0.01 元，须查明并说明",
+  "expect": {
+    "markers": [
+      "anomaly:recalc"
+    ]
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "skill_id": "z-20-right-of-use-assets",
+  "name": "长期资产·使用权资产",
+  "version": "1.0.0",
+  "owner_role": "审计助理",
+  "cycle": "Z",
+  "group_code": "Z",
+  "risk_level": "高",
+  "description": "执行使用权资产明细核对、新租赁准则衔接、新租赁识别、租赁付款额与折现率、租赁变更、折旧减值与披露检查。",
+  "procedures": [
+    {
+      "id": "P01",
+      "name": "使用权资产明细表编制与核对",
+      "tools": [
+        "recalc_check",
+        "balance_confirm"
+      ]
+    },
+    {
+      "id": "P02",
+      "name": "新租赁准则衔接方法与控制评价",
+      "tools": [
+        "sampling_draw",
+        "recalc_check"
+      ]
+    },
+    {
+      "id": "P03",
+      "name": "衔接资本承诺、租赁负债与留存收益调整检查",
+      "tools": [
+        "recalc_check",
+        "threshold_flag"
+      ]
+    },
+    {
+      "id": "P04",
+      "name": "新租赁准则衔接披露检查",
+      "tools": [
+        "rule_check"
+      ]
+    },
+    {
+      "id": "P05",
+      "name": "新签租赁识别与完整性检查",
+      "tools": [
+        "sampling_draw",
+        "threshold_flag"
+      ]
+    },
+    {
+      "id": "P06",
+      "name": "租赁付款额与使用权资产初始计量检查",
+      "tools": [
+        "recalc_check",
+        "sampling_draw"
+      ]
+    },
+    {
+      "id": "P07",
+      "name": "租赁折现率与租赁负债摊销检查",
+      "tools": [
+        "recalc_check",
+        "threshold_flag"
+      ]
+    },
+    {
+      "id": "P08",
+      "name": "租赁变更检查",
+      "tools": [
+        "threshold_flag",
+        "sampling_draw"
+      ]
+    },
+    {
+      "id": "P09",
+      "name": "使用权资产披露检查",
+      "tools": [
+        "rule_check"
+      ]
+    }
+  ],
+  "quality_gate": {
+    "required_coverage_pct": 100
+  }
+}

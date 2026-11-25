@@ -1,0 +1,99 @@
+{
+  "skill_id": "z-21-intangible-assets",
+  "name": "长期资产·无形资产",
+  "version": "1.0.0",
+  "owner_role": "审计助理",
+  "cycle": "Z",
+  "group_code": "Z",
+  "risk_level": "高",
+  "description": "执行无形资产及累计摊销、减值准备明细核对、分析程序、权属、新增处置、完整性、研发资本化、摊销重算、减值测试、BOT和披露检查。",
+  "procedures": [
+    {
+      "id": "P01",
+      "name": "无形资产及累计摊销、减值准备明细表编制与核对",
+      "tools": [
+        "recalc_check",
+        "balance_confirm"
+      ]
+    },
+    {
+      "id": "P02",
+      "name": "无形资产成本、摊销与研发预算实质性分析",
+      "tools": [
+        "recalc_check",
+        "threshold_flag"
+      ]
+    },
+    {
+      "id": "P03",
+      "name": "无形资产权属、存在性与受益期限检查",
+      "tools": [
+        "sampling_draw"
+      ]
+    },
+    {
+      "id": "P04",
+      "name": "无形资产新增检查",
+      "tools": [
+        "sampling_draw"
+      ]
+    },
+    {
+      "id": "P05",
+      "name": "无形资产处置检查",
+      "tools": [
+        "sampling_draw",
+        "recalc_check"
+      ]
+    },
+    {
+      "id": "P06",
+      "name": "无形资产完整性检查",
+      "tools": [
+        "rule_check",
+        "threshold_flag"
+      ]
+    },
+    {
+      "id": "P07",
+      "name": "内部开发无形资产资本化与会计政策检查",
+      "tools": [
+        "recalc_check"
+      ]
+    },
+    {
+      "id": "P08",
+      "name": "累计摊销计提准确性与摊销政策检查",
+      "tools": [
+        "recalc_check",
+        "threshold_flag"
+      ]
+    },
+    {
+      "id": "P09",
+      "name": "无形资产减值迹象与减值测试",
+      "tools": [
+        "recalc_check"
+      ],
+      "human": true
+    },
+    {
+      "id": "P10",
+      "name": "BOT特许经营权无形资产检查",
+      "tools": [
+        "sampling_draw",
+        "recalc_check"
+      ]
+    },
+    {
+      "id": "P11",
+      "name": "无形资产披露检查",
+      "tools": [
+        "rule_check"
+      ]
+    }
+  ],
+  "quality_gate": {
+    "required_coverage_pct": 100
+  }
+}

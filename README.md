@@ -28,7 +28,7 @@
 
 ## 技能清单
 
-**31 个技能包 · 179 份程序卡文档**（数字由 `tools/build_index.py` 生成，以 `registry/skills.json` 为准）
+**40 个技能包 · 243 份程序卡文档**（数字由 `tools/build_index.py` 生成，以 `registry/skills.json` 为准）
 
 ### 全局规范（1）
 
@@ -120,9 +120,9 @@ cp -r AIAuditOx/skills/* ~/.claude/skills/        # Claude Code
 ## 目录结构
 
 ```
-skills/                    31 个技能包
+skills/                    40 个技能包
 ├── auditox-wp-standard/   全局底稿制式（强制）
-├── z-*/ f-*/ s-*/         26 个科目技能组（SKILL.md + dsl.json + procedures/）
+├── z-*/ f-*/ s-*/         35 个科目技能组（SKILL.md + dsl.json + procedures/）
 └── */                     辅助分析类（总控型 / 工具型）
 registry/skills.json       技能索引（自动生成，勿手改）
 docs/                      架构与技能规范
@@ -214,7 +214,7 @@ Runtime 会自动读取 CSV/Excel、规范化字段并生成工具调用，不�
 [`docs/development/skill-adapters.md`](docs/development/skill-adapters.md)。
 
 生产 CLI 默认消费统一工作区根目录的 `../skill-library/`（当前 33 包），仓库内 `skills/`
-只保留为 31 包隔离测试 fixture。技能事实源变化后重建 Runtime 索引：
+只保留为 40 包隔离测试 fixture。技能事实源变化后重建 Runtime 索引：
 
 ```powershell
 python tools/build_index.py --skills-dir ../skill-library --out registry/skill-library.json
@@ -251,3 +251,4 @@ python -m venv .venv && ./.venv/Scripts/python.exe -m pip install -e ".[dev]"
 ---
 
 © 审小牛 AIAuditOx · 底稿制式与技能库版权归作者所有
+

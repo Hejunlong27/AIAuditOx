@@ -1,0 +1,9 @@
+{
+  "type": "abnormal",
+  "desc": "存在大额长期待摊费用项目命中阈值，须触发关注程序",
+  "expect": {
+    "markers": [
+      "anomaly:threshold"
+    ]
+  }
+}

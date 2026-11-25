@@ -1,0 +1,53 @@
+{
+  "skill_id": "z-19-fixed-asset-disposal",
+  "name": "长期资产·固定资产清理",
+  "version": "1.0.0",
+  "owner_role": "审计助理",
+  "cycle": "Z",
+  "group_code": "Z",
+  "risk_level": "中",
+  "description": "执行固定资产清理明细核对、处置发生与授权、清理收入费用、非货币性转出、长期挂账和披露检查。",
+  "procedures": [
+    {
+      "id": "P01",
+      "name": "固定资产清理明细表编制与核对",
+      "tools": [
+        "recalc_check",
+        "balance_confirm"
+      ]
+    },
+    {
+      "id": "P02",
+      "name": "固定资产清理发生、转销与损益检查",
+      "tools": [
+        "sampling_draw",
+        "recalc_check"
+      ]
+    },
+    {
+      "id": "P03",
+      "name": "非货币性转出固定资产清理检查",
+      "tools": [
+        "sampling_draw",
+        "threshold_flag"
+      ]
+    },
+    {
+      "id": "P04",
+      "name": "固定资产清理长期挂账检查",
+      "tools": [
+        "threshold_flag"
+      ]
+    },
+    {
+      "id": "P05",
+      "name": "固定资产清理披露检查",
+      "tools": [
+        "rule_check"
+      ]
+    }
+  ],
+  "quality_gate": {
+    "required_coverage_pct": 100
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "skill_id": "z-18-construction-materials",
+  "name": "长期资产·工程物资",
+  "version": "1.0.0",
+  "owner_role": "审计助理",
+  "cycle": "Z",
+  "group_code": "Z",
+  "risk_level": "中",
+  "description": "执行工程物资明细核对、实地检查、采购授权、完工剩余物资转存货、关联交易、减值与披露检查。",
+  "procedures": [
+    {
+      "id": "P01",
+      "name": "工程物资明细表编制与核对",
+      "tools": [
+        "recalc_check",
+        "balance_confirm"
+      ]
+    },
+    {
+      "id": "P02",
+      "name": "工程物资实地检查与呆滞物资识别",
+      "tools": [
+        "sampling_draw"
+      ],
+      "human": true
+    },
+    {
+      "id": "P03",
+      "name": "工程物资采购授权与原始凭证检查",
+      "tools": [
+        "sampling_draw"
+      ]
+    },
+    {
+      "id": "P04",
+      "name": "完工剩余工程物资转存货及增值税检查",
+      "tools": [
+        "sampling_draw",
+        "recalc_check"
+      ]
+    },
+    {
+      "id": "P05",
+      "name": "工程物资关联交易与减值检查",
+      "tools": [
+        "rule_check",
+        "threshold_flag"
+      ]
+    },
+    {
+      "id": "P06",
+      "name": "工程物资披露检查",
+      "tools": [
+        "rule_check"
+      ]
+    }
+  ],
+  "quality_gate": {
+    "required_coverage_pct": 100
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "skill_id": "z-22-goodwill",
+  "name": "长期资产·商誉",
+  "version": "1.0.0",
+  "owner_role": "审计助理",
+  "cycle": "Z",
+  "group_code": "Z",
+  "risk_level": "高",
+  "description": "执行商誉明细核对、商誉审计工作簿、年度减值测试、企业合并形成商誉和披露检查。",
+  "procedures": [
+    {
+      "id": "P01",
+      "name": "商誉及减值准备明细表编制与核对",
+      "tools": [
+        "recalc_check",
+        "balance_confirm"
+      ]
+    },
+    {
+      "id": "P02",
+      "name": "商誉审计工作簿强制核对",
+      "tools": [
+        "rule_check"
+      ]
+    },
+    {
+      "id": "P03",
+      "name": "商誉年度减值测试",
+      "tools": [
+        "recalc_check"
+      ],
+      "human": true
+    },
+    {
+      "id": "P04",
+      "name": "企业合并形成商誉检查",
+      "tools": [
+        "recalc_check",
+        "threshold_flag"
+      ]
+    },
+    {
+      "id": "P05",
+      "name": "商誉披露检查",
+      "tools": [
+        "rule_check"
+      ]
+    }
+  ],
+  "quality_gate": {
+    "required_coverage_pct": 100
+  }
+}
