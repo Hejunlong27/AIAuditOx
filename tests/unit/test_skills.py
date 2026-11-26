@@ -11,15 +11,14 @@ from pathlib import Path
 import pytest
 
 from agent.models.enums import ExecutionMode
+from agent.security.workspace import SecurityError
 from agent.skills import SkillLoader, SkillRegistry, SkillRouter
 from agent.skills.parser import (
-    DSLParser,
     DispatchTableParser,
+    DSLParser,
     infer_policy,
-    merge_procedure,
     parse_frontmatter,
 )
-from agent.security.workspace import SecurityError
 
 pytestmark = pytest.mark.unit
 
@@ -37,14 +36,14 @@ def loader(repo_root: Path, registry: SkillRegistry) -> SkillLoader:
 
 
 class TestRegistry:
-    def test_loads_31_skills(self, registry: SkillRegistry) -> None:
-        assert len(registry.list_ids()) == 31
+    def test_loads_40_skills(self, registry: SkillRegistry) -> None:
+        assert len(registry.list_ids()) == 40
 
     def test_variant_counts(self, registry: SkillRegistry) -> None:
         by_variant = {}
         for s in registry.list_skills():
             by_variant[s.variant] = by_variant.get(s.variant, 0) + 1
-        assert by_variant["skill-group"] == 26
+        assert by_variant["skill-group"] == 35
         assert by_variant["standard"] == 1
 
     def test_get_unknown_raises(self, registry: SkillRegistry) -> None:
@@ -108,9 +107,7 @@ class TestDSLParser:
 
     def test_duplicate_procedure_id_rejected(self) -> None:
         with pytest.raises(ValueError, match="程序 ID 重复"):
-            DSLParser().normalize(
-                {"procedures": [{"id": "P01", "name": "a"}, {"id": "P01", "name": "b"}]}
-            )
+            DSLParser().normalize({"procedures": [{"id": "P01", "name": "a"}, {"id": "P01", "name": "b"}]})
 
     def test_missing_procedures_ok(self) -> None:
         assert DSLParser().normalize({})["procedures"] == []
