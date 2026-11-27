@@ -1,0 +1,73 @@
+# AuditOx product overlay for the DeepSeek Harness web profile.
+# Apply with:
+#   dsh --profile web --patch ./auditox/cordis.patch.yml
+
+- id: agent-preset-registry
+  config:
+    default: auditox
+
+- id: ui-brand-official
+  disabled: true
+
+- id: preset-standard
+  name: '@deepseek-ai/dsh-agent-preset'
+  config:
+    id: auditox
+    name: 审小牛引导审计
+    description: 以财务报表和账套资料为起点，生成计划、重要性、程序、控制测试、实质性底稿与复核包。
+    order: 0
+    plugins:
+      - id: persona
+        name: '@deepseek-ai/dsh-persona'
+        config:
+          prefix: |-
+            You are 审小牛 AuditOx, a Chinese annual-audit project assistant working inside a local data-controlled Harness.
+            Load the global workpaper standard before drafting any workpaper. Separate facts, inferences and items awaiting client confirmation.
+            Never fabricate amounts, evidence, control existence, laws or audit conclusions. Deterministic calculations and evidence remain authoritative.
+            Use AuditOx project tools for file registration, project state and guided stages. The final judgment belongs to the audit engagement team and signing partner.
+      - id: time-context
+        name: '@deepseek-ai/dsh-time-context'
+      - id: skill-filesystem
+        name: '@deepseek-ai/dsh-skill-filesystem'
+        config:
+          customSkillDirs:
+            - 'D:/编程/AIAuditOx/skill-library'
+      - id: tool-skill
+        name: '@deepseek-ai/dsh-tool-skill'
+      - id: tool-auditox-runtime
+        name: '@deepseek-ai/dsh-tool-auditox-runtime'
+      - id: tool-ask-user
+        name: '@deepseek-ai/dsh-tool-ask-user'
+      - id: tool-todo
+        name: '@deepseek-ai/dsh-tool-todo'
+        config:
+          allowParallelInProgress: false
+      - id: tool-office
+        name: '@deepseek-ai/dsh-tool-office'
+      - id: present
+        name: '@deepseek-ai/dsh-tool-present'
+      - id: planning
+        name: cordis:group
+        group: true
+        isolate:
+          planMode: true
+        config:
+          - id: plan-mode
+            name: '@deepseek-ai/dsh-plan-mode'
+            config:
+              section: |-
+                你现在处于审计计划模式。先厘清项目范围、报表口径、已知资料和待补资料，再形成可复核的审计计划。不得编造金额、审计证据或审计结论。只有项目组确认计划后，才进入实质性执行。
+      - id: compaction
+        name: cordis:group
+        group: true
+        isolate:
+          compaction: true
+        config:
+          - id: compaction-basic
+            name: '@deepseek-ai/dsh-compaction-basic'
+          - id: command-compact
+            name: '@deepseek-ai/dsh-command-compact'
+
+- insert:
+    - id: ui-brand-auditox
+      name: '@deepseek-ai/dsh-client-ui-brand-auditox'

@@ -2,6 +2,8 @@
 
 [English](README.md) | 中文
 
+> **审小牛分支说明**：本 checkout 已加入 AuditOx 品牌、审计 preset、技能目录和 Python Runtime 工具桥。启动方式与边界见 [`auditox/README.zh.md`](auditox/README.zh.md)。
+
 DeepSeek Harness（`dsh`）是由 [DeepSeek AI](https://deepseek.com) 开发的开源 agent harness（智能体框架）。
 
 它构建于**一切皆插件**的架构之上，由 [Cordis](https://github.com/cordiverse/cordis) 驱动，其设计参见论文 [_A Programming Paradigm for Spatiotemporal Composability_](https://arxiv.org/abs/2608.25512)。
