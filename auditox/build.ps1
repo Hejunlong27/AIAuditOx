@@ -6,7 +6,7 @@ $ErrorActionPreference = 'Stop'
 if (Test-Path -LiteralPath $NodeHome) {
   $env:PATH = "$NodeHome;$env:PATH"
 }
-$env:DSH_CLIENT_TITLE = '审小牛 AuditOx Harness'
+$env:DSH_CLIENT_TITLE = '审小牛AIAuditOx HARNESS'
 Write-Host "Node: $(& node --version)"
 Write-Host "pnpm: $(& npx --yes pnpm@11.28.5 --version)"
 & npx --yes pnpm@11.28.5 install --frozen-lockfile

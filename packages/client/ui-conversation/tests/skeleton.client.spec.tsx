@@ -435,8 +435,8 @@ describe('Hero chrome', () => {
   it('renders the English preview badge through the hero locale seat', () => {
     const renderSlot = vi.fn<(key: string, owner: object, opts?: { fallback?: ReactNode }) => ReactNode>(() => null)
     const view = render(<HeroShell t={makeTranslate(en, commonEn)} renderSlot={renderSlot as never} />)
-    expect(view.getByText('Turn statements into reviewable workpapers')).toBeTruthy()
-    expect(view.getByText('AuditOx workspace')).toBeTruthy()
+    expect(view.getByText('Your AI workhorse is here!')).toBeTruthy()
+    expect(view.getByText('AIAUDITOX HARNESS')).toBeTruthy()
     expect(renderSlot).toHaveBeenCalledOnce()
     expect(renderSlot.mock.calls[0]?.[0]).toBe('conversation.hero.brand.mark')
     const brandMarkOwner = renderSlot.mock.calls[0]?.[1]
@@ -451,8 +451,8 @@ describe('Hero chrome', () => {
   it('shows an owner headline instead of the default headline and preview badge', () => {
     const view = render(<HeroShell t={makeTranslate(en, commonEn)} renderSlot={(() => null) as never} headline="Review demo #42" />)
     expect(view.getByText('Review demo #42')).toBeTruthy()
-    expect(view.queryByText('Turn statements into reviewable workpapers')).toBeNull()
-    expect(view.queryByText('AuditOx workspace')).toBeNull()
+    expect(view.queryByText('Your AI workhorse is here!')).toBeNull()
+    expect(view.queryByText('AIAUDITOX HARNESS')).toBeNull()
   })
 })
 
@@ -612,8 +612,8 @@ describe('ConversationRoot resident composer', () => {
     expect(b.slotCalls).not.toContain('conversation.session.header.utilities')
     expect(b.headerFactory).not.toHaveBeenCalled()
     expect(b.slotCalls).not.toContain('conversation.session.header.actions')
-    expect(b.view.getByText('把报表变成可复核底稿')).toBeTruthy()
-    expect(b.view.getByText('审小牛工作台')).toBeTruthy()
+    expect(b.view.getByTestId('hero-headline')).toBeTruthy()
+    expect(b.view.getByText('AIAUDITOX HARNESS')).toBeTruthy()
     expect(b.view.queryByTestId('view-chat')).toBeNull()
     // The same machine-backed textarea is live in the hero, and the
     // persistence mirror stays bound (ConversationSession mounts chrome-hidden
@@ -646,7 +646,7 @@ describe('ConversationRoot resident composer', () => {
     expect(conversationPhase(failed, EMPTY_CONVERSATION_SNAPSHOT)).toBe('engaging')
     const b = mount(failed, undefined, undefined, { summaryBlank: true })
     expect(b.view.container.querySelector('[data-phase]')?.getAttribute('data-phase')).toBe('active')
-    expect(b.view.queryByText('把报表变成可复核底稿')).toBeNull()
+    expect(b.view.queryByTestId('hero-headline')).toBeNull()
   })
 
   it('settling phase: a summary that does not prove the session blank hides the composer while it opens', () => {
@@ -678,7 +678,7 @@ describe('ConversationRoot resident composer', () => {
     // blank the column for the history round-trip.
     const root = b.view.container.querySelector('[data-phase]')
     expect(root?.getAttribute('data-phase')).toBe('hero')
-    expect(b.view.getByText('把报表变成可复核底稿')).toBeTruthy()
+    expect(b.view.getByTestId('hero-headline')).toBeTruthy()
     expect(b.view.getByRole('textbox')).toBeTruthy()
   })
 

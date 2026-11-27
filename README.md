@@ -1,77 +1,39 @@
-# DeepSeek Harness
+# 审小牛AIAuditOx HARNESS
 
-English | [中文](README.zh.md)
+审小牛是面向中国审计项目组的本地优先 AI 审计工作台。它以 Agent Harness 作为底层运行时，把财务报表、账套资料、审计程序、底稿、证据与复核过程组织到同一個本地工作区中。
 
-DeepSeek Harness (`dsh`) is an open-source agent harness developed by [DeepSeek AI](https://deepseek.com).
+## 当前可用能力
 
-It is built on an **everything-is-a-plugin** architecture and powered by [Cordis](https://github.com/cordiverse/cordis), whose design is described in [_A Programming Paradigm for Spatiotemporal Composability_](https://arxiv.org/abs/2608.25512).
+- **审小牛引导审计**：从财务报表和账套资料出发，组织审计计划、重要性、审计程序、控制测试、实质性底稿和复核清单。
+- **审小牛对话审计**：直接讨论报表、风险、程序、资料缺口和复核发现。
+- **本地模型**：检测 CPU、内存、磁盘和显卡，推荐 Ollama 模型，并可在主界面启动或关闭本地推理服务。
+- **视觉识别**：预置 Qwen2.5-VL、MiniCPM-V 等图像模型目录，用于合同、发票、票据和扫描件识别。
+- **技能中心**：读取审小牛 SkillHub 本地镜像，支持查看 `SKILL.md`、安装和卸载技能。
+- **通用工具**：保留 Harness 的工具加载与插件机制，但以审小牛“通用工具”的产品语言呈现。
+- **本地数据边界**：默认不上传客户文件；审计金额、勾稽和计算必须由确定性工具完成。
 
-Documentation: [https://deepseek-harness.github.io/deepseek-harness/](https://deepseek-harness.github.io/deepseek-harness/)
+## 启动
 
-## Developer preview
-
-DeepSeek Harness is in _developer preview_ and iterating rapidly. **THERE WILL BE COMPATIBILITY-BREAKING CHANGES.**
-
-Review the [safety notice](SAFETY.md) before running the project.
-
-## Run
-
-### Run from `npm`
-
-Install `Node.js`, then run:
-
-```sh
-npx @deepseek-ai/dsh web
+```powershell
+cd D:\编程\AIAuditOx\deepseek-harness\auditox
+.\build.ps1
+.\run.ps1
 ```
 
-The command starts the Web UI at `http://127.0.0.1:3080` by default and opens it in the default browser for a local launch. An SSH launch only prints the host URL because the SSH client or editor owns the local forwarded address. Pass `--no-open` to run the server without opening a browser. See [Web UI guide](docs/user/guide/index.md).
+## 设计边界
 
-### Run from source
+- DSH 只作为 Agent Loop、会话、工具注册、审批、沙箱和模型适配的底层运行时。
+- 可见界面采用审小牛独立视觉与交互语言，不复用 DeepSeek 产品品牌。
+- Skill 事实源是 `D:\编程\AIAuditOx\skill-library`，安装后复制到 `DSH_HOME/skills`。
+- 本地模型首选 Ollama；模型目录只登记已经核验可用的标签。
+- 国内镜像用于检索和手动获取，不能伪装成 Ollama 官方拉取链路。
 
-To run from a repository checkout:
+## 开源致谢
 
-```sh
-git clone https://github.com/deepseek-ai/deepseek-harness.git
-cd deepseek-harness
-pnpm install
-pnpm run build
-pnpm dsh web
-```
+审小牛 Harness 基于 DeepSeek 开源的 DeepSeek Harness 项目进行产品化改造。上游项目、MIT 许可证和第三方声明继续保留；详细致谢见 [ACKNOWLEDGEMENTS.zh.md](./ACKNOWLEDGEMENTS.zh.md)。
 
-`pnpm run build` prepares the repository artifacts. `pnpm dsh web` uses those built artifacts without rebuilding.
+## 文档
 
-## Community and support
-
-- Submit feedback or bug reports through [GitHub Discussions](https://github.com/deepseek-ai/deepseek-harness/discussions).
-- Add the [`dsh-plugin`](https://github.com/topics/dsh-plugin) topic to your plugin repository for discoverability.
-- Join <a href="https://discord.gg/4MrtZUhpxg">DeepSeek Harness Discord community</a>.
-
-## Contributing
-
-See [CONTRIBUTING.md](CONTRIBUTING.md).
-
-## Development
-
-Start with the [development guide](docs/development.md) and [architecture documentation](docs/architecture.md).
-
-`pnpm run dev:web` builds, serves, and rebuilds client bundles on source edits in one terminal, and `make help` lists the matching Make targets for Web and Desktop; the guide's application commands section owns the full table.
-
-For agents, follow [AGENTS.md](AGENTS.md).
-
-## Citation
-
-```bibtex
-@misc{deepseek-harness2026,
-  title={DeepSeek Harness: Everything is a Plugin},
-  author={DeepSeek-AI},
-  year={2026},
-  publisher={GitHub},
-  howpublished={\url{https://github.com/deepseek-ai/deepseek-harness}},
-}
-```
-
-## License
-
-[MIT](LICENSE)
-
-Third-party dependencies and their licenses are disclosed in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+- [审小牛AIAuditOx HARNESS 启动说明](./auditox/README.zh.md)
+- [财务数据包与项目数据库架构](./auditox/DATA-PACKAGE-ARCHITECTURE.zh.md)
+- [开源致谢](./ACKNOWLEDGEMENTS.zh.md)

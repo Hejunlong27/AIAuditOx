@@ -53,32 +53,59 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  /* Superscript sits 7 from the title. */
-  column-gap: 7px;
-  row-gap: 4px;
+  column-gap: 11px;
+  row-gap: 8px;
   min-width: 0;
 }
 
+.titleText {
+  color: var(--auditox-text, #0f172a);
+  font-family: var(--dsw-font-family-brand);
+  font-size: clamp(34px, 3vw, 40px);
+  font-weight: 700;
+  letter-spacing: -.045em;
+  line-height: 1.15;
+  white-space: nowrap;
+  text-wrap: balance;
+}
+
+.auditoxHeadlineAccent {
+  display: inline-block;
+  margin-inline: .075em .035em;
+  background: linear-gradient(135deg, #0f172a 0%, #0071e3 58%, #0284c7 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 3px 12px rgba(0, 113, 227, .08));
+}
+
 .previewBadge {
-  align-self: flex-start;
+  align-self: center;
   margin-top: 2px;
-  padding: 1px 7px 0;
-  border: 0.5px solid var(--dsw-alias-interactive-bg-hover);
+  padding: 4px 10px 3px;
+  border: 1px solid rgba(255, 255, 255, .78);
   border-radius: 999px;
   corner-shape: round;
-  background: var(--dsw-alias-state-business-tertiary);
-  color: var(--dsw-alias-label-primary-bluish);
-  font-family: var(--ds-font-family-code);
-  font-size: 12px;
-  line-height: 18px;
-  font-weight: 500;
+  background: linear-gradient(180deg, rgba(255, 255, 255, .86), rgba(241, 245, 249, .66));
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .92) inset, 0 4px 14px rgba(15, 23, 42, .045);
+  color: #64748b;
+  font-family: var(--dsw-font-family);
+  font-size: 9px;
+  line-height: 12px;
+  font-weight: 650;
+  letter-spacing: .08em;
   white-space: nowrap;
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
 }
 
 /* Keep hover detection on a stationary box while the mark moves within it;
    hover rules target the hitbox so a slot-occupant mark swims too. */
 .fishHitbox {
   display: inline-flex;
+  width: 44px;
+  height: 44px;
   flex: none;
   align-items: center;
   justify-content: center;
@@ -89,6 +116,8 @@
    as its headline. */
 .fish {
   display: block;
+  width: 44px;
+  height: 44px;
   overflow: visible;
   transform-origin: 50% 60%;
   color: var(--dsw-alias-label-primary);
@@ -234,4 +263,24 @@
   font-size: 12px;
   line-height: 18px;
   color: var(--dsw-alias-state-error-primary);
+}
+
+body[data-ds-dark-theme] .titleText { color: var(--auditox-text, #f8fafc); }
+body[data-ds-dark-theme] .auditoxHeadlineAccent {
+  background: linear-gradient(135deg, #f8fafc 0%, #60a5fa 58%, #22d3ee 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+body[data-ds-dark-theme] .previewBadge {
+  border-color: rgba(148, 163, 184, .16);
+  background: rgba(30, 41, 59, .62);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .06) inset, 0 5px 18px rgba(0, 0, 0, .18);
+  color: #94a3b8;
+}
+
+@media (max-width: 760px) {
+  .headline { font-size: clamp(28px, 8vw, 34px); }
+  .titleText { font-size: clamp(28px, 8vw, 34px); white-space: normal; text-align: center; }
+  .previewBadge { align-self: center; }
+  .fishHitbox, .fish { width: 36px; height: 36px; }
 }

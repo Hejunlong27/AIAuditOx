@@ -1,64 +1,55 @@
-# 审小牛 AuditOx Harness
+# 审小牛AIAuditOx HARNESS
 
-这是基于官方 `deepseek-ai/deepseek-harness` `0.2.3-alpha.2` 的审小牛产品化分支。
+审小牛AIAuditOx HARNESS 是本地优先的审计工具，底层以 DeepSeek Harness `0.2.3-alpha.2` 为 Agent 运行时，并通过审计领域插件完成产品化改造。对外界面使用审小牛独立品牌，DeepSeek 的开源贡献仅在仓库许可证、第三方声明和致谢文档中保留。
 
-## 设计原则
+## 产品界面
 
-- 不重写 DSH 的 Agent Loop、session、工具注册、审批、沙箱和模型适配器；
-- 审小牛能力通过 bundle patch、client plugin、agent preset 和 tool plugin 扩展；
-- Python `agent-runtime` 继续作为审计项目、资料、证据和底稿领域服务；
-- `skill-library` 是唯一技能事实源，DSH 直接以自定义 skill 根目录加载；
-- 客户数据默认只走本地服务和本地文件。
+- 深色/浅色自适应，默认采用冷白工作区与石墨侧栏。
+- 侧栏按“通用工具、审计自动化、本地模型、技能中心”组织。
+- 首页展示审计路径：项目资料 → 审计计划 → 控制测试 → 实质程序 → 项目复核。
+- 主界面提供本地模型启动/关闭开关。
+- 取消首次打开登录门槛；模型和 API 配置由用户主动进入设置完成。
 
-## 已接入
+## 已接入能力
 
-### 品牌与主题
+### 审小牛模式
 
-`packages/client/ui-brand-auditox` 通过 `ctx.theme.overrideTokens()` 和 UI slots 提供：
+- `审小牛引导审计`：报表与账套驱动的引导式审计流程。
+- `审小牛对话审计`：直接讨论审计问题、资料缺口和复核发现。
 
-- 审小牛侧栏标志与字标；
-- 纸账本式浅色/深色 token；
-- 首页“底稿 / 证据 / 复核”图形层；
-- 审计档案右侧栏类型与 header action；
-- `DSH_CLIENT_TITLE` 产品标题。
+### 本地模型
 
-### 技能
+`packages/extensions/auditox-local-services` 提供：
 
-`auditox/cordis.patch.yml` 将以下目录挂到 DSH `skill-filesystem`：
+- CPU、内存、磁盘、NVIDIA GPU/Windows 显卡检测；
+- Ollama 安装与运行状态检测；
+- 启动、关闭本地推理服务；
+- 按硬件适配度推荐模型；
+- Ollama 一键配置与模型下载；
+- 自定义 OpenAI 兼容模型地址和 API Key；
+- 通过本机网关把“当前本地模型”接入 Agent；
+- 选择 GGUF 文件上传导入，或直接填写本机 GGUF 路径导入；
+- 国内镜像检索链接，并明确区分其与 Ollama 拉取源。
 
-```text
-D:/编程/AIAuditOx/skill-library
-```
+模型目录当前包含已核验的 Qwen3.5 文本模型和 Qwen2.5-VL、MiniCPM-V 视觉模型。默认模型为 `qwen3.5:4b`，本地 OpenAI 兼容入口为 `http://127.0.0.1:11434/v1`。
 
-当前 42/42 个包的 `SKILL.md` frontmatter 均包含 DSH 所需的 `name` 与 `description`。
+### 技能中心
 
-### 审小牛引导 preset
+`packages/client/ui-auditox-workbench` 提供：
 
-`auditox` preset 默认不开放 shell、任意文件系统写和外部 web 工具，先以审计数据和受控工具为主。当前包含：
+- 读取 `D:/编程/AIAuditOx/skill-library` 的本地 SkillHub 镜像；
+- 42 包技能列表、分类和搜索；
+- 点击查看 `SKILL.md`；
+- 安装到 `$DSH_HOME/skills`；
+- 卸载和重新扫描。
 
-- `tool-skill`：加载审小牛技能；
-- `tool-auditox-runtime`：连接本地 Python Runtime；
-- `tool-office`：读取 Office 资料；
-- `tool-ask-user`、`tool-todo`、`plan-mode`、`present`；
-- `compaction`。
+### 数据架构
 
-### Python Runtime 工具桥
+财务数据包、项目数据库和审计模块的统一设计见：
 
-`packages/extensions/tool-auditox-runtime` 注册：
-
-- `auditox_health`
-- `auditox_list_projects`
-- `auditox_create_project`
-- `auditox_list_assets`
-- `auditox_upload_asset`
-- `auditox_start_guided_thread`
-- `auditox_advance_guided_stage`
-
-默认连接 `http://127.0.0.1:8765`，可通过 `AUDITOX_RUNTIME_URL` 覆盖。
+[DATA-PACKAGE-ARCHITECTURE.zh.md](./DATA-PACKAGE-ARCHITECTURE.zh.md)
 
 ## 启动
-
-### 一键启动
 
 ```powershell
 cd D:\编程\AIAuditOx\deepseek-harness\auditox
@@ -66,47 +57,15 @@ cd D:\编程\AIAuditOx\deepseek-harness\auditox
 .\run.ps1
 ```
 
-`run.ps1` 会按需启动本地 Python Runtime，启动 DSH Web UI，并在退出时关闭由它启动的 Runtime。使用 `-NoOpen` 可不自动打开浏览器。
+## 边界
 
-### 手动启动
+- 客户文件默认只在本机流转。
+- 金额、勾稽和计算由确定性工具完成，模型只做分析、解释和草稿。
+- 模型输出不得替代原始证据或项目组结论。
+- 对外发布、网盘上传和 SkillHub 上架仍需项目负责人确认。
 
-#### 1. 启动 Python AuditOx Runtime
+## 开源致谢
 
-```powershell
-cd D:\编程\AIAuditOx\agent-runtime
-.\.venv\Scripts\python.exe -m api.main --port 8765
-```
+上游项目：`deepseek-ai/deepseek-harness`，MIT License，Copyright (c) 2026 DeepSeek。
 
-#### 2. 构建 DSH
-
-DSH 当前要求 Node `^24.22.3 || >=26.13.1`。本机验证时使用 Node `26.13.1`。
-
-```powershell
-cd D:\编程\AIAuditOx\deepseek-harness
-$env:DSH_CLIENT_TITLE = '审小牛 AuditOx Harness'
-pnpm install
-pnpm run build
-```
-
-#### 3. 启动带审小牛 overlay 的 Web UI
-
-```powershell
-$env:DSH_HOME = 'D:\编程\AIAuditOx\deepseek-harness\.tmp\dsh-home-auditox'
-pnpm dsh --profile web --patch ./auditox/cordis.patch.yml --no-open --port 3080
-```
-
-浏览器打开命令打印的带 token URL。
-
-## 许可证
-
-上游 DSH 为 MIT License，Copyright (c) 2026 DeepSeek。衍生分发必须保留上游许可证和第三方声明。本分支新增的审小牛代码沿用仓库约定，并在发布前单独复核许可与第三方依赖。
-
-## 当前边界
-
-这是可运行的产品化技术验证，不是最终安装包：
-
-- 尚未制作 Windows 桌面安装器；
-- 尚未把 Python Runtime 作为 DSH 子进程自动拉起；
-- 审计档案右侧栏目前是工作台骨架，后续接入真实项目、阶段和证据数据；
-- 尚未配置真实模型 API 做端到端审计对话；
-- 需要跟随 DSH 开发者预览版升级并持续做插件兼容测试。
+完整说明见仓库根目录 [ACKNOWLEDGEMENTS.zh.md](../ACKNOWLEDGEMENTS.zh.md)。

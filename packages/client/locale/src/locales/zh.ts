@@ -32,7 +32,7 @@ export const zh = {
   'expand': '展开',
   'back': '返回',
   'brand.localBuild': '审小牛 AuditOx Harness',
-  'workspace.defaultName': '默认工作区',
+  'workspace.defaultName': '默认审计项目',
   'unknown': '未知',
   'none': '无',
   'truncated': '已截断',

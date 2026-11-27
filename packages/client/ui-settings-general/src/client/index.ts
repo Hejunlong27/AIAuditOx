@@ -42,7 +42,6 @@ import { CloseLabel, HeaderContent, TriggerContent } from './chrome.tsx'
 import { GeneralSection } from './GeneralSection.tsx'
 import { SettingsSectionView } from './SettingsSectionView.tsx'
 import { CurrentVersionRow } from './CurrentVersionRow.tsx'
-import { DeveloperToolsRow, type DeveloperToolsRowInjected } from './DeveloperToolsRow.tsx'
 import { SettingsDocumentAction } from './SettingsDocumentAction.tsx'
 import type { SettingsDocumentActionInjected } from './SettingsDocumentAction.tsx'
 import { SettingsDocumentStore } from './settings-document-store.ts'
@@ -83,21 +82,6 @@ export const inject = ['slots', 'locale', 'connection', 'remote', 'remote.settin
  * @param ctx - client root context.
  */
 export function apply(ctx: ClientContext): void {
-  ctx.slots.inject('settings.general.item', () => ctx.slots.register({
-    name: 'settings.general.item', id: 'developer-tools', order: 15, locale: NS,
-    inject: (): DeveloperToolsRowInjected => ({
-      hooks: { developerTools: ctx.configForms.developerTools.enabled },
-      setEnabled: async (enabled) => {
-        const settings = ctx.configForms.get<{ enabled: boolean }>('ui-settings')
-        const previous = settings.getSnapshot().value?.enabled
-        const timestamp = Date.now()
-        await ctx.configForms.developerTools.setEnabled(enabled)
-        if (previous !== undefined && previous !== enabled && settings.getSnapshot().value?.enabled === enabled) {
-          ctx.get('productAnalytics')?.track('code_work_view_toggle', { is_enabled: enabled }, timestamp)
-        }
-      },
-    }),
-  }, DeveloperToolsRow))
   // Version information follows the core preferences.
   ctx.slots.inject('settings.general.item', () => ctx.slots.register({
     name: 'settings.general.item', id: 'current-version', order: 100, locale: NS,

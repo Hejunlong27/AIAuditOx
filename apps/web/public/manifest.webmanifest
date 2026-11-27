@@ -1,11 +1,11 @@
 {
-  "name": "DeepSeek Harness",
-  "short_name": "DSH",
+  "name": "审小牛AIAuditOx HARNESS",
+  "short_name": "审小牛",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#ffffff",
+  "background_color": "#f5f5f7",
+  "theme_color": "#a74437",
   "icons": [
     {
       "src": "icon-192.png",

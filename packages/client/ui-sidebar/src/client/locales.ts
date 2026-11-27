@@ -4,12 +4,12 @@
 export const zh = {
   'panels.unpinTooltip': '从左侧栏取消固定',
   'panels.unpin': '从侧边栏取消固定{name}',
-  'session.new': '新会话',
-  'session.new.label': '新建会话',
+  'session.new': '新审计任务',
+  'session.new.label': '新建审计任务',
   'toggle.open': '打开侧边栏',
   'toggle.collapse': '收起侧边栏',
-  'panels.label': '全局面板',
-  'navigation.label': '导航',
+  'panels.label': '审计功能',
+  'navigation.label': '审计导航',
   'panels.more': '更多',
   'version.copied': '版本号复制成功',
 } satisfies Record<string, string>

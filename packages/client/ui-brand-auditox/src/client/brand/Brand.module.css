@@ -1,38 +1,25 @@
-.seal {
-  fill: var(--dsw-alias-brand-primary);
-}
-
-.rule {
-  fill: none;
-  stroke: var(--dsw-alias-bg-layer-1);
-  stroke-width: 2.5;
-  stroke-linecap: square;
-}
-
-.check {
-  fill: var(--dsw-alias-bg-layer-1);
-}
-
 .name {
-  display: inline-flex;
+  display: flex;
+  min-height: 38px;
   flex-direction: column;
-  min-width: 0;
-  line-height: 1;
-  color: inherit;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 3px;
 }
-
 .zh {
+  color: var(--auditox-text, #0f172a);
   font-family: var(--dsw-font-family-brand);
-  font-size: 18px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
+  font-size: 20.5px;
+  font-weight: 750;
+  letter-spacing: -.035em;
+  line-height: 20px;
 }
-
 .en {
-  margin-top: 3px;
-  font-family: var(--ds-font-family-code);
-  font-size: 8px;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  opacity: 0.62;
+  color: var(--auditox-text-tertiary, #64748b);
+  font-size: 8.5px;
+  font-weight: 650;
+  letter-spacing: .095em;
+  line-height: 10px;
+  white-space: nowrap;
 }
+.mark { display: block; overflow: visible; }

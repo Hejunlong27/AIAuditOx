@@ -133,6 +133,8 @@ function HeroFish({ hovering }: { hovering: boolean }) {
  */
 export function HeroShell({ t, renderSlot, headline, children }: HeroShellProps) {
   const [hovering, setHovering] = useState(false)
+  const resolvedHeadline = headline ?? t('hero.headline')
+  const auditoxHeadline = headline === undefined && resolvedHeadline === '你的AI牛马来了！'
   return (
     <div className={css.root}>
       <div className={css.stack}>
@@ -154,7 +156,13 @@ export function HeroShell({ t, renderSlot, headline, children }: HeroShellProps)
           </span>
           <span className={css.titleGroup}>
             {/* Own element: keeps the headline text addressable apart from the badge. */}
-            <span>{headline ?? t('hero.headline')}</span>
+            <span className={css.titleText} data-testid="hero-headline" aria-label={resolvedHeadline}>
+              {auditoxHeadline ? (
+                <>
+                  <span>你的</span><span className={css.auditoxHeadlineAccent}>AI牛马</span><span>来了！</span>
+                </>
+              ) : resolvedHeadline}
+            </span>
             {headline === undefined && <span className={css.previewBadge}>{t('hero.preview')}</span>}
           </span>
         </div>

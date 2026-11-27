@@ -631,6 +631,7 @@
     { "path": "./packages/extensions/cordis-host-runner" },
     { "path": "./packages/extensions/tool-cordis" },
     { "path": "./packages/extensions/tool-auditox-runtime" },
+    { "path": "./packages/extensions/auditox-local-services" },
     { "path": "./packages/experimental/hook-protocol" },
     { "path": "./packages/experimental/hooks-claude-code" },
     { "path": "./packages/experimental/hooks-codex" },

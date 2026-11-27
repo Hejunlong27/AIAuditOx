@@ -9,22 +9,22 @@ export const NS = 'schedule.catalog'
 
 /** Simplified Chinese dictionary (the key-set source of truth). */
 export const zh = {
-  'trigger.label': '自动化任务',
-  'list.loading': '正在加载自动化任务…',
-  'list.error': '无法加载自动化任务。',
+  'trigger.label': '审计自动化',
+  'list.loading': '正在加载审计自动化…',
+  'list.error': '无法加载审计自动化。',
   'list.retry': '重试',
   'delete.action': '删除',
   'delete.pending': '正在删除…',
-  'delete.label': '删除自动化任务：{title}',
-  'list.open': '打开自动化任务详情：{title}',
-  'trigger.one': '{count} 个自动化任务',
-  'trigger.other': '{count} 个自动化任务',
-  'list.aria': '已开启的自动化任务',
+  'delete.label': '删除审计自动化：{title}',
+  'list.open': '打开审计自动化详情：{title}',
+  'trigger.one': '{count} 个审计自动化',
+  'trigger.other': '{count} 个审计自动化',
+  'list.aria': '已开启的审计自动化',
   'list.nextRun': '下次运行',
   'frequency.once': '单次',
   'frequency.every': '{value}{unit}一次',
   ...frequencyZh,
-  'mark.aria': '{count} 个自动化任务',
+  'mark.aria': '{count} 个审计自动化',
   'hover.more': '另有 {count} 个任务',
 } as const
 

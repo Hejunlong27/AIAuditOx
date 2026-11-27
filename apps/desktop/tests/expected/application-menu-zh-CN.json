@@ -1,6 +1,6 @@
 [
   {
-    "label": "关于 DeepSeek Harness",
+    "label": "关于 审小牛AIAuditOx HARNESS",
     "role": "about"
   },
   {
@@ -32,7 +32,7 @@
   },
   {
     "role": "hide",
-    "label": "隐藏 DeepSeek Harness"
+    "label": "隐藏 审小牛AIAuditOx HARNESS"
   },
   {
     "role": "hideOthers",
@@ -47,6 +47,6 @@
   },
   {
     "role": "quit",
-    "label": "退出 DeepSeek Harness"
+    "label": "退出 审小牛AIAuditOx HARNESS"
   }
 ]
