@@ -1,0 +1,25 @@
+# Bilingual-pair consistency record for 2026-09-02-system-prompt-as-surface-node.md (docs/i18n/README.md): per heading
+# section, a hash of its English and Chinese blocks outside code blocks and generated regions.
+# After editing either side, bring the other along and re-record with:
+#   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-09-02-system-prompt-as-surface-node.md
+/agent-note-the-system-prompt-is-surface-node-0:
+  en: 449b745953058cff
+  zh: f2ae7c4c4920cfdd
+/agent-note-the-system-prompt-is-surface-node-0/problem:
+  en: 99c28399e0d722dd
+  zh: df17045e6b8c5346
+/agent-note-the-system-prompt-is-surface-node-0/decision:
+  en: 3d3e8cfd46453ff7
+  zh: e95f6aefc8bf45c7
+/agent-note-the-system-prompt-is-surface-node-0/decision/released-conversion:
+  en: 1cab1035e35837e5
+  zh: b9aec3cf8f1c92ae
+/agent-note-the-system-prompt-is-surface-node-0/alternatives-considered:
+  en: 376b3546528fd792
+  zh: f0af870e99b65a86
+/agent-note-the-system-prompt-is-surface-node-0/consequences:
+  en: 78cc06bfa9e2f842
+  zh: a2a865b9954f5854
+/agent-note-the-system-prompt-is-surface-node-0/verification:
+  en: 66c74f395cf84b51
+  zh: ec4ff0b9b35e27ed

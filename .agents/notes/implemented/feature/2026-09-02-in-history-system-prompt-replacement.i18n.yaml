@@ -1,0 +1,25 @@
+# Bilingual-pair consistency record for 2026-09-02-in-history-system-prompt-replacement.md (docs/i18n/README.md): per heading
+# section, a hash of its English and Chinese blocks outside code blocks and generated regions.
+# After editing either side, bring the other along and re-record with:
+#   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-09-02-in-history-system-prompt-replacement.md
+/agent-note-in-history-system-prompt-updates:
+  en: e7e7f2a14e90ace3
+  zh: 39a793d03e901ee6
+/agent-note-in-history-system-prompt-updates/problem:
+  en: 37cc9d5bf19ae1c5
+  zh: ee3cbfccf766009d
+/agent-note-in-history-system-prompt-updates/decision:
+  en: bb699c72beef8c05
+  zh: 618fa5734daa3ca4
+/agent-note-in-history-system-prompt-updates/decision/presentation-and-accounting:
+  en: 73631e9902540dc1
+  zh: 2e15a6354e607969
+/agent-note-in-history-system-prompt-updates/alternatives-considered:
+  en: df12ea1fc1af8b4d
+  zh: 645feccb1000039c
+/agent-note-in-history-system-prompt-updates/consequences:
+  en: 602a3728896770b1
+  zh: 1aeec163d022f609
+/agent-note-in-history-system-prompt-updates/verification:
+  en: d1c8418c34bfc79f
+  zh: c61281563f4a2f81

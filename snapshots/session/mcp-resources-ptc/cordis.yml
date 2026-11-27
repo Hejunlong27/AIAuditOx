@@ -1,0 +1,22 @@
+- insert:
+    - id: mcp-resource-catalog
+      name: '@deepseek-ai/dsh-mcp-client'
+      config:
+        transport: stdio
+        serverName: catalog
+        command: !!js process.execPath
+        args: !!js '[process.env.DSH_MCP_RESOURCES_FIXTURE]'
+        failOnStartupError: true
+        reconnect:
+          enabled: false
+
+- id: tool-executor-native
+  disabled: true
+
+- id: tool-executor-ptc
+  disabled: false
+
+# Recorded programs are async function bodies, so replay keeps the per-call runtime.
+- id: ptc-runtime
+  config:
+    executionMode: per-call
