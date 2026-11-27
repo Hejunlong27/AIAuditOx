@@ -14,6 +14,8 @@ if (Test-Path -LiteralPath $NodeHome) {
   $env:PATH = "$NodeHome;$env:PATH"
 }
 $env:DSH_HOME = Join-Path $repo '.tmp\dsh-home-auditox'
+if (-not $env:AUDITOX_MCP_PORT) { $env:AUDITOX_MCP_PORT = '11436' }
+if (-not $env:AUDITOX_RUNTIME_URL) { $env:AUDITOX_RUNTIME_URL = "http://127.0.0.1:$AuditOxPort" }
 
 $runtimeProcess = $null
 $listener = Get-NetTCPConnection -LocalPort $AuditOxPort -State Listen -ErrorAction SilentlyContinue
@@ -32,6 +34,7 @@ if (-not $listener) {
     -PassThru
   Start-Sleep -Seconds 2
   Write-Host "Started AuditOx Runtime: http://127.0.0.1:$AuditOxPort"
+  Write-Host "MCP endpoint: http://127.0.0.1:$env:AUDITOX_MCP_PORT/mcp"
 } else {
   Write-Host "Using existing AuditOx Runtime on port $AuditOxPort"
 }

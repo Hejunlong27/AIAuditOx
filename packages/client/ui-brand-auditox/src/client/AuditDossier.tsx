@@ -37,6 +37,7 @@ export function AuditDossier({ sessionId }: PropsRuntime<'sidebar.right.pane.tab
         <div className={css.sectionHead}><h3>工作边界</h3></div>
         <ul className={css.boundaryList}>
           <li>金额计算使用确定性工具，不采用模型估算。</li>
+          <li>每次工具调用写入本机哈希链 Trace，底稿保留程序、证据和修订记录。</li>
           <li>未取得资料的程序保持待补充，不写成已执行。</li>
           <li>最终判断由项目组和签字人完成。</li>
         </ul>

@@ -18,6 +18,7 @@ export function AuditOxHomeFrame({ hero, children }: HeroFrameOwnerProps & { chi
         <div className={css.canvas} aria-hidden="true">
           <div className={css.headerRule}>
             <span>审小牛AIAuditOx HARNESS</span>
+            <span>一切审计程序皆可 Skill 化</span>
           </div>
           <section className={css.flow}>
             <p className={css.railKicker}>审计流程</p>

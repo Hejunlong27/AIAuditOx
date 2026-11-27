@@ -8,6 +8,7 @@
   "references": [
     { "path": "../../../vendor/cordis" },
     { "path": "../../core/tools" },
+    { "path": "../auditox-trace" },
     { "path": "../../util/values" }
   ]
 }

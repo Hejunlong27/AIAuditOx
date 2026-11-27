@@ -50,6 +50,7 @@
 }
 
 .headerRule span:first-child { color: var(--auditox-text, #0f172a); }
+.headerRule span:last-child { color: var(--auditox-blue, #0071e3); font-weight: 600; }
 
 .flow {
   position: absolute;

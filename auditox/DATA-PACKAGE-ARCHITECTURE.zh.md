@@ -58,3 +58,9 @@ materiality / audit_procedure / sample / review_note
 - 视觉识别：Qwen2.5-VL 3B 起步；复杂票据或 32 GB 以上设备考虑 7B。
 - 模型目录、下载状态和硬件适配由本地 Harness 检测，不在前端写死单一模型。
 - Ollama 一键拉取和国内镜像检索必须明确区分，避免误导数据来源。
+
+## Harness 融合层
+
+当前 Harness 将旧版 Runtime 作为本地审计事实源，通过 `tool-auditox-runtime` 暴露项目、资料、任务、审批、底稿和产物操作。所有桥接工具调用同时写入 append-only JSONL Trace Ledger；底稿本身继续保留程序明细、证据清单、修订记录和文件摘要，形成“文件留痕 + 执行链留痕”的双层证据。
+
+对外复用通过 `http://127.0.0.1:11436/mcp` 提供，详见 [MCP.zh.md](./MCP.zh.md) 与 [SKILL-TOOL-ARCHITECTURE.zh.md](./SKILL-TOOL-ARCHITECTURE.zh.md)。

@@ -137,8 +137,10 @@
         config:
           prefix: |-
             You are 审小牛 AuditOx, a Chinese annual-audit project assistant working inside a local data-controlled Harness.
+            The product principle is: every audit procedure can become a Skill. A Skill defines the audit objective, inputs, procedure logic, evidence requirements and workpaper contract. Tools execute concrete work: files, data, deterministic calculations, OCR, image processing, document generation and model calls.
             Load the global workpaper standard before drafting any workpaper. Separate facts, inferences and items awaiting client confirmation.
-            Never fabricate amounts, evidence, control existence, laws or audit conclusions. Deterministic calculations and evidence remain authoritative.
+            Never fabricate amounts, evidence, control existence, laws or audit conclusions. Deterministic calculations and evidence remain authoritative. Never mark a procedure complete when required evidence is missing.
+            Every workpaper must preserve its procedure source, skill version, inputs, tool results, evidence references, revisions and review status. Use the AuditOx trace tools to inspect or export the workpaper trail.
             Use AuditOx project tools for file registration, project state and guided stages. The final judgment belongs to the audit engagement team and signing partner.
       - id: time-context
         name: '@deepseek-ai/dsh-time-context'
@@ -148,6 +150,10 @@
           includeDefaultRoots: true
       - id: tool-skill
         name: '@deepseek-ai/dsh-tool-skill'
+      - id: tool-fs
+        name: '@deepseek-ai/dsh-tool-fs'
+      - id: tool-fs-search
+        name: '@deepseek-ai/dsh-tool-fs-search'
       - id: tool-auditox-runtime
         name: '@deepseek-ai/dsh-tool-auditox-runtime'
       - id: tool-ask-user
@@ -196,6 +202,7 @@
             config:
               prefix: |-
                 You are 审小牛 AuditOx in conversation mode. Answer audit questions in Chinese, distinguish evidence from inference, and never invent balances, evidence or conclusions.
+                Every audit procedure is a candidate Skill: first identify the procedure, inputs, evidence and expected workpaper, then select deterministic AuditOx tools for execution. Use the trace tools whenever the user asks how a workpaper was produced.
           - id: time-context
             name: '@deepseek-ai/dsh-time-context'
           - id: skill-filesystem
@@ -204,6 +211,10 @@
               includeDefaultRoots: true
           - id: tool-skill
             name: '@deepseek-ai/dsh-tool-skill'
+          - id: tool-fs
+            name: '@deepseek-ai/dsh-tool-fs'
+          - id: tool-fs-search
+            name: '@deepseek-ai/dsh-tool-fs-search'
           - id: tool-auditox-runtime
             name: '@deepseek-ai/dsh-tool-auditox-runtime'
           - id: tool-ask-user

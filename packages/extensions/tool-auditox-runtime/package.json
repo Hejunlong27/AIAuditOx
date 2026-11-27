@@ -25,11 +25,13 @@
   "peerDependencies": {
     "@deepseek-ai/cordis": "workspace:~",
     "@deepseek-ai/dsh-tools": "workspace:*",
+    "@deepseek-ai/dsh-auditox-trace": "workspace:*",
     "@deepseek-ai/dsh-util-values": "workspace:*"
   },
   "devDependencies": {
     "@deepseek-ai/cordis": "workspace:~",
     "@deepseek-ai/dsh-tools": "workspace:*",
+    "@deepseek-ai/dsh-auditox-trace": "workspace:*",
     "@deepseek-ai/dsh-util-values": "workspace:*"
   },
   "files": [

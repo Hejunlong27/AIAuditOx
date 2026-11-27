@@ -3191,6 +3191,9 @@ importers:
       '@deepseek-ai/dsh-auditox-local-services':
         specifier: workspace:*
         version: link:../../extensions/auditox-local-services
+      '@deepseek-ai/dsh-auditox-trace':
+        specifier: workspace:*
+        version: link:../../extensions/auditox-trace
       '@deepseek-ai/dsh-client-connection':
         specifier: workspace:*
         version: link:../../client/connection
@@ -13506,9 +13509,14 @@ importers:
       '@deepseek-ai/cordis':
         specifier: workspace:~
         version: link:../../../vendor/cordis
+      '@deepseek-ai/dsh-auditox-trace':
+        specifier: workspace:*
+        version: link:../auditox-trace
       '@deepseek-ai/dsh-host-webserver':
         specifier: workspace:*
         version: link:../../host/webserver
+
+  packages/extensions/auditox-trace: {}
 
   packages/extensions/cordis-client-runner:
     devDependencies:
@@ -13716,6 +13724,9 @@ importers:
       '@deepseek-ai/cordis':
         specifier: workspace:~
         version: link:../../../vendor/cordis
+      '@deepseek-ai/dsh-auditox-trace':
+        specifier: workspace:*
+        version: link:../auditox-trace
       '@deepseek-ai/dsh-tools':
         specifier: workspace:*
         version: link:../../core/tools

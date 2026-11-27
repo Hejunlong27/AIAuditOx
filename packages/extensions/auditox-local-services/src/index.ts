@@ -15,15 +15,17 @@ import path from 'node:path'
 import { promisify } from 'node:util'
 import type { Context } from '@deepseek-ai/cordis'
 import type {} from '@deepseek-ai/dsh-host-webserver'
+import { startAuditOxMcpServer } from './mcp.ts'
 
 const execFileAsync = promisify(execFile)
-const SKILL_SOURCE = process.env.AUDITOX_SKILL_LIBRARY ?? 'D:/编程/AIAuditOx/skill-library'
+const SKILL_SOURCE = path.resolve(process.env.AUDITOX_SKILL_LIBRARY ?? path.join(process.cwd(), '..', 'skill-library'))
 const DSH_HOME = process.env.DSH_HOME ?? path.join(os.homedir(), '.dsh')
 const SKILL_INSTALL_ROOT = path.join(DSH_HOME, 'skills')
 const MODEL_CONFIG_PATH = path.join(DSH_HOME, 'auditox-model-config.json')
 const MODEL_IMPORT_ROOT = path.join(DSH_HOME, 'auditox-models', 'imports')
 const MODEL_GATEWAY_PORT = Number(process.env.AUDITOX_MODEL_GATEWAY_PORT ?? 11435)
 const MODEL_GATEWAY_URL = `http://127.0.0.1:${MODEL_GATEWAY_PORT}/v1`
+const RUNTIME_SERVICE_URL = (process.env.AUDITOX_RUNTIME_URL ?? 'http://127.0.0.1:8765').replace(/\/$/u, '')
 const MAX_PULL_LOG = 48_000
 const MAX_JSON_BODY = 64 * 1024
 const MAX_GATEWAY_BODY = 64 * 1024 * 1024
@@ -700,6 +702,22 @@ export const inject = ['webServer']
 
 export function apply(ctx: Context): void {
   ctx.effect(() => startModelGateway(ctx), 'auditox-local: model gateway')
+  ctx.effect(() => startAuditOxMcpServer({
+    harnessStatus: async () => ({
+      name: '审小牛AIAuditOx HARNESS',
+      version: '0.2.3-alpha.2',
+      platform: process.platform,
+      arch: process.arch,
+      modelGateway: MODEL_GATEWAY_URL,
+      mcpEndpoint: `http://127.0.0.1:${process.env.AUDITOX_MCP_PORT ?? '11436'}/mcp`,
+      runtimeUrl: RUNTIME_SERVICE_URL,
+      skillSource: SKILL_SOURCE,
+      installedSkills: (await listSkills()).filter(skill => skill.installed).length,
+    }),
+    listSkills: async () => ({ source: SKILL_SOURCE, skills: await listSkills() }),
+    readSkill: async id => await skillDetail(id),
+    runtimeRequest: async (path, init) => await runtimeRequest(path, init),
+  }), 'auditox-local: MCP server')
 
   const route = (pathname: string, handler: (req: IncomingMessage, res: ServerResponse) => Promise<void>): void => {
     ctx.effect(() => ctx.webServer.register({
@@ -884,4 +902,18 @@ export function apply(ctx: Context): void {
       json(res, 500, { error: error instanceof Error ? error.message : String(error) })
     }
   })
+}
+async function runtimeRequest(path: string, init?: RequestInit): Promise<unknown> {
+  const headers = new Headers(init?.headers)
+  if (init?.body !== undefined && !headers.has('Content-Type')) headers.set('Content-Type', 'application/json')
+  const response = await fetch(`${RUNTIME_SERVICE_URL}${path}`, {
+    ...init,
+    headers,
+    signal: init?.signal ?? AbortSignal.timeout(120_000),
+  })
+  const body = await response.text()
+  let value: unknown = body
+  try { value = body === '' ? null : JSON.parse(body) as unknown } catch {}
+  if (!response.ok) throw new Error(`AuditOx Runtime HTTP ${response.status}: ${body}`)
+  return value
 }
