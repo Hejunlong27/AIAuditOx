@@ -58,14 +58,26 @@ D:/编程/AIAuditOx/skill-library
 
 ## 启动
 
-### 1. 启动 Python AuditOx Runtime
+### 一键启动
+
+```powershell
+cd D:\编程\AIAuditOx\deepseek-harness\auditox
+.\build.ps1
+.\run.ps1
+```
+
+`run.ps1` 会按需启动本地 Python Runtime，启动 DSH Web UI，并在退出时关闭由它启动的 Runtime。使用 `-NoOpen` 可不自动打开浏览器。
+
+### 手动启动
+
+#### 1. 启动 Python AuditOx Runtime
 
 ```powershell
 cd D:\编程\AIAuditOx\agent-runtime
 .\.venv\Scripts\python.exe -m api.main --port 8765
 ```
 
-### 2. 构建 DSH
+#### 2. 构建 DSH
 
 DSH 当前要求 Node `^24.22.3 || >=26.13.1`。本机验证时使用 Node `26.13.1`。
 
@@ -76,7 +88,7 @@ pnpm install
 pnpm run build
 ```
 
-### 3. 启动带审小牛 overlay 的 Web UI
+#### 3. 启动带审小牛 overlay 的 Web UI
 
 ```powershell
 $env:DSH_HOME = 'D:\编程\AIAuditOx\deepseek-harness\.tmp\dsh-home-auditox'
