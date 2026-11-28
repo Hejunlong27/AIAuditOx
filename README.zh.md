@@ -1,4 +1,6 @@
-# 审小牛 AIAuditOx HARNESS
+[中文](./README.md) | [English](./README.en.md)
+
+# [AIAuditOx](https://github.com/Hejunlong27/AIAuditOx)
 
 > 一切审计程序皆可 Skill 化。
 
