@@ -124,7 +124,7 @@ http://127.0.0.1:11436/mcp
 
 不想安装开发环境，可以直接下载 Windows x64 安装包：
 
-[**下载最新 AIAuditOx Windows 安装包**](https://github.com/Hejunlong27/AIAuditOx/releases/latest)
+[**下载 AIAuditOx Windows x64 安装包**](https://github.com/Hejunlong27/AIAuditOx/releases/download/v0.2.3-alpha.2/AIAuditOx-0.2.3-alpha.2-win-x64.exe)　·　[发布说明](https://github.com/Hejunlong27/AIAuditOx/releases/tag/v0.2.3-alpha.2)　·　[SHA-256](https://github.com/Hejunlong27/AIAuditOx/releases/download/v0.2.3-alpha.2/SHA256SUMS.txt)
 
 下载后运行 `.exe`，按安装向导完成安装即可，不需要 Node.js、pnpm 或 Python。首次启动后进入“本地模型”配置 Ollama、自定义模型地址或导入本机 GGUF 文件。
 

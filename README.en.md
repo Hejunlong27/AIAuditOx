@@ -98,7 +98,7 @@ See [auditox/MCP.zh.md](./auditox/MCP.zh.md).
 
 If you do not want to set up a development environment, download the Windows x64 installer:
 
-[**Download the latest AIAuditOx Windows installer**](https://github.com/Hejunlong27/AIAuditOx/releases/latest)
+[**Download the AIAuditOx Windows x64 installer**](https://github.com/Hejunlong27/AIAuditOx/releases/download/v0.2.3-alpha.2/AIAuditOx-0.2.3-alpha.2-win-x64.exe) · [Release notes](https://github.com/Hejunlong27/AIAuditOx/releases/tag/v0.2.3-alpha.2) · [SHA-256](https://github.com/Hejunlong27/AIAuditOx/releases/download/v0.2.3-alpha.2/SHA256SUMS.txt)
 
 Run the `.exe` and follow the installer. Node.js, pnpm and Python are not required. On first launch, open **Local Models** to configure Ollama, a custom model endpoint, or import a local GGUF file.
 
