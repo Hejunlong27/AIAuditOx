@@ -40,6 +40,8 @@ describe('desktop package target', () => {
     expect(parseDesktopPackageInvocation(['--prepare-only'], 'darwin', 'arm64').prepareOnly).toBe(true)
     expect(parseDesktopPackageInvocation(['--check'], 'darwin', 'arm64').check).toBe(true)
     expect(parseDesktopPackageInvocation(['win-x64', '--check', '--unsigned'], 'win32', 'x64')).toMatchObject({ check: true, unsigned: true })
+    expect(parseDesktopPackageInvocation(['win-x64', '--portable'], 'win32', 'x64').portable).toBe(true)
+    expect(() => parseDesktopPackageInvocation(['mac-arm64', '--portable'], 'darwin', 'arm64')).toThrow(/requires win-x64/u)
     expect(() => parseDesktopPackageInvocation(['mac-arm64', 'mac-x64'], 'darwin', 'arm64'))
       .toThrow(/at most one target/u)
   })

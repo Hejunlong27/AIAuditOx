@@ -190,11 +190,11 @@ static UINT CaptionCommand(const ProgressPage& page, LPARAM position) {
 }
 
 static void PaintCaptionButtons(Graphics& graphics, const ProgressPage& page) {
-    SolidBrush background(page.dark ? Color(255, 21, 21, 23) : Color(255, 255, 255, 255));
+    SolidBrush background(page.dark ? Color(255, 17, 24, 32) : Color(255, 245, 247, 250));
     graphics.FillRectangle(&background, 504, 0, 96, 48);
-    SolidBrush ink(page.dark ? Color(255, 255, 255, 255) : Color(255, 15, 17, 21));
+    SolidBrush ink(page.dark ? Color(255, 245, 247, 250) : Color(255, 13, 31, 45));
     // Disabled caption uses the same foreground with reduced opacity in both themes.
-    SolidBrush disabledInk(page.dark ? Color(96, 255, 255, 255) : Color(96, 15, 17, 21));
+    SolidBrush disabledInk(page.dark ? Color(96, 245, 247, 250) : Color(96, 13, 31, 45));
     FontFamily family(L"Microsoft YaHei UI");
     Font font(&family, 16, FontStyleRegular, UnitPixel);
     StringFormat centered;
@@ -383,7 +383,7 @@ static LRESULT CALLBACK ProgressProc(HWND window, UINT message, WPARAM wparam, L
             graphics.SetSmoothingMode(SmoothingModeAntiAlias);
             graphics.SetPixelOffsetMode(PixelOffsetModeHalf);
             PaintCaptionButtons(graphics, *page);
-            SolidBrush background(page->dark ? Color(255, 21, 21, 23) : Color(255, 255, 255, 255));
+            SolidBrush background(page->dark ? Color(255, 17, 24, 32) : Color(255, 245, 247, 250));
             graphics.FillRectangle(&background, 48, 480, 504, 56);
             if (!page->controlsVisible) {
                 const int stage = static_cast<int>(reinterpret_cast<INT_PTR>(GetPropW(GetParent(window), L"HarnessInstaller.Stage")));
@@ -391,7 +391,7 @@ static LRESULT CALLBACK ProgressProc(HWND window, UINT message, WPARAM wparam, L
                 page->progress.Advance(stage, fraction, GetTickCount64());
                 const int percent = static_cast<int>(page->progress.value);
                 SolidBrush track(page->dark ? Color(255, 97, 102, 107) : Color(255, 233, 236, 242));
-                SolidBrush ink(page->dark ? Color(255, 255, 255, 255) : Color(255, 15, 17, 21));
+                SolidBrush ink(page->dark ? Color(255, 245, 247, 250) : Color(255, 13, 31, 45));
                 FillProgress(graphics, track, 472.0f);
                 FillProgress(graphics, ink, 472.0f * static_cast<REAL>(page->progress.value) / 100);
                 FontFamily family(L"Microsoft YaHei UI");
@@ -466,11 +466,11 @@ extern "C" __declspec(dllexport) HWND __cdecl InstallerShowProgress(HWND parent,
         // Static artwork stays in the buffer for this page's lifetime.
         Graphics graphics(page->buffer);
         graphics.ScaleTransform(dpi / 96.0f, dpi / 96.0f);
-        graphics.Clear(page->dark ? Color(255, 21, 21, 23) : Color(255, 255, 255, 255));
+        graphics.Clear(page->dark ? Color(255, 17, 24, 32) : Color(255, 245, 247, 250));
         graphics.SetSmoothingMode(SmoothingModeAntiAlias);
         graphics.SetInterpolationMode(InterpolationModeHighQualityBicubic);
         graphics.SetPixelOffsetMode(PixelOffsetModeHalf);
-        graphics.DrawImage(page->brand, Rect(0, 174, 600, 196));
+        graphics.DrawImage(page->brand, Rect(0, 98, 600, 220));
         PaintCaptionButtons(graphics, *page);
     }
     delete page->brand;

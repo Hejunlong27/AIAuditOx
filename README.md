@@ -120,15 +120,19 @@ http://127.0.0.1:11436/mcp
 
 详细配置见 [auditox/MCP.zh.md](./auditox/MCP.zh.md)。
 
-## 直接下载安装
+## 直接运行
 
-不想安装开发环境，可以直接下载 Windows x64 安装包：
+不想配置开发环境，直接下载 Windows x64 便携版：
 
-[**下载 AIAuditOx Windows x64 安装包**](https://github.com/Hejunlong27/AIAuditOx/releases/download/v0.2.3-alpha.2/AIAuditOx-0.2.3-alpha.2-win-x64.exe)　·　[发布说明](https://github.com/Hejunlong27/AIAuditOx/releases/tag/v0.2.3-alpha.2)　·　[SHA-256](https://github.com/Hejunlong27/AIAuditOx/releases/download/v0.2.3-alpha.2/SHA256SUMS.txt)
+[**下载 AIAuditOx Windows x64 便携版**](https://github.com/Hejunlong27/AIAuditOx/releases/download/v0.2.3-alpha.2/AIAuditOx-0.2.3-alpha.2-win-x64-portable-unsigned.exe)
 
-下载后运行 `.exe`，按安装向导完成安装即可，不需要 Node.js、pnpm 或 Python。首次启动后进入“本地模型”配置 Ollama、自定义模型地址或导入本机 GGUF 文件。
+双击 `.exe` 即可运行，不需要安装 Node.js、pnpm、Python，也不需要执行安装向导。首次启动会先解压内置运行时，耗时取决于磁盘速度。
 
-> 当前安装包为未签名版本，Windows SmartScreen 可能提示“未知发布者”；确认来源后选择“更多信息 → 仍要运行”。
+如需安装到本机，也可以下载 [安装版](https://github.com/Hejunlong27/AIAuditOx/releases/download/v0.2.3-alpha.2/AIAuditOx-0.2.3-alpha.2-win-x64-unsigned.exe) · [发布说明](https://github.com/Hejunlong27/AIAuditOx/releases/tag/v0.2.3-alpha.2) · [SHA-256](https://github.com/Hejunlong27/AIAuditOx/releases/download/v0.2.3-alpha.2/SHA256SUMS.txt)
+
+首次打开后进入“本地模型”配置 Ollama、自定义模型地址或导入本机 GGUF 文件。
+
+> 当前 Windows 版本为未签名构建，SmartScreen 可能提示“未知发布者”；确认来源后选择“更多信息 → 仍要运行”。
 
 ## 快速启动
 

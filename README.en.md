@@ -94,15 +94,19 @@ Available tools include Harness status, skill listing/reading, Runtime health, p
 
 See [auditox/MCP.zh.md](./auditox/MCP.zh.md).
 
-## Download and install
+## Run directly
 
-If you do not want to set up a development environment, download the Windows x64 installer:
+If you do not want to set up a development environment, download the portable Windows x64 build:
 
-[**Download the AIAuditOx Windows x64 installer**](https://github.com/Hejunlong27/AIAuditOx/releases/download/v0.2.3-alpha.2/AIAuditOx-0.2.3-alpha.2-win-x64.exe) · [Release notes](https://github.com/Hejunlong27/AIAuditOx/releases/tag/v0.2.3-alpha.2) · [SHA-256](https://github.com/Hejunlong27/AIAuditOx/releases/download/v0.2.3-alpha.2/SHA256SUMS.txt)
+[**Download AIAuditOx for Windows x64 (Portable)**](https://github.com/Hejunlong27/AIAuditOx/releases/download/v0.2.3-alpha.2/AIAuditOx-0.2.3-alpha.2-win-x64-portable-unsigned.exe)
 
-Run the `.exe` and follow the installer. Node.js, pnpm and Python are not required. On first launch, open **Local Models** to configure Ollama, a custom model endpoint, or import a local GGUF file.
+Double-click the `.exe` to run it. Node.js, pnpm, Python and the installation wizard are not required. The first launch extracts the bundled runtime, so startup time depends on disk speed.
 
-> The current installer is unsigned, so Windows SmartScreen may show an unknown publisher warning. Verify the source and choose **More info → Run anyway** if appropriate.
+A conventional [installer build](https://github.com/Hejunlong27/AIAuditOx/releases/download/v0.2.3-alpha.2/AIAuditOx-0.2.3-alpha.2-win-x64-unsigned.exe) is also available · [Release notes](https://github.com/Hejunlong27/AIAuditOx/releases/tag/v0.2.3-alpha.2) · [SHA-256](https://github.com/Hejunlong27/AIAuditOx/releases/download/v0.2.3-alpha.2/SHA256SUMS.txt)
+
+On first launch, open **Local Models** to configure Ollama, a custom model endpoint, or import a local GGUF file.
+
+> The current Windows build is unsigned, so SmartScreen may show an unknown publisher warning. Verify the source and choose **More info → Run anyway** if appropriate.
 
 ## Quick start
 

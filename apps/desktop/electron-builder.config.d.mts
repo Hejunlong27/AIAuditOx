@@ -40,11 +40,16 @@ export interface DesktopElectronBuilderConfig {
   }
   readonly win: {
     readonly forceCodeSigning: boolean
+    readonly target: readonly ('nsis' | 'portable')[]
     readonly signtoolOptions: {
       readonly publisherName: string | undefined
       readonly sign: ((configuration: { path: string, hash: string, isNest: boolean }) => Promise<void>) | undefined
       readonly signingHashAlgorithms: readonly string[]
     }
+  }
+  readonly portable: {
+    readonly requestExecutionLevel: 'user'
+    readonly artifactName: string
   }
   readonly nsis: {
     readonly uninstallDisplayName: '${productName}'

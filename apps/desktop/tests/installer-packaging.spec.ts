@@ -99,9 +99,26 @@ describe('installer preparation preserves application dependencies', () => {
       DSH_DESKTOP_TARGET_ARCH: 'x64',
       DSH_DESKTOP_UNSIGNED: '1',
     }, 'win32', 'x64')
-    expect(config.artifactName).toBe('deepseek-harness-${version}-${os}-${arch}-unsigned.${ext}')
+    expect(config.artifactName).toBe('AIAuditOx-${version}-${os}-${arch}-unsigned.${ext}')
   })
 
+  it('selects a single-file portable target without changing the installer default', async () => {
+    const { createElectronBuilderConfig } = await import('../scripts/electron-builder-config.mjs')
+    const environment = {
+      DSH_DESKTOP_APP_ID: 'com.example.installer',
+      DSH_DESKTOP_MANDATORY_UPDATE_TEST_ORIGIN: 'https://policy.example.com',
+      DSH_DESKTOP_MANDATORY_UPDATE_CONFIG: JSON.stringify({ allowedAuthOrigins: ['https://login.example.com'] }),
+      DSH_DESKTOP_TARGET_PLATFORM: 'win32',
+      DSH_DESKTOP_TARGET_ARCH: 'x64',
+      DSH_DESKTOP_UNSIGNED: '1',
+    }
+    const installer = createElectronBuilderConfig(environment, 'win32', 'x64')
+    expect(installer.win.target).toEqual(['nsis'])
+    const portable = createElectronBuilderConfig({ ...environment, DSH_DESKTOP_PORTABLE: '1' }, 'win32', 'x64')
+    expect(portable.win.target).toEqual(['portable'])
+    expect(portable.artifactName).toBe('AIAuditOx-${version}-${os}-${arch}-portable-unsigned.${ext}')
+    expect(portable.portable).toMatchObject({ requestExecutionLevel: 'user' })
+  })
   it('packages every preload entry point the shell loads', async () => {
     const { readdirSync, readFileSync } = await import('node:fs')
     const sourceDirectory = new URL('../src/', import.meta.url)

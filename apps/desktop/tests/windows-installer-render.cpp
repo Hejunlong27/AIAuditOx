@@ -172,7 +172,7 @@ int wmain(int argc, wchar_t** argv) {
         DeleteDC(dc);
         return pixel;
     };
-    const COLORREF normalColor = dark ? RGB(21, 21, 23) : RGB(255, 255, 255);
+    const COLORREF normalColor = dark ? RGB(17, 24, 32) : RGB(245, 247, 250);
     const auto colorref = [](DWORD argb) { return RGB((argb >> 16) & 255, (argb >> 8) & 255, argb & 255); };
     const COLORREF hoverColor = colorref(hoverArgb);
     const COLORREF pressedColor = colorref(pressedArgb);

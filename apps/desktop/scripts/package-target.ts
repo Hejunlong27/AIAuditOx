@@ -196,6 +196,7 @@ export function resolveDesktopPackageTarget(
 interface DesktopPackageInvocation {
   readonly target: DesktopPackageTarget
   readonly directory: boolean
+  readonly portable: boolean
   readonly prepareOnly: boolean
   readonly unsigned: boolean
   readonly skipNotarization: boolean
@@ -229,6 +230,7 @@ export function parseDesktopPackageInvocation(
     allowPositionals: true,
     options: {
       dir: { type: 'boolean', default: false },
+      portable: { type: 'boolean', default: false },
       'prepare-only': { type: 'boolean', default: false },
       unsigned: { type: 'boolean', default: false },
       'skip-notarization': { type: 'boolean', default: false },
@@ -239,6 +241,7 @@ export function parseDesktopPackageInvocation(
   if (positionals.length > 1) throw new Error('desktop package: expected at most one target')
   const name = positionals[0] ?? hostTargetName(hostPlatform, hostArch)
   if (values.unsigned && values['prepare-only']) throw new Error('desktop package: --unsigned cannot use --prepare-only')
+  if (values.portable && name !== 'win-x64') throw new Error('desktop package: --portable requires win-x64')
   if (values['skip-notarization'] && (name === 'win-x64' || values.unsigned || values['prepare-only'])) {
     throw new Error('desktop package: --skip-notarization requires a signed macOS build, without --prepare-only')
   }
@@ -249,6 +252,7 @@ export function parseDesktopPackageInvocation(
   return {
     target: resolveDesktopPackageTarget(name, hostPlatform, hostArch),
     directory: values.dir,
+    portable: values.portable,
     prepareOnly: values['prepare-only'],
     unsigned: values.unsigned,
     skipNotarization: values['skip-notarization'],
@@ -444,6 +448,7 @@ export async function packageTarget(
   const downloadEnv = macOSDownloadEnvironment(targetEnv, mac?.downloadProxy)
   const electronBuilderEnv = desktopElectronBuilderEnvironment(downloadEnv, invocation.unsigned)
   if (target.platform === 'win32') {
+    electronBuilderEnv.DSH_DESKTOP_PORTABLE = invocation.portable ? '1' : '0'
     electronBuilderEnv.ELECTRON_BUILDER_COMPRESSION_LEVEL = String(resolveWindowsPackageSettings(environment).compressionLevel)
   }
   for (const name of WINDOWS_SIGNING_ENV_NAMES) {

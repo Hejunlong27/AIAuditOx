@@ -1,19 +1,41 @@
 <svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="paper" x1="112" y1="72" x2="866" y2="934" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#FBF8F0"/>
-      <stop offset="1" stop-color="#EAE2D2"/>
+    <linearGradient id="tile" x1="112" y1="64" x2="864" y2="960" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1A628D"/>
+      <stop offset=".48" stop-color="#14547F"/>
+      <stop offset="1" stop-color="#0B3552"/>
     </linearGradient>
-    <linearGradient id="seal" x1="260" y1="170" x2="780" y2="850" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#B34A38"/>
-      <stop offset="1" stop-color="#8B2F25"/>
+    <linearGradient id="horn" x1="280" y1="150" x2="774" y2="312" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF8E7"/>
+      <stop offset="1" stop-color="#E6C98F"/>
     </linearGradient>
+    <linearGradient id="face" x1="384" y1="340" x2="650" y2="808" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#EAF3F8"/>
+    </linearGradient>
+    <linearGradient id="check" x1="430" y1="575" x2="638" y2="752" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D8AD54"/>
+      <stop offset="1" stop-color="#A8792A"/>
+    </linearGradient>
+    <filter id="tile-shadow" x="0" y="-8" width="1024" height="1048" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="16" stdDeviation="24" flood-color="#081E2F" flood-opacity=".24"/>
+    </filter>
+    <filter id="mark-shadow" x="220" y="126" width="584" height="724" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#06263B" flood-opacity=".22"/>
+    </filter>
   </defs>
-  <rect x="40" y="32" width="944" height="944" rx="208" fill="url(#paper)"/>
-  <g id="tray-glyph">
-    <rect x="178" y="126" width="668" height="756" rx="76" fill="url(#seal)"/>
-    <path d="M304 302H720M304 430H720M304 558H580" stroke="#FFF9EE" stroke-width="48" stroke-linecap="square"/>
-    <rect x="566" y="626" width="184" height="150" rx="16" stroke="#FFF9EE" stroke-width="42"/>
-    <path d="M620 702L660 742L708 670" stroke="#FFF9EE" stroke-width="42" stroke-linecap="square" stroke-linejoin="miter"/>
+  <g filter="url(#tile-shadow)">
+    <rect x="40" y="32" width="944" height="944" rx="208" fill="url(#tile)"/>
+    <rect x="40" y="32" width="944" height="944" rx="208" stroke="#FFFFFF" stroke-opacity=".14" stroke-width="12"/>
+    <g filter="url(#mark-shadow)">
+      <g transform="translate(40 32) scale(19.666667)">
+        <g id="tray-glyph">
+          <path d="M10.3 17C10.3 12 13.6 8.4 17.5 8.4" stroke="url(#horn)" stroke-width="2.6" stroke-linecap="round"/>
+          <path d="M37.7 17C37.7 12 34.4 8.4 30.5 8.4" stroke="url(#horn)" stroke-width="2.6" stroke-linecap="round"/>
+          <path d="M15.8 15.1h16.4c2.1 0 3.8 1.6 3.8 3.8v8.4c0 6.1-5.4 11-12 11s-12-4.9-12-11v-8.4c0-2.2 1.7-3.8 3.8-3.8z" fill="url(#face)"/>
+          <path d="M18.9 25.9l4.1 4.1 8.1-8.4" stroke="url(#check)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+      </g>
+    </g>
   </g>
 </svg>

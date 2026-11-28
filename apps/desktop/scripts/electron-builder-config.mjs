@@ -59,6 +59,10 @@ export function createElectronBuilderConfig(
     throw new Error('desktop package: DSH_DESKTOP_UNSIGNED must be 0 or 1')
   }
   const unsigned = env.DSH_DESKTOP_UNSIGNED === '1'
+  if (env.DSH_DESKTOP_PORTABLE !== undefined && !['0', '1'].includes(env.DSH_DESKTOP_PORTABLE)) {
+    throw new Error('desktop package: DSH_DESKTOP_PORTABLE must be 0 or 1')
+  }
+  const portable = env.DSH_DESKTOP_PORTABLE === '1'
   const skipNotarization = env.DSH_DESKTOP_MACOS_SKIP_NOTARIZATION === '1'
   if (env.DSH_DESKTOP_MACOS_SKIP_NOTARIZATION !== undefined && !['0', '1'].includes(env.DSH_DESKTOP_MACOS_SKIP_NOTARIZATION)) {
     throw new Error('desktop package: DSH_DESKTOP_MACOS_SKIP_NOTARIZATION must be 0 or 1')
@@ -67,7 +71,7 @@ export function createElectronBuilderConfig(
   const packagesMacOS = targetPlatform === 'darwin' || (targetPlatform === undefined && hostPlatform === 'darwin')
   const packagesWindows = resolvedPlatform === 'win32'
   const policy = packagesMacOS && unsigned ? undefined : resolveDesktopPolicyEnvironment(env)
-  if (resolvedPlatform === 'win32') installWindowsDirectoryInstaller()
+  if (resolvedPlatform === 'win32' && !portable) installWindowsDirectoryInstaller()
   const macOSSigning = packagesMacOS && !unsigned ? resolveMacOSSigningEnvironment(env) : undefined
   if (packagesMacOS && !unsigned && !skipNotarization) resolveMacOSNotarizationEnvironment(env)
   const buildPaths = desktopTargetBuildPaths(resolveDesktopBuildTarget(env, hostPlatform, hostArch), env)
@@ -120,7 +124,7 @@ export function createElectronBuilderConfig(
     // The default copyright uses author.name; this line names the product instead.
     copyright: `Copyright © ${new Date().getFullYear()} \${productName}`,
     // Unsigned builds carry their own suffix so a shared file can never pass for a release artifact.
-    artifactName: `AIAuditOx-\${version}-\${os}-\${arch}${output.suffix}.\${ext}`,
+    artifactName: `AIAuditOx-\${version}-\${os}-\${arch}${portable ? '-portable' : ''}${output.suffix}.\${ext}`,
     directories: { output: output.directory },
     asar: true,
     electronDist: buildPaths.electron,
@@ -252,11 +256,15 @@ export function createElectronBuilderConfig(
         publisherName: windowsSigner === undefined ? undefined : resolveWindowsUpdatePublisher(env.DSH_DESKTOP_WINDOWS_CER_FILE),
         signingHashAlgorithms: ['sha256'],
       },
-      target: ['nsis'],
+      target: [portable ? 'portable' : 'nsis'],
     },
     linux: {
       category: 'Development',
       target: ['AppImage'],
+    },
+    portable: {
+      requestExecutionLevel: 'user',
+      artifactName: `AIAuditOx-\${version}-\${os}-\${arch}-portable${output.suffix}.\${ext}`,
     },
     nsis: {
       uninstallDisplayName: '${productName}',

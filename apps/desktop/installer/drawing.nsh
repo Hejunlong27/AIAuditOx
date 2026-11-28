@@ -24,7 +24,7 @@ Var InstallerEditFrameBitmap
 
 Function InstallerDrawEditFrame
     System::Call 'kernel32::MulDiv(i 384, i $InstallerDpi, i 96) i.R7'
-    System::Call 'kernel32::MulDiv(i 34, i $InstallerDpi, i 96) i.R8'
+    System::Call 'kernel32::MulDiv(i 36, i $InstallerDpi, i 96) i.R8'
     System::Call 'kernel32::MulDiv(i 12, i $InstallerDpi, i 96) i.R3'
     System::Call 'gdiplus::GdipCreateBitmapFromScan0(i R7, i R8, i 0, i 0x26200A, p 0, *p .R5)'
     System::Call 'gdiplus::GdipGetImageGraphicsContext(p R5, *p .R4)'
