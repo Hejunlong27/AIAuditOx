@@ -78,4 +78,4 @@ cd auditox
 
 ## 开源协议
 
-根目录 [LICENSE](../LICENSE) 保持原始 MIT 协议不变。上游致谢仅在 [ACKNOWLEDGEMENTS.zh.md](../ACKNOWLEDGEMENTS.zh.md)、许可证和第三方声明中保留。
+本仓库产品代码与文档采用 [AIAuditOx 非商业许可 1.0](../LICENSE)。禁止商业使用、转售、去除署名或冒充来源；商业授权需与作者单独协商。上游第三方组件继续适用各自许可证，见 [ACKNOWLEDGEMENTS.zh.md](../ACKNOWLEDGEMENTS.zh.md) 和 [THIRD_PARTY_NOTICES.md](../THIRD_PARTY_NOTICES.md)。
