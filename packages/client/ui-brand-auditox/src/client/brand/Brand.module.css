@@ -7,7 +7,7 @@
   gap: 3px;
 }
 .zh {
-  color: var(--auditox-text, #0f172a);
+  color: var(--auditox-text, #0D1F2D);
   font-family: var(--dsw-font-family-brand);
   font-size: 20.5px;
   font-weight: 750;
@@ -15,7 +15,7 @@
   line-height: 20px;
 }
 .en {
-  color: var(--auditox-text-tertiary, #64748b);
+  color: var(--auditox-text-tertiary, #7B93A3);
   font-size: 8.5px;
   font-weight: 650;
   letter-spacing: .095em;

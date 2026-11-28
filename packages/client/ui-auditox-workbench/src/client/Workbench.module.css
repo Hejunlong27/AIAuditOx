@@ -138,7 +138,7 @@
   margin: 0 auto 16px;
   padding: 10px 13px;
   border: 1px solid color-mix(in srgb, var(--dsw-alias-state-success-primary) 28%, var(--dsw-alias-border-l1));
-  border-radius: 10px;
+  border-radius: 6px;
   background: color-mix(in srgb, var(--dsw-alias-state-success-primary) 7%, var(--dsw-alias-bg-layer-1));
   color: var(--dsw-alias-label-primary);
   font-size: 12px;
@@ -343,40 +343,40 @@
 .page,
 .pageState {
   background:
-    radial-gradient(ellipse 48% 28% at 52% 0%, rgba(37, 99, 235, .07), transparent 72%),
-    radial-gradient(ellipse 36% 26% at 42% 56%, rgba(6, 182, 212, .04), transparent 76%),
-    linear-gradient(180deg, #f5f7fa 0%, #eef2f6 100%);
+    radial-gradient(ellipse 48% 28% at 52% 0%, rgba(20, 84, 127, .07), transparent 72%),
+    radial-gradient(ellipse 36% 26% at 42% 56%, rgba(168, 121, 42, .04), transparent 76%),
+    linear-gradient(180deg, #F5F8FA 0%, #EFF4F8 100%);
 }
 
 .pageHeader {
   padding-bottom: 22px;
-  border-bottom-color: rgba(15, 23, 42, .08);
+  border-bottom-color: rgba(13, 31, 45, .08);
 }
 
 .pageHeader h1 {
-  color: var(--auditox-text, #0f172a);
+  color: var(--auditox-text, #0D1F2D);
   font-weight: 700;
   letter-spacing: -.045em;
 }
 
-.kicker { color: var(--auditox-blue, #0071e3); }
+.kicker { color: var(--auditox-blue, #14547F); }
 
 .hardwareGrid > div,
 .setupCard,
 .modelCard,
 .skillCard {
-  border-color: rgba(255, 255, 255, .82);
-  background: rgba(255, 255, 255, .68);
+  border-color: #E1E8EF;
+  background: #FFFFFF;
   box-shadow:
     0 1px 0 rgba(255, 255, 255, .9) inset,
-    0 8px 28px rgba(15, 23, 42, .04);
-  backdrop-filter: blur(18px) saturate(170%);
-  -webkit-backdrop-filter: blur(18px) saturate(170%);
+    0 8px 28px rgba(13, 31, 45, .04);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 
 .primaryButton,
 .secondaryButton {
-  border-radius: 10px;
+  border-radius: 6px;
   transition:
     transform 250ms var(--auditox-ease, cubic-bezier(.22, 1, .36, 1)),
     background-color 250ms var(--auditox-ease, cubic-bezier(.22, 1, .36, 1)),
@@ -386,48 +386,43 @@
 }
 
 .primaryButton {
-  border-color: rgba(255, 255, 255, .12);
+  border-color: #14547F;
   color: #fff !important;
-  background: linear-gradient(180deg, #292a2f 0%, #111214 48%, #000 100%);
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, .18) inset,
-    0 7px 16px rgba(15, 23, 42, .14);
+  background: #14547F;
+  box-shadow: 0 1px 2px rgba(13, 31, 45, .08);
 }
 
 .primaryButton:hover:not(:disabled) {
   opacity: 1;
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, .2) inset,
-    0 10px 20px rgba(15, 23, 42, .19);
+  background: #0F4165;
+  box-shadow: 0 2px 5px rgba(13, 31, 45, .10);
   transform: translateY(-1px);
 }
 
 .secondaryButton:hover:not(:disabled) {
-  border-color: rgba(0, 113, 227, .16);
-  background: rgba(255, 255, 255, .94);
-  box-shadow: 0 6px 16px rgba(15, 23, 42, .045);
+  border-color: #D8E7F2;
+  background: #EDF4FA;
+  box-shadow: 0 6px 16px rgba(13, 31, 45, .045);
   transform: translateY(-1px);
 }
 
 .serviceReady,
 .serviceIdle {
-  background: rgba(255, 255, 255, .56);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, .84) inset;
-  backdrop-filter: blur(16px) saturate(160%);
-  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  background: #FFFFFF;
+  box-shadow: 0 1px 2px rgba(13, 31, 45, .05);
 }
 
 .modelToggle {
   min-height: 30px;
   gap: 7px;
   padding: 0 7px 0 10px;
-  border-color: rgba(255, 255, 255, .8);
-  background: rgba(255, 255, 255, .62);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, .9) inset, 0 5px 16px rgba(15, 23, 42, .035);
-  color: #475569;
+  border-color: #E1E8EF;
+  background: #FFFFFF;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .9) inset, 0 5px 16px rgba(13, 31, 45, .035);
+  color: #46606F;
   font-size: 10px;
-  backdrop-filter: blur(18px) saturate(170%);
-  -webkit-backdrop-filter: blur(18px) saturate(170%);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   transition:
     border-color 250ms var(--auditox-ease, cubic-bezier(.22, 1, .36, 1)),
     background-color 250ms var(--auditox-ease, cubic-bezier(.22, 1, .36, 1)),
@@ -436,32 +431,32 @@
 }
 
 .modelToggle:hover:not(:disabled) {
-  border-color: rgba(0, 113, 227, .14);
+  border-color: rgba(20, 84, 127, .14);
   background: rgba(255, 255, 255, .88);
-  box-shadow: 0 1px 0 #fff inset, 0 7px 18px rgba(15, 23, 42, .055);
-  color: #0f172a;
+  box-shadow: 0 1px 0 #fff inset, 0 7px 18px rgba(13, 31, 45, .055);
+  color: #0D1F2D;
 }
 
 .modelChevron {
   padding: 3px 8px 2px;
   border-radius: 999px;
-  background: linear-gradient(145deg, #1687ff, #0071e3);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, .26) inset, 0 3px 8px rgba(0, 113, 227, .18);
+  background: #14547F;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .26) inset, 0 3px 8px rgba(20, 84, 127, .18);
   color: #fff;
   font-weight: 620;
 }
 
 .modelDot {
-  box-shadow: 0 0 0 3px rgba(148, 163, 184, .08);
+  box-shadow: 0 0 0 3px rgba(203, 216, 226, .08);
   animation: auditox-model-breathe 2.8s ease-in-out infinite;
 }
 
 body[data-ds-dark-theme] .page,
 body[data-ds-dark-theme] .pageState {
   background:
-    radial-gradient(ellipse 48% 28% at 52% 0%, rgba(37, 99, 235, .13), transparent 72%),
-    radial-gradient(ellipse 36% 26% at 42% 56%, rgba(6, 182, 212, .075), transparent 76%),
-    linear-gradient(180deg, #05070d 0%, #020617 100%);
+    radial-gradient(ellipse 48% 28% at 52% 0%, rgba(20, 84, 127, .13), transparent 72%),
+    radial-gradient(ellipse 36% 26% at 42% 56%, rgba(168, 121, 42, .075), transparent 76%),
+    linear-gradient(180deg, #07131E 0%, #040D14 100%);
 }
 
 body[data-ds-dark-theme] .hardwareGrid > div,
@@ -470,22 +465,22 @@ body[data-ds-dark-theme] .modelCard,
 body[data-ds-dark-theme] .skillCard,
 body[data-ds-dark-theme] .serviceReady,
 body[data-ds-dark-theme] .serviceIdle {
-  border-color: rgba(148, 163, 184, .14);
-  background: rgba(17, 24, 39, .66);
+  border-color: rgba(203, 216, 226, .14);
+  background: #0D1F2D;
   box-shadow:
     0 1px 0 rgba(255, 255, 255, .045) inset,
     0 10px 30px rgba(0, 0, 0, .2);
 }
 
 body[data-ds-dark-theme] .modelToggle {
-  border-color: rgba(148, 163, 184, .14);
-  background: rgba(15, 23, 42, .62);
-  color: #a7b3c8;
+  border-color: rgba(203, 216, 226, .14);
+  background: rgba(13, 31, 45, .62);
+  color: #A9BCC8;
 }
 
 @keyframes auditox-model-breathe {
-  0%, 100% { box-shadow: 0 0 0 3px rgba(148, 163, 184, .08); }
-  50% { box-shadow: 0 0 0 5px rgba(96, 165, 250, .035); }
+  0%, 100% { box-shadow: 0 0 0 3px rgba(203, 216, 226, .08); }
+  50% { box-shadow: 0 0 0 5px rgba(76, 143, 181, .035); }
 }
 
 @media (prefers-reduced-motion: reduce) {

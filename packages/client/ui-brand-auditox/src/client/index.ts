@@ -26,20 +26,20 @@ const dossierDefinition: SidebarRightTabDefinition = {
 }
 
 const TOKENS: ThemeTokenOverrides = {
-  '--dsw-alias-bg-base': { light: '#f3f6fa', dark: '#05070d' },
-  '--dsw-alias-bg-layer-1': { light: '#ffffff', dark: '#111827' },
-  '--dsw-alias-bg-layer-2': { light: '#eef2f7', dark: '#172033' },
-  '--dsw-alias-bg-overlay': { light: '#ffffff', dark: '#151e2e' },
-  '--dsw-alias-border-l1': { light: 'rgba(15, 23, 42, .10)', dark: 'rgba(148, 163, 184, .15)' },
-  '--dsw-alias-border-l2': { light: 'rgba(15, 23, 42, .16)', dark: 'rgba(148, 163, 184, .24)' },
-  '--dsw-alias-brand-primary': { light: '#0071e3', dark: '#60a5fa' },
-  '--dsw-alias-label-primary': { light: '#0f172a', dark: '#f8fafc' },
-  '--dsw-alias-label-secondary': { light: '#475569', dark: '#a7b3c8' },
-  '--dsw-alias-state-error-primary': { light: '#dc2626', dark: '#fb7185' },
-  '--dsw-alias-state-idle-primary': { light: '#64748b', dark: '#8494ab' },
-  '--dsw-alias-state-success-primary': { light: '#059669', dark: '#34d399' },
-  '--dsw-alias-state-warn-primary': { light: '#d97706', dark: '#fbbf24' },
-  '--dsw-specific-sidebar-fill': { light: 'rgba(248, 250, 252, .78)', dark: 'rgba(10, 15, 28, .78)' },
+  '--dsw-alias-bg-base': { light: '#F5F8FA', dark: '#07131E' },
+  '--dsw-alias-bg-layer-1': { light: '#ffffff', dark: '#0D1F2D' },
+  '--dsw-alias-bg-layer-2': { light: '#EFF4F8', dark: '#153143' },
+  '--dsw-alias-bg-overlay': { light: '#ffffff', dark: '#102838' },
+  '--dsw-alias-border-l1': { light: 'rgba(13, 31, 45, .10)', dark: 'rgba(203, 216, 226, .15)' },
+  '--dsw-alias-border-l2': { light: 'rgba(13, 31, 45, .16)', dark: 'rgba(203, 216, 226, .24)' },
+  '--dsw-alias-brand-primary': { light: '#14547F', dark: '#4C8FB5' },
+  '--dsw-alias-label-primary': { light: '#0D1F2D', dark: '#F5F8FA' },
+  '--dsw-alias-label-secondary': { light: '#46606F', dark: '#A9BCC8' },
+  '--dsw-alias-state-error-primary': { light: '#B03A30', dark: '#E58A82' },
+  '--dsw-alias-state-idle-primary': { light: '#7B93A3', dark: '#91A6B4' },
+  '--dsw-alias-state-success-primary': { light: '#15735A', dark: '#58B596' },
+  '--dsw-alias-state-warn-primary': { light: '#A65A0C', dark: '#D8B05B' },
+  '--dsw-specific-sidebar-fill': { light: 'rgba(255, 255, 255, .90)', dark: 'rgba(7, 19, 30, .86)' },
 }
 
 /** Register AuditOx theme overrides and the shipped brand slot occupants. */
